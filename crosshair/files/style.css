@@ -1,0 +1,75 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+.nonHover {
+	color: gray;
+}
+.hover {
+	color: red;
+}
+.crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /*border: 1px solid red;*/
+  width: 26px;
+  height: 26px;
+  margin-top: -14px;
+  margin-left: -14px;
+}
+.menuButton {
+	z-index: 2;
+	cursor:pointer;
+}
+.menuContainer {
+	position:relative;
+	top: 15px;
+	left: 15px;
+	border: 2px solid black;
+	border-radius: 0 12px 12px 12px;
+	background: rgba(0,0,0,0.8);
+	width: 200px;
+	height: 300px;
+	z-index: 1;
+}
+.closeButton {
+	position: absolute;
+	bottom: 0;
+	right: 5px;
+	color: gray;
+	font-weight: bold;
+	font-size: 23px;
+	cursor:pointer;
+}
+.colorBox {
+	color: rgb(0, 0, 0);
+	background-image: none;
+	background-color: rgb(69, 245, 86);
+	position: absolute;
+	top: 40px;
+	right: 15px;
+	width: 60px;
+	border: none;
+	cursor:pointer;
+}
+.colorInputLabel {
+	position: absolute;
+	top: 40px;
+	left: 5px;
+	color: white;
+}
+.cog {
+	color: gray;
+}
+
+.fabackground {
+	position:relative;
+}
+.fabackground:before {
+	position:absolute;
+	font-family: FontAwesome;
+	top: 0px;
+	left: -5px;
+	content: "\f0c9";
+}

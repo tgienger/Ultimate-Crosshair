@@ -1,0 +1,42 @@
+<?xml version="1.0"?><svg width="377.08624" height="377.08621" xmlns="http://www.w3.org/2000/svg">
+ <title>CrossHair</title>
+ <metadata id="metadata2379">image/svg+xml</metadata>
+ <g display="inline">
+  <title>Layer 1</title>
+  <g id="layer1">
+   <g id="g2404">
+    <path d="m367.639954,189.543106a180.596848,180.596848 0 1 1 -361.193694,0a180.596848,180.596848 0 1 1 361.193694,0z" id="path2160" stroke-dashoffset="0" stroke-miterlimit="4" stroke-linejoin="round" stroke-linecap="square" stroke-width="22" stroke="#ff7f00" fill="none"/>
+    <path id="path3134" d="m6.44626,189.543106l361.193694,0" stroke-miterlimit="4" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path d="m9.33581,189.543106l32.28071,0" id="path5074" stroke-width="21.671621" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path id="path6045" d="m332.469727,189.543106l32.280701,0" stroke-width="21.671621" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path id="path6099" d="m64.094131,200.378922l0,-21.671631" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path d="m105.077118,200.378922l0,-21.671631" id="path6101" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path id="path6103" d="m146.060135,200.378922l0,-21.671631" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path d="m228.026138,200.378922l0,-21.671631" id="path6105" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path id="path6107" d="m269.009094,200.378922l0,-21.671631" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path d="m309.992126,200.378922l0,-21.671631" id="path6109" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path id="path6116" d="m187.043137,200.378922l0,-21.671631" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path d="m187.043106,8.94626l0,361.193693" id="path6292" stroke-miterlimit="4" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path id="path6294" d="m187.043106,11.8358l0,32.280701" stroke-width="21.671621" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path d="m187.043106,334.969727l0,32.28064" id="path6296" stroke-width="21.671621" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path d="m176.207321,66.594124l21.6716,0" id="path6300" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path id="path6302" d="m176.207321,107.577103l21.6716,0" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path d="m176.207321,148.560104l21.6716,0" id="path6304" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path id="path6306" d="m176.207321,230.526138l21.6716,0" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path d="m176.207321,271.509094l21.6716,0" id="path6308" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path id="path6310" d="m176.207321,312.492065l21.6716,0" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+    <path d="m176.207321,189.543106l21.6716,0" id="path6312" stroke-width="9.391036" stroke="#ff7f00" fill-rule="evenodd" fill="none"/>
+   </g>
+  </g>
+  <rect fill="#000000" stroke="#ff7f00" stroke-width="5" x="171.043041" y="-36.456909" width="31" height="16" id="svg_1" transform="rotate(90.0002 186.543 -28.4569)"/>
+  <rect fill="#000000" stroke="#ff7f00" stroke-width="5" x="-45.456959" y="181.043091" width="31" height="16" id="svg_4"/>
+  <rect fill="#000000" stroke="#ff7f00" stroke-width="5" x="172.043041" y="397.543091" width="31" height="16" id="svg_5" transform="rotate(-90.0002 187.543 405.543)"/>
+  <rect fill="#000000" stroke="#ff7f00" stroke-width="5" x="389.043041" y="181.543091" width="31" height="16" id="svg_6"/>
+  <rect fill="#ffffff" stroke="#ffffff" stroke-width="5" x="173.580263" y="175.204947" width="30" height="28" id="svg_7"/>
+  <rect fill="#ffffff" stroke="#ffffff" stroke-width="5" x="-3.419571" y="180.705349" width="44" height="17.499999" id="svg_10"/>
+  <rect fill="#ffffff" stroke="#ffffff" stroke-width="5" x="165.080429" y="348.705349" width="44" height="17.499999" id="svg_11" transform="rotate(90, 187.082, 357.457)"/>
+  <rect fill="#ffffff" stroke="#ffffff" stroke-width="5" x="334.580429" y="180.705349" width="44" height="17.499999" id="svg_13"/>
+  <rect fill="#ffffff" stroke="#ffffff" stroke-width="5" x="165.080429" y="11.705349" width="44" height="17.499999" transform="rotate(90, 187.082, 20.457)" id="svg_14"/>
+  <circle fill="#000000" stroke="#000000" stroke-width="5" cx="187.622101" cy="188.497116" r="4.923828" id="svg_16"/>
+ </g>
+</svg>
