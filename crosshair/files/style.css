@@ -8,6 +8,13 @@ html {
 .hover {
 	color: red;
 }
+.fa-rotate-45 {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 .crosshair {
   position: absolute;
   top: 50%;
@@ -35,7 +42,7 @@ html {
 }
 .closeButton {
 	position: absolute;
-	bottom: 0;
+	top: 0;
 	right: 5px;
 	color: gray;
 	font-weight: bold;

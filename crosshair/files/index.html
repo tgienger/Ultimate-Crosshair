@@ -13,16 +13,16 @@
       <link rel="stylesheet" type="text/css" href="style.css">
       <!-- <img src="../Crosshairs_Red.svg" alt="" /> -->
       <div class="crosshair" style="margin-top: {{marginTop}}; margin-left: {{marginLeft}}; width: {{width}}; height: {{height}}">
-        <span ng-class="spinit" ng-include="'sniper2.svg'"></span>
+        <div ng-class="spinit" ng-include="'sniper20.svg'"></div>
       </div>
 
       <p ng-click="onHover = !onHover"  ng-hover class="menuButton pull-left">
-        <span style="color: red; font-size: 23px;" class="fa fa-qq"></span>
+        <span style="color: red; font-size: 23px;" class=""><img src="trollface.png" alt="" width="23px" /></span>
       </p>
-	  
-	  
-	  
-	<div ng-show="onHover" class="menuContainer">	
+
+
+
+	<div ng-show="onHover" class="menuContainer">
 		<span class="cog" ng-click="onHover = !onHover"><i class="fa fa-cog"></i> Ultimate Crosshair</span>
 		<!-- Power Button -->
       <p ng-show="onHover" ng-click="close()" ng-mouseover="style={color: 'red'}" ng-mouseleave="style={color: 'gray'}" ng-style="style" class="closeButton">
@@ -41,13 +41,19 @@
 	  <label for="colorInput2" class="colorInputLabel" style="margin-top: 40px">dot color</label>
       <input name="colorInput" ng-show="onHover"  ng-model="dotColor" class="color colorBox" value="ff3300" autocomplete="off" style="margin-top: 50px">
 	  <br>
-	  <slider floor="0" ceiling="4" step=".05" precision="1" ng-model="outerLength" style="margin-top: 90px"></slider>
-	  <slider floor="25" ceiling="50" step=".05" precision="1" ng-model="width"></slider>
-	  <button class="btn btn-xs btn-primary" ng-click="position()">Center</button>
-	  <button class="btn btn-xs btn-primary" ng-click="spinner()">Spin</button>
-	
+
+
+	  <slider floor="2" ceiling="11.5" step="1" precision="2" ng-model="outerLength" style="margin-top: 90px"></slider>
+	  <slider floor="25" ceiling="50" step="1" precision="2" ng-model="width"></slider>
+
+
+	  <!-- <button class="btn btn-xs btn-primary" ng-click="position()">Center</button> -->
+	  <button class="btn btn-xs btn-primary btn-block" ng-click="spinner()">Spin</button>
+	  <button class="btn btn-xs btn-primary btn-block" ng-click="rotate()">Rotate</button>
+	  <button class="btn btn-xs btn-primary btn-block" ng-click="save()">Save</button>
+
 	</div>
-      
+
 
       <script charset="utf-8" src="script.js"></script>
 
