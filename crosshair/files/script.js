@@ -1,4 +1,4 @@
-angular.module('app', ['uiSlider'])
+angular.module('app', ['ui.slider'])
 .controller('crossController', function ($scope, $window, $timeout) {
   $scope.color           = 'red';
   $scope.width           = window.localStorage.crossWidth || 26;
@@ -7,7 +7,8 @@ angular.module('app', ['uiSlider'])
   $scope.marginLeft      = -($scope.width / 2);
   $scope.crossColor      = window.localStorage.crossColor || '#ff0000';
   $scope.dotColor        = window.localStorage.dotColor || '#ff0000';
-  $scope.outerLength     = window.localStorage.length || 2.8;
+  $scope.cross           = {};
+  $scope.cross.outerLength     = window.localStorage.outerLength || 2.8;
   $scope.spinit          = window.localStorage.spinit || '';
 
 
@@ -59,7 +60,28 @@ angular.module('app', ['uiSlider'])
 
     $scope.crossColor = color
 
-  }
+  };
+
+
+
+  $scope.clearCross = function() {
+    if ($scope.crossColor === 'rgba(0,0,0,0)') {
+      $scope.crossColor = '#FF0000';
+    } else {
+      $scope.crossColor = 'rgba(0,0,0,0)';
+    }
+  };
+
+
+
+
+  $scope.clearDot = function() {
+    if ($scope.dotColor === 'rgba(0,0,0,0)') {
+      $scope.dotColor = '#FF0000';
+    } else {
+      $scope.dotColor = 'rgba(0,0,0,0)';
+    }
+  };
 
 
 
@@ -94,22 +116,22 @@ angular.module('app', ['uiSlider'])
 
 
   // Center on resize
-  $scope.$watch($scope.width, function() {
-    $scope.marginTop  = -($scope.height / 2 );
+  $scope.$watch('width', function() {
+    $scope.marginTop  = -($scope.width / 2);
     $scope.marginLeft = -($scope.width / 2);
-  })
+  });
 
 
 
   // save
   $scope.save = function() {
-    window.localStorage.rotated    = rotated;
-    window.localStorage.spinning   = spinning;
-    window.localStorage.crossWidth = $scope.width;
-    window.localStorage.spinit     = $scope.spinit;
-    window.localStorage.dotColor   = $scope.dotColor;
-    window.localStorage.crossColor = $scope.crossColor;
-    window.localStorage.length     = $scope.outerLength;
+    window.localStorage.rotated     = rotated;
+    window.localStorage.spinning    = spinning;
+    window.localStorage.crossWidth  = $scope.width;
+    window.localStorage.spinit      = $scope.spinit;
+    window.localStorage.dotColor    = $scope.dotColor;
+    window.localStorage.crossColor  = $scope.crossColor;
+    window.localStorage.outerLength = $scope.cross.outerLength;
   }
 
 

@@ -1,11 +1,13 @@
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <link rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
-<link rel="stylesheet" href="angular-slider.min.css">
+<!-- <link rel="stylesheet" href="angular-slider.min.css"> -->
+<link rel="stylesheet" href="slider.css">
 
 <script charset="utf-8" src="angular.min.js"></script>
+<script charset="utf-8" src="slider.js"></script>
 <script type="text/javascript" src="jscolor/jscolor.js"></script>
-<script type="text/javascript" src="angular-slider.min.js"></script>
+<!-- <script type="text/javascript" src="angular-slider.min.js"></script> -->
 
 <div ng-app="app">
   <div ng-controller="crossController" ng-init="fitScreen()">
@@ -17,7 +19,7 @@
       </div>
 
       <p ng-click="onHover = !onHover"  ng-hover class="menuButton pull-left">
-        <span style="color: red; font-size: 23px;" class=""><img src="trollface.png" alt="" width="23px" /></span>
+        <span style="color: red; font-size: 23px;" class=""><img src="menu.png" alt="" width="25px" /></span>
       </p>
 
 
@@ -43,13 +45,15 @@
 	  <br>
 
 
-	  <slider floor="2" ceiling="11.5" step="1" precision="2" ng-model="outerLength" style="margin-top: 90px"></slider>
+	  <slider floor="2" ceiling="11.5" step="1" precision="2" ng-model="cross.outerLength" style="margin-top: 90px"></slider>
 	  <slider floor="25" ceiling="50" step="1" precision="2" ng-model="width"></slider>
 
 
 	  <!-- <button class="btn btn-xs btn-primary" ng-click="position()">Center</button> -->
 	  <button class="btn btn-xs btn-primary btn-block" ng-click="spinner()">Spin</button>
 	  <button class="btn btn-xs btn-primary btn-block" ng-click="rotate()">Rotate</button>
+	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearCross()">Remove Cross</button>
+	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearDot()">Remove Dot</button>
 	  <button class="btn btn-xs btn-primary btn-block" ng-click="save()">Save</button>
 
 	</div>

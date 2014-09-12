@@ -97,36 +97,36 @@
          sodipodi:cy="629.22168"
          sodipodi:cx="619.70337"
          id="path3168"
-         style="fill:#ff0000"
+         style="fill:{{dotColor}}"
          sodipodi:type="arc" />
     </g>
     <rect
-       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       style="fill:{{crossColor}};fill-opacity:1;fill-rule:evenodd;stroke:none"
        id="rect2993"
        width="1.9999999"
-       height="{{outerLength}}"
+       height="{{cross.outerLength}}"
        x="482.64752"
        y="501.09131" />
     <rect
-       style="fill:#ff0000;fill-opacity:1;stroke:none"
+       style="fill:{{crossColor}};fill-opacity:1;stroke:none"
        id="rect5197"
-       width="{{outerLength}}"
+       width="{{cross.outerLength}}"
        height="2"
        x="-494.64752"
        y="-513.09131"
        transform="scale(-1,-1)" />
     <rect
-       style="fill:#ff0000;fill-opacity:1;stroke:none"
+       style="fill:{{crossColor}};fill-opacity:1;stroke:none"
        id="rect5199"
        width="2"
-       height="{{outerLength}}"
+       height="{{cross.outerLength}}"
        x="-484.64752"
        y="-523.09131"
        transform="scale(-1,-1)" />
     <rect
-       style="fill:#ff0000;fill-opacity:1;stroke:none"
+       style="fill:{{crossColor}};fill-opacity:1;stroke:none"
        id="rect5203"
-       width="{{outerLength}}"
+       width="{{cross.outerLength}}"
        height="2"
        x="472.64752"
        y="511.09131" />
