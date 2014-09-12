@@ -1,15 +1,18 @@
 angular.module('app', ['ui.slider'])
 .controller('crossController', function ($scope, $window, $timeout) {
-  $scope.color           = 'red';
-  $scope.width           = window.localStorage.crossWidth || 26;
-  $scope.height          = $scope.width;
-  $scope.marginTop       = -($scope.height / 2 );
-  $scope.marginLeft      = -($scope.width / 2);
-  $scope.crossColor      = window.localStorage.crossColor || '#ff0000';
-  $scope.dotColor        = window.localStorage.dotColor || '#ff0000';
-  $scope.cross           = {};
-  $scope.cross.outerLength     = window.localStorage.outerLength || 2.8;
-  $scope.spinit          = window.localStorage.spinit || '';
+
+
+  $scope.showMenu          = false;
+  $scope.color             = 'red';
+  $scope.width             = window.localStorage.crossWidth || 26;
+  $scope.height            = $scope.width;
+  $scope.marginTop         = -($scope.height / 2 );
+  $scope.marginLeft        = -($scope.width / 2);
+  $scope.crossColor        = window.localStorage.crossColor || '#ff0000';
+  $scope.dotColor          = window.localStorage.dotColor || '#ff0000';
+  $scope.spinit            = window.localStorage.spinit || '';
+  $scope.cross             = {};
+  $scope.cross.outerLength = window.localStorage.outerLength || 2.8;
 
 
   // Startup fitting to screen resolution
@@ -42,7 +45,7 @@ angular.module('app', ['ui.slider'])
 
 
 
-  // var win;
+  // Close Ultimate Crosshair app
   $scope.close = function () {
 
   	overwolf.windows.getCurrentWindow(function (result) {
@@ -55,7 +58,7 @@ angular.module('app', ['ui.slider'])
 
 
 
-
+  // Set the color of the cross
   $scope.setColor = function (color) {
 
     $scope.crossColor = color
@@ -64,6 +67,8 @@ angular.module('app', ['ui.slider'])
 
 
 
+
+  // Remove all color from the cross
   $scope.clearCross = function() {
     if ($scope.crossColor === 'rgba(0,0,0,0)') {
       $scope.crossColor = '#FF0000';
@@ -75,6 +80,7 @@ angular.module('app', ['ui.slider'])
 
 
 
+  // remove al color from the center dot
   $scope.clearDot = function() {
     if ($scope.dotColor === 'rgba(0,0,0,0)') {
       $scope.dotColor = '#FF0000';
@@ -86,6 +92,8 @@ angular.module('app', ['ui.slider'])
 
 
 
+  // start/stop spinning the crosshair
+  // and stop rotate
   var spinning = window.localStorage.spinning || false;
   var rotated  = window.localStorage.rotated || false;
   $scope.spinner = function () {
@@ -102,6 +110,7 @@ angular.module('app', ['ui.slider'])
 
 
   // rotate crosshair 45 deg
+  // and stop spinning
   $scope.rotate = function() {
     spinning = false;
     if (!rotated) {
@@ -115,7 +124,8 @@ angular.module('app', ['ui.slider'])
 
 
 
-  // Center on resize
+  // Actively re-center the crosshair
+  // when changing it's size
   $scope.$watch('width', function() {
     $scope.marginTop  = -($scope.width / 2);
     $scope.marginLeft = -($scope.width / 2);
@@ -132,12 +142,14 @@ angular.module('app', ['ui.slider'])
     window.localStorage.dotColor    = $scope.dotColor;
     window.localStorage.crossColor  = $scope.crossColor;
     window.localStorage.outerLength = $scope.cross.outerLength;
+    $scope.showMenu = false;
   }
 
 
 
+  // Matches the center dot to the crosshair color
   $scope.match = function () {
-	$scope.dotColor = $scope.crossColor;
+  	$scope.dotColor = $scope.crossColor;
   }
 
 }) // end controller

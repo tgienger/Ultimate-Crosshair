@@ -133,6 +133,13 @@
             boundToInputs = false;
             ngDocument = angularize(document);
             handleHalfWidth = barWidth = minOffset = maxOffset = minValue = maxValue = valueRange = offsetRange = void 0;
+            scope.$watch(function() {
+                return element.is(':visible');
+            }, function(isVisible) {
+                if (isVisible) {
+                    updateDOM();  //existing function that redraws everything
+                }
+            });
             dimensions = function() {
               var value, _j, _len1, _ref2;
               if (scope.step == null) {

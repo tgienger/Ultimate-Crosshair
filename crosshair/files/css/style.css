@@ -8,6 +8,9 @@ html {
 .hover {
 	color: red;
 }
+.btn-block {
+  width: 90%;
+}
 .fa-rotate-45 {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);

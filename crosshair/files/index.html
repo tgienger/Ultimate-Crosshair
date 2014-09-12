@@ -2,64 +2,65 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <link rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
 <!-- <link rel="stylesheet" href="angular-slider.min.css"> -->
-<link rel="stylesheet" href="slider.css">
+<link rel="stylesheet" href="css/slider.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 
-<script charset="utf-8" src="angular.min.js"></script>
-<script charset="utf-8" src="slider.js"></script>
+<script charset="utf-8" src="scripts/angular.min.js"></script>
+<script charset="utf-8" src="scripts/slider.js"></script>
 <script type="text/javascript" src="jscolor/jscolor.js"></script>
+<script charset="utf-8" src="scripts/main.js"></script>
 <!-- <script type="text/javascript" src="angular-slider.min.js"></script> -->
 
 <div ng-app="app">
-  <div ng-controller="crossController" ng-init="fitScreen()">
+  <div ng-controller="crossController">
 
-      <link rel="stylesheet" type="text/css" href="style.css">
-      <!-- <img src="../Crosshairs_Red.svg" alt="" /> -->
-      <div class="crosshair" style="margin-top: {{marginTop}}; margin-left: {{marginLeft}}; width: {{width}}; height: {{height}}">
-        <div ng-class="spinit" ng-include="'sniper20.svg'"></div>
-      </div>
+    <!-- CrossHair - SVG -->
+    <div class="crosshair" style="margin-top: {{marginTop}}; margin-left: {{marginLeft}}; width: {{width}}; height: {{height}}">
+      <div ng-class="spinit" ng-include="'sniper20.svg'"></div>
+    </div>
 
-      <p ng-click="onHover = !onHover"  ng-hover class="menuButton pull-left">
-        <span style="color: red; font-size: 23px;" class=""><img src="menu.png" alt="" width="25px" /></span>
-      </p>
+    <!-- Menu Button - click -->
+    <p ng-click="showMenu = !showMenu"  ng-hover class="menuButton pull-left">
+      <span style="color: red; font-size: 23px;" class=""><img src="menu.png" alt="" width="25px" /></span>
+    </p>
 
 
 
-	<div ng-show="onHover" class="menuContainer">
-		<span class="cog" ng-click="onHover = !onHover"><i class="fa fa-cog"></i> Ultimate Crosshair</span>
-		<!-- Power Button -->
-      <p ng-show="onHover" ng-click="close()" ng-mouseover="style={color: 'red'}" ng-mouseleave="style={color: 'gray'}" ng-style="style" class="closeButton">
-        <span class="fa fa-power-off"></span>
-      </p>
+    <!-- Main Menu -->
+  	<div ng-show="showMenu" class="menuContainer">
+  		<span class="cog" ng-click="showMenu = !showMenu"><i class="fa fa-cog"></i> Ultimate Crosshair</span>
+  		<!-- Power Button -->
+        <p ng-show="showMenu" ng-click="close()" ng-mouseover="style={color: 'red'}" ng-mouseleave="style={color: 'gray'}" ng-style="style" class="closeButton">
+          <span class="fa fa-power-off"></span>
+        </p>
 
-      <!-- Increase/Decrease crosshair size -->
-      <button id="biggerButton" hidden>bigger</button>
-      <button id="smallerButton" hidden>smaller</button>
-	  <!-- <button ng-click="fitScreen()">screenfit</button> -->
 
       <!-- change crosshair color -->
-	  <button ng-click="match()" class="btn btn-xs btn-primary pull-right">Match</button>
-	  <label for="colorInput" class="colorInputLabel">crosshair color</label>
-      <input name="colorInput" ng-show="onHover"  ng-model="crossColor" class="color colorBox" value="ff3300" autocomplete="off" style="margin-top: 10px">
-	  <label for="colorInput2" class="colorInputLabel" style="margin-top: 40px">dot color</label>
-      <input name="colorInput" ng-show="onHover"  ng-model="dotColor" class="color colorBox" value="ff3300" autocomplete="off" style="margin-top: 50px">
-	  <br>
+  	  <button ng-click="match()" class="btn btn-xs btn-primary pull-right">Match</button>
+  	  <label for="colorInput" class="colorInputLabel">crosshair color</label>
+        <input name="colorInput" ng-show="showMenu"  ng-model="crossColor" class="color colorBox" value="ff3300" autocomplete="off" style="margin-top: 10px">
+  	  <label for="colorInput2" class="colorInputLabel" style="margin-top: 40px">dot color</label>
+        <input name="colorInput" ng-show="showMenu"  ng-model="dotColor" class="color colorBox" value="ff3300" autocomplete="off" style="margin-top: 50px">
+  	  <br>
 
 
-	  <slider floor="2" ceiling="11.5" step="1" precision="2" ng-model="cross.outerLength" style="margin-top: 90px"></slider>
-	  <slider floor="25" ceiling="50" step="1" precision="2" ng-model="width"></slider>
+      <!-- Sliders -->
+  	  <slider floor="2" ceiling="11.5" step="1" precision="1" ng-model="cross.outerLength" style="margin-top: 90px; color:white;"></slider>
+  	  <slider floor="25" ceiling="50" step="1" precision="1" ng-model="width" style="color:white;"></slider>
 
 
-	  <!-- <button class="btn btn-xs btn-primary" ng-click="position()">Center</button> -->
-	  <button class="btn btn-xs btn-primary btn-block" ng-click="spinner()">Spin</button>
-	  <button class="btn btn-xs btn-primary btn-block" ng-click="rotate()">Rotate</button>
-	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearCross()">Remove Cross</button>
-	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearDot()">Remove Dot</button>
-	  <button class="btn btn-xs btn-primary btn-block" ng-click="save()">Save</button>
+  	  <!-- Menu Buttons -->
+      <div id="name" style="margin:auto;">
+        <div id="name">
+      	  <button class="btn btn-xs btn-primary btn-block" ng-click="spinner()">Spin</button>
+      	  <button class="btn btn-xs btn-primary btn-block" ng-click="rotate()">Rotate</button>
+      	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearCross()">Remove Cross</button>
+      	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearDot()">Remove Dot</button>
+      	  <button class="btn btn-xs btn-primary btn-block" ng-click="save()">Save</button>
+        </div>
+      </div>
 
-	</div>
-
-
-      <script charset="utf-8" src="script.js"></script>
+  	</div>
 
   </div>
 
