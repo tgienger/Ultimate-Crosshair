@@ -16,12 +16,12 @@
 
     <!-- CrossHair - SVG -->
     <div class="crosshair" style="margin-top: {{marginTop}}; margin-left: {{marginLeft}}; width: {{width}}; height: {{height}}">
-      <div ng-class="spinit" ng-include="'sniper20.svg'"></div>
+      <div ng-class="spinit" ng-include="'sniper2.svg'"></div>
     </div>
 
     <!-- Menu Button - click -->
     <p ng-click="showMenu = !showMenu"  ng-hover class="menuButton pull-left">
-      <span style="color: red; font-size: 23px;" class=""><img src="menu.png" alt="" width="25px" /></span>
+      <span style="color: red; font-size: 23px;" class=""><img src="MenuButton.png" alt="" width="25px" /></span>
     </p>
 
 
@@ -50,15 +50,11 @@
 
 
   	  <!-- Menu Buttons -->
-      <div id="name" style="margin:auto;">
-        <div id="name">
-      	  <button class="btn btn-xs btn-primary btn-block" ng-click="spinner()">Spin</button>
-      	  <button class="btn btn-xs btn-primary btn-block" ng-click="rotate()">Rotate</button>
-      	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearCross()">Remove Cross</button>
-      	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearDot()">Remove Dot</button>
-      	  <button class="btn btn-xs btn-primary btn-block" ng-click="save()">Save</button>
-        </div>
-      </div>
+  	  <button class="btn btn-xs btn-primary btn-block" ng-click="spinner()">Spin</button>
+  	  <button class="btn btn-xs btn-primary btn-block" ng-click="rotate()">Rotate</button>
+  	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearCross()">Remove Cross</button>
+  	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearDot()">Remove Dot</button>
+  	  <button class="btn btn-xs btn-primary btn-block" ng-click="save()">Save</button>
 
   	</div>
 

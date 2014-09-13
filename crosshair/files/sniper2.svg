@@ -9,11 +9,11 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="{{width}}"
    height="{{width}}"
-   viewBox="0 0 22.207999 22.296823"
+   viewBox="0 0 22.137527 21.966338"
    version="1.1"
    id="svg2"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="sniper2.svg">
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="sniper20.svg">
   <metadata
      id="metadata146">
     <rdf:RDF>
@@ -36,114 +36,61 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1689"
-     inkscape:window-height="882"
+     inkscape:window-width="1280"
+     inkscape:window-height="744"
      id="namedview142"
-     showgrid="false"
+     showgrid="true"
      inkscape:zoom="24.1664"
-     inkscape:cx="16.295771"
-     inkscape:cy="14.133537"
-     inkscape:window-x="137"
-     inkscape:window-y="1"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="g3450"
+     inkscape:cx="12.805813"
+     inkscape:cy="10.30404"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
      showguides="true"
      inkscape:guide-bbox="true"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0">
+     fit-margin-bottom="0"
+     inkscape:showpageshadow="false">
+    <inkscape:grid
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       type="xygrid"
+       id="grid3012"
+       originx="11.081852px"
+       originy="10.966346px" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="9.0818521,11.966346"
+       id="guide3014" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="9.5921805,9.9663456"
+       id="guide3016" />
     <sodipodi:guide
        orientation="1,0"
-       position="15.143986,751.34294"
-       id="guide3152" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="-623.28575,-8.7701831"
-       id="guide3154" />
+       position="10.081852,14.966346"
+       id="guide3018" />
     <sodipodi:guide
        orientation="1,0"
-       position="35.006277,750.01884"
-       id="guide3160" />
-    <sodipodi:guide
-       orientation="1,0"
-       position="-4.7183031,687.78364"
-       id="guide3162" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="-653.2479,9.9561671"
-       id="guide3164" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="-665.42002,30.555137"
-       id="guide3166" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="-4.7183031,440.19394"
-       id="guide3198" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="-57.281973,390.10096"
-       id="guide3200" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="-2.1562931,340.00798"
-       id="guide3202" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="1.5889769,290.14909"
-       id="guide3222" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="0.18449691,240.17316"
-       id="guide3242" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="-0.63478309,190.08019"
-       id="guide3262" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="5.9194369,140.10425"
-       id="guide3282" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="-4.7183031,90.128327"
-       id="guide3302" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="-77.41279,475.77394"
-       id="guide3322" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="5.4130841,14.951816"
-       id="guide3485" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="5.7056832,12.786582"
-       id="guide3487" />
-    <sodipodi:guide
-       orientation="1,0"
-       position="3.5697095,14.395878"
-       id="guide3489" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="10.855428,27.884698"
-       id="guide3491" />
-    <sodipodi:guide
-       orientation="0,1"
-       position="10.562829,24.256469"
-       id="guide3493" />
+       position="12.081852,13.966346"
+       id="guide3020" />
   </sodipodi:namedview>
   <g
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="Layer"
      style="display:inline"
-     transform="translate(-483.64752,-489.79449)">
+     transform="translate(-472.56567,-501.09132)">
     <g
-       id="g3450">
+       id="g3450"
+       transform="translate(-11.125087,11.094189)">
       <path
-         transform="matrix(0.07150398,0,0,0.07683582,450.46135,452.65036)"
+         transform="matrix(0.0946573,0,0,0.10171561,436.11316,436.99546)"
          d="m 639.56566,629.22168 c 0,10.85939 -8.89265,19.66266 -19.86229,19.66266 -10.96964,0 -19.86229,-8.80327 -19.86229,-19.66266 0,-10.85939 8.89265,-19.66266 19.86229,-19.66266 10.96964,0 19.86229,8.80327 19.86229,19.66266 z"
          sodipodi:ry="19.662661"
          sodipodi:rx="19.862289"
@@ -152,37 +99,36 @@
          id="path3168"
          style="fill:{{dotColor}}"
          sodipodi:type="arc" />
-      <rect
-         y="-502.51987"
-         x="-485.81201"
-        height="{{outerThickness}}"
-         width="{{outerLength}}"
-         id="rect3170"
-         style="fill:{{crossColor}}"
-         transform="matrix(-0.99999908,0.00135631,-0.00135631,-0.99999908,0,0)" />
-      <rect
-         y="-486.92224"
-         x="-501.09164"
-         height="{{outerLength}}"
-         width="{{outerThickness}}"
-         id="rect3172"
-         style="fill:{{crossColor}}"
-         transform="matrix(-0.99994037,-0.01092023,0.01092023,-0.99994037,0,0)" />
-      <rect
-         y="509.16345"
-         x="493.78668"
-         height="{{outerLength}}"
-         width="{{outerThickness}}"
-         id="rect3174"
-         style="fill:{{crossColor}}" />
-      <rect
-         y="502.09598"
-         x="501.06644"
-         height="{{outerThickness}}"
-         width="{{outerLength}}"
-         id="rect3176"
-         style="fill:{{crossColor}}"
-         transform="matrix(0.99999239,-0.00390132,0.00390132,0.99999239,0,0)" />
     </g>
+    <rect
+       style="fill:{{crossColor}};fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect2993"
+       width="1.9999999"
+       height="{{cross.outerLength}}"
+       x="482.64752"
+       y="501.09131" />
+    <rect
+       style="fill:{{crossColor}};fill-opacity:1;stroke:none"
+       id="rect5197"
+       width="{{cross.outerLength}}"
+       height="2"
+       x="-494.64752"
+       y="-513.09131"
+       transform="scale(-1,-1)" />
+    <rect
+       style="fill:{{crossColor}};fill-opacity:1;stroke:none"
+       id="rect5199"
+       width="2"
+       height="{{cross.outerLength}}"
+       x="-484.64752"
+       y="-523.09131"
+       transform="scale(-1,-1)" />
+    <rect
+       style="fill:{{crossColor}};fill-opacity:1;stroke:none"
+       id="rect5203"
+       width="{{cross.outerLength}}"
+       height="2"
+       x="472.64752"
+       y="511.09131" />
   </g>
 </svg>

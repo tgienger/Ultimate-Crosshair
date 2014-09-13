@@ -10,6 +10,7 @@ html {
 }
 .btn-block {
   width: 90%;
+  margin:auto;
 }
 .fa-rotate-45 {
     -webkit-transform: rotate(45deg);

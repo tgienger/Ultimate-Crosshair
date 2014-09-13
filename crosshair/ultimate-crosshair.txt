@@ -1,0 +1,45 @@
+Howdy developer!
+
+Please make sure you have the following information updated for your app!
+-------------------------------------------------------------------------
+
+Nickname: tgienger
+Real name: Tj Gienger
+Email:  kilrain@gmail.com
+Version: 1.0.0
+Category: Utilities ?
+Tags: Crosshair, custom, cross hair, reticle, overlay.
+
+The following (sexy) images:
+1. IconMouseNormal.png - a gray-scale icon for the round app button - default state (256×256, will be resized to 37×37).
+2. IconMouseOver.png - a colored icon for the round app button - mouse-over state (256×256, will be resized to 37×37).
+3. SmallAppstoreTile.png - a small Appstore tile introducing your app (192×160).
+4. LargeAppstoreTile.png - a large Appstore tile introducing your app (404×160).
+5. SmallAppIcon.png - a small icon representing the app in the "my apps" page (70×70).
+6. LargeAppIcon.png - a large icon representing the app in the single app page (90×90).
+
+In addition to these, please write a description of your app, consisting of a catchy title and some awesome lines of text
+and a couple of in-game screenshots of your app, alongside Overwolf (feel free to add some mugshots of it as well).
+
+Good luck! For any questions, check out our Submission Process thread.
+
+Rock on! Team Overwolf
+
+________´$$$$`______________________________
+_______´$$$$$$$`___________________________´$$$`
+________`$$$$$$$`______,,________,,_______´$$$$´
+_________`$$$$$$$`____´$$`_____´$$`____´$$$$$´
+__________`$$$$$$$`_´$$$$$`_´$$$$$`__´$$$$$$$´
+___________`$$$$$$$_$$$$$$$_$$$$$$$_´$$$$$$$´_
+____________`$$$$$$_$$$$$$$_$$$$$$$`´$$$$$$´_
+___,,,______`$$$$$$_$$$$$$$_$$$$$$$_$$$$$$´_
+_´$$$$$`____`$$$$$$_$$$$$$$_$$$$$$$_$$$$$$´_
+´$$$$$$$$$`´$$$$$$$_$$$$$$$_$$$$$$$_$$$$$´_
+´$$$$$$$$$$$$$$$$$$_$$$$$$$_$$$$$$$_$$$$$´_
+___`$$$$$$$$$$$$$$$_$$$$$$$_$$$$$$_$$$$$$´_
+______`$$$$$$$$$$$$$_$$$$$__$$_$$$$$$_$$´_
+_______`$$$$$$$$$$$$,___,$$$$,_____,$$$$$´_
+_________`$$$$$$$$$$$$$$$$$$$$$$$$$$$$$´_
+__________`$$$$$$$$$$$$$$$$$$$$$$$$$$$´_
+____________`$$$$$$$$$$$$$$$$$$$$$$$$´_
+_______________`$$$$$$$$$$$$$$$$$$$$´_
