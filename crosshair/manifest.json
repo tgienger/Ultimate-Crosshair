@@ -6,8 +6,8 @@
     "version":"1.0.0",
     "minimum-overwolf-version": "0.77.4.0",
     "author":"Tj Gienger",
-    "icon":"files/IconMouseOver.png",
-    "icon_gray":"files/IconMouseNormal.png",
+    "icon":"files/images/IconMouseOver.png",
+    "icon_gray":"files/images/IconMouseNormal.png",
     "description":"Crosshair Overlay"
   },
   "data": {

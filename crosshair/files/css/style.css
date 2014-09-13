@@ -13,11 +13,11 @@ html {
   margin:auto;
 }
 .fa-rotate-45 {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .crosshair {
   position: absolute;
@@ -77,10 +77,10 @@ html {
 .fabackground {
 	position:relative;
 }
-.fabackground:before {
+/*.fabackground:before {
 	position:absolute;
 	font-family: FontAwesome;
 	top: 0px;
 	left: -5px;
 	content: "\f0c9";
-}
+}*/

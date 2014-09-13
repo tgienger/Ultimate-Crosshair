@@ -1,7 +1,6 @@
-<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<script src="scripts/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
-<!-- <link rel="stylesheet" href="angular-slider.min.css"> -->
 <link rel="stylesheet" href="css/slider.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -14,25 +13,23 @@
 <div ng-app="app">
   <div ng-controller="crossController">
 
+
     <!-- CrossHair - SVG -->
     <div class="crosshair" style="margin-top: {{marginTop}}; margin-left: {{marginLeft}}; width: {{width}}; height: {{height}}">
-      <div ng-class="spinit" ng-include="'sniper2.svg'"></div>
+      <div ng-class="spinit" ng-include="'images/sniper2.svg'"></div>
     </div>
+
 
     <!-- Menu Button - click -->
     <p ng-click="showMenu = !showMenu"  ng-hover class="menuButton pull-left">
-      <span style="color: red; font-size: 23px;" class=""><img src="MenuButton.png" alt="" width="25px" /></span>
+      <span style="color: red; font-size: 23px;" class=""><img src="images/MenuButton.png" alt="" width="25px" /></span>
     </p>
 
 
 
     <!-- Main Menu -->
   	<div ng-show="showMenu" class="menuContainer">
-  		<span class="cog" ng-click="showMenu = !showMenu"><i class="fa fa-cog"></i> Ultimate Crosshair</span>
-  		<!-- Power Button -->
-        <p ng-show="showMenu" ng-click="close()" ng-mouseover="style={color: 'red'}" ng-mouseleave="style={color: 'gray'}" ng-style="style" class="closeButton">
-          <span class="fa fa-power-off"></span>
-        </p>
+  		<span class="cog" ng-click="showMenu = !showMenu">Ultimate Crosshair</span>
 
 
       <!-- change crosshair color -->
@@ -54,7 +51,11 @@
   	  <button class="btn btn-xs btn-primary btn-block" ng-click="rotate()">Rotate</button>
   	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearCross()">Remove Cross</button>
   	  <button class="btn btn-xs btn-primary btn-block" ng-click="clearDot()">Remove Dot</button>
+      <br>
   	  <button class="btn btn-xs btn-primary btn-block" ng-click="save()">Save</button>
+  	  <button class="btn btn-xs btn-primary btn-block" ng-click="closeMenu()">close menu</button>
+      <br>
+  	  <button class="btn btn-xs btn-primary btn-block" ng-click="close()">Quit</button>
 
   	</div>
 

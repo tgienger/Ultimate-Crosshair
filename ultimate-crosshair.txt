@@ -18,6 +18,30 @@ The following (sexy) images:
 5. SmallAppIcon.png - a small icon representing the app in the "my apps" page (70×70).
 6. LargeAppIcon.png - a large icon representing the app in the single app page (90×90).
 
+
+
+Description:
+
+  Ultimate Crosshair is an adjustable, customizable crosshair overlay for your FPS and TPS games.
+Right now, UT is setup with a single .SVG (scalable vector graphics) crosshair that can be tweaked in size, length of cross bars and in color.
+You can also remove either the cross or the center dot entirely to gain the look you've been wanting. UT is just beginning and
+I am very eager to hear your opinions and suggestions so I can make UT the BEST crosshair app ever!
+
+When you fire up Ultimate Crosshair, UT will look for your current resolution and attempt to adjust itself accordingly.
+If you decide to change your resolution, UT 'should' detect that change and re-adjust itself to fit properly. More testing on an
+actually Windows machine is needed.
+
+When you find the combination you want, don't forget to save!
+
+Things to come:
+
+- Ability to dd your own images.
+- More options to the original .svg - different shapes, patters, etc.
+- Menu modifications - I know the current menu is ugly. This will definitely be addressed!
+
+
+
+
 In addition to these, please write a description of your app, consisting of a catchy title and some awesome lines of text
 and a couple of in-game screenshots of your app, alongside Overwolf (feel free to add some mugshots of it as well).
 

@@ -28,7 +28,6 @@ angular.module('app', ['ui.slider'])
     if (w != newW) {
 
       overwolf.windows.getCurrentWindow(function(result) {
-
         if (result.status === 'success') {
           overwolf.windows.changeSize(result.window.id, newW, newH, function () {});
           overwolf.windows.changePosition(result.window.id, 0, 0, function () {});
@@ -142,6 +141,13 @@ angular.module('app', ['ui.slider'])
     window.localStorage.dotColor    = $scope.dotColor;
     window.localStorage.crossColor  = $scope.crossColor;
     window.localStorage.outerLength = $scope.cross.outerLength;
+    $scope.showMenu = false;
+  }
+
+
+
+  // close menu
+  $scope.closeMenu = function() {
     $scope.showMenu = false;
   }
 
