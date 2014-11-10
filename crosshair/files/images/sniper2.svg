@@ -82,12 +82,13 @@
   </sodipodi:namedview>
   <g
      inkscape:groupmode="layer"
-     id="layer1"
+     id="crosshair"
      inkscape:label="Layer"
      style="display:inline"
      transform="translate(-472.56567,-501.09132)">
     <g
-       id="g3450"
+       id="centerDot"
+       visibility="{{cross.dotVisible}}"
        transform="translate(-11.125087,11.094189)">
       <path
          transform="matrix(0.0946573,0,0,0.10171561,436.11316,436.99546)"
@@ -100,6 +101,9 @@
          style="fill:{{dotColor}}"
          sodipodi:type="arc" />
     </g>
+    <g
+      id="crossBar"
+      visibility="{{cross.visible}}">
     <rect
        style="fill:{{crossColor}};fill-opacity:1;fill-rule:evenodd;stroke:none"
        id="rect2993"
@@ -130,5 +134,6 @@
        height="2"
        x="472.64752"
        y="511.09131" />
+    </g>
   </g>
 </svg>

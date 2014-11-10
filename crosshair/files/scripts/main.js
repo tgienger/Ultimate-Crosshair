@@ -1,4 +1,4 @@
-angular.module('app', ['ui.slider'])
+angular.module('app', ['ngAnimate'])
 .controller('crossController', function ($scope, $window, $timeout) {
 
 
@@ -12,7 +12,12 @@ angular.module('app', ['ui.slider'])
   $scope.dotColor          = window.localStorage.dotColor || '#ff0000';
   $scope.spinit            = window.localStorage.spinit || '';
   $scope.cross             = {};
+  $scope.cross.image       = 'images/sniper2.svg';
   $scope.cross.outerLength = window.localStorage.outerLength || 2.8;
+  $scope.cross.dotVisible  = window.localStorage.dotVisible || 'visible';
+  $scope.cross.visible     = window.localStorage.crossVisible || 'visible';
+  $scope.crossShow         = $scope.cross.visible === 'visible' ? 1 : 0;
+  $scope.dotShow           = $scope.cross.dotVisible === 'visible' ? 1 : 0;
 
 
   // Startup fitting to screen resolution
@@ -43,6 +48,13 @@ angular.module('app', ['ui.slider'])
   })();
 
 
+  // if($scope.cross.visible === 'visible') {
+  //   $scope.crossShow = 1;
+  // } else {
+  //   $scope.crossShow = 0;
+  // }
+
+
 
   // Close Ultimate Crosshair app
   $scope.close = function () {
@@ -69,10 +81,12 @@ angular.module('app', ['ui.slider'])
 
   // Remove all color from the cross
   $scope.clearCross = function() {
-    if ($scope.crossColor === 'rgba(0,0,0,0)') {
-      $scope.crossColor = '#FF0000';
+    if ($scope.cross.visible === 'hidden') {
+      $scope.cross.visible = 'visible';
+      $scope.crossShow = 1;
     } else {
-      $scope.crossColor = 'rgba(0,0,0,0)';
+      $scope.cross.visible = 'hidden';
+      $scope.crossShow = 0;
     }
   };
 
@@ -81,10 +95,12 @@ angular.module('app', ['ui.slider'])
 
   // remove al color from the center dot
   $scope.clearDot = function() {
-    if ($scope.dotColor === 'rgba(0,0,0,0)') {
-      $scope.dotColor = '#FF0000';
+    if ($scope.cross.dotVisible === 'hidden') {
+      $scope.cross.dotVisible = 'visible';
+      $scope.dotShow = 1;
     } else {
-      $scope.dotColor = 'rgba(0,0,0,0)';
+      $scope.cross.dotVisible = 'hidden';
+      $scope.dotShow = 0;
     }
   };
 
@@ -134,13 +150,15 @@ angular.module('app', ['ui.slider'])
 
   // save
   $scope.save = function() {
-    window.localStorage.rotated     = rotated;
-    window.localStorage.spinning    = spinning;
-    window.localStorage.crossWidth  = $scope.width;
-    window.localStorage.spinit      = $scope.spinit;
-    window.localStorage.dotColor    = $scope.dotColor;
-    window.localStorage.crossColor  = $scope.crossColor;
-    window.localStorage.outerLength = $scope.cross.outerLength;
+    window.localStorage.rotated      = rotated;
+    window.localStorage.spinning     = spinning;
+    window.localStorage.crossWidth   = $scope.width;
+    window.localStorage.spinit       = $scope.spinit;
+    window.localStorage.dotColor     = $scope.dotColor;
+    window.localStorage.crossColor   = $scope.crossColor;
+    window.localStorage.outerLength  = $scope.cross.outerLength;
+    window.localStorage.dotVisible   = $scope.cross.dotVisible;
+    window.localStorage.crossVisible = $scope.cross.visible;
     $scope.showMenu = false;
   }
 
