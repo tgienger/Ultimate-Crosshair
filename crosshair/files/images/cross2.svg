@@ -7,8 +7,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="26"
-   height="26"
+   width="{{width}}"
+   height="{{width}}"
    viewBox="0 0 22.137527 21.966338"
    version="1.1"
    id="svg2"
@@ -41,10 +41,10 @@
      id="namedview142"
      showgrid="true"
      inkscape:zoom="24.1664"
-     inkscape:cx="6.3505694"
-     inkscape:cy="10.535702"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:cx="12.805813"
+     inkscape:cy="10.30404"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
      showguides="true"
@@ -91,7 +91,8 @@
      style="display:inline"
      transform="translate(-472.56567,-501.09132)">
     <g
-       id="g3450"
+       id="centerDot"
+       visibility="{{cross.dotVisible}}"
        transform="translate(-11.125087,11.094189)">
       <path
          transform="matrix(0.0946573,0,0,0.10171561,436.11316,436.99546)"
@@ -101,42 +102,49 @@
          sodipodi:cy="629.22168"
          sodipodi:cx="619.70337"
          id="path3168"
-         style="fill:#FF0000"
+         style="fill:{{cross.dotColor}}"
          sodipodi:type="arc" />
     </g>
+    <g
+      id="crossBar"
+      visibility="{{cross.visible}}">
     <rect
-       style="fill:#FF0000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       style="fill:{{cross.barColor}};fill-opacity:1;fill-rule:evenodd;stroke:none"
        id="rect2993"
        width="1.9999999"
-       height="10"
+       height="{{cross.outerLength}}"
        x="482.64752"
        y="501.09131" />
     <rect
-       style="fill:#FF0000;fill-opacity:1;stroke:none"
+       style="fill:{{cross.barColor}};fill-opacity:1;stroke:none"
        id="rect5197"
-       width="10"
+       width="{{cross.outerLength}}"
        height="2"
        x="-494.64752"
        y="-513.09131"
        transform="scale(-1,-1)" />
     <rect
-       style="fill:#FF0000;fill-opacity:1;stroke:none"
+       style="fill:{{cross.barColor}};fill-opacity:1;stroke:none"
        id="rect5199"
        width="2"
-       height="10"
+       height="{{cross.outerLength}}"
        x="-484.64752"
        y="-523.09131"
        transform="scale(-1,-1)" />
     <rect
-       style="fill:#FF0000;fill-opacity:1;stroke:none"
+       style="fill:{{cross.barColor}};fill-opacity:1;stroke:none"
        id="rect5203"
-       width="10"
+       width="{{cross.outerLength}}"
        height="2"
        x="472.64752"
        y="511.09131" />
+     </g>
+     <g
+       id="outerCircle"
+       visibility="{{cross.outerVisible}}">
     <path
        sodipodi:type="arc"
-       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:{{cross.innerColor}};stroke:{{cross.outerColor}};stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="path3017"
        sodipodi:cx="8.0724316"
        sodipodi:cy="14.533654"
@@ -144,5 +152,6 @@
        sodipodi:ry="6.5"
        d="m 14.572432,14.533654 a 6.5,6.5 0 1 1 -13.0000004,0 6.5,6.5 0 1 1 13.0000004,0 z"
        transform="matrix(1.5718975,0,0,1.5718947,471.01509,489.25777)" />
+     </g>
   </g>
 </svg>

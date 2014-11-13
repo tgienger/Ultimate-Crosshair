@@ -2,57 +2,220 @@ angular.module('app', ['ngAnimate'])
 .controller('crossController', function ($scope, $window, $timeout) {
 
 
-  $scope.showMenu          = false;
-  $scope.color             = 'red';
-  $scope.width             = window.localStorage.crossWidth || 26;
-  $scope.height            = $scope.width;
-  $scope.marginTop         = -($scope.height / 2 );
-  $scope.marginLeft        = -($scope.width / 2);
-  $scope.crossColor        = window.localStorage.crossColor || '#ff0000';
-  $scope.dotColor          = window.localStorage.dotColor || '#ff0000';
-  $scope.spinit            = window.localStorage.spinit || '';
-  $scope.cross             = {};
-  $scope.cross.image       = 'images/sniper2.svg';
-  $scope.cross.outerLength = window.localStorage.outerLength || 2.8;
-  $scope.cross.dotVisible  = window.localStorage.dotVisible || 'visible';
-  $scope.cross.visible     = window.localStorage.crossVisible || 'visible';
-  $scope.crossShow         = $scope.cross.visible === 'visible' ? 1 : 0;
-  $scope.dotShow           = $scope.cross.dotVisible === 'visible' ? 1 : 0;
 
 
-  // Startup fitting to screen resolution
-  // re-check every second for changes in resolution
-  var w;
-  var h;
+  $scope.showMenu = false;
+  $scope.messages = [];
 
-  (function fitScreen() {
 
-    var newW = window.screen.width;
-    var newH = window.screen.height;
 
-    if (w != newW) {
 
-      overwolf.windows.getCurrentWindow(function(result) {
-        if (result.status === 'success') {
-          overwolf.windows.changeSize(result.window.id, newW, newH, function () {});
-          overwolf.windows.changePosition(result.window.id, 0, 0, function () {});
-          w = newW;
-          h = newH;
-        }
-      });
+  // Initialize Snap.svg
+  var s = Snap();
 
+
+  // Outer Circle Variables
+  $scope.outer_circle             = {};
+  $scope.outer_circle.show        = parseInt(window.localStorage.outerCircleShow) == 0 ? 0 : 1;
+  $scope.outer_circle.fill        = window.localStorage.outerCircleFill || 'none';
+  $scope.outer_circle.stroke      = window.localStorage.outerCircleColor || '#ff0001';
+  $scope.outer_circle.strokeWidth = window.localStorage.outerCircleStrokeWidth || 2;
+  $scope.outer_circle.radius      = window.localStorage.outerCircleWidth || 13;
+  $scope.outer_circle.visible     = $scope.outer_circle.show === 0 ? 'hidden' : 'visible';
+
+  // Center Dot Variables
+  $scope.center_dot             = {};
+  $scope.center_dot.show        = parseInt(window.localStorage.dotShow) == 0 ? 0 : 1;
+  $scope.center_dot.stroke      = 'none';
+  $scope.center_dot.strokeWidth = 0;
+  $scope.center_dot.fill        = window.localStorage.dotColor || '#ff0001';
+  $scope.center_dot.radius      = window.localStorage.dotRadius || 2;
+  $scope.center_dot.visible     = $scope.center_dot.show === 0 ? 'hidden' : 'visible';
+
+  // Cross Variables
+  $scope.cross                    = {};
+  $scope.cross.bar                = {};
+
+  $scope.cross.bar.top            = {};
+  $scope.cross.bar.top.show       = parseInt(window.localStorage.topBarShow) == 0 ? 0 : 1;
+  $scope.cross.bar.top.color      = window.localStorage.barTopColor || 'red';
+  $scope.cross.bar.top.visible    = $scope.cross.bar.top.show === 0 ? 'hidden' : 'visible';
+
+  $scope.cross.bar.right          = {};
+  $scope.cross.bar.right.show     = parseInt(window.localStorage.rightBarShow) == 0 ? 0 : 1;
+  $scope.cross.bar.right.color    = window.localStorage.barRightColor || 'red';
+  $scope.cross.bar.right.visible  = $scope.cross.bar.right.show === 0 ? 'hidden' : 'visible';
+
+  $scope.cross.bar.bottom         = {};
+  $scope.cross.bar.bottom.show    = parseInt(window.localStorage.bottomBarShow) == 0 ? 0 : 1;
+  $scope.cross.bar.bottom.color   = window.localStorage.barBottomColor || 'red';
+  $scope.cross.bar.bottom.visible = $scope.cross.bar.bottom.show === 0 ? 'hidden' : 'visible';
+
+  $scope.cross.bar.left           = {};
+  $scope.cross.bar.left.show      = parseInt(window.localStorage.leftBarShow) == 0 ? 0 : 1;
+  $scope.cross.bar.left.color     = window.localStorage.barLeftColor || 'red';
+  $scope.cross.bar.left.visible   = $scope.cross.bar.left.show === 0 ? 'hidden' : 'visible';
+
+  $scope.cross.bar.fill           = window.localStorage.barFill || '#ff0000';
+  $scope.cross.bar.length         = window.localStorage.barLength || 25;
+  $scope.cross.bar.thickness      = window.localStorage.barThickness || 5;
+  $scope.cross.bar.fromCenter     = window.localStorage.barFromCenter || 5;
+
+
+
+
+  // Build Crosshair
+  function buildCrossHair() {
+
+
+    // Outer Circle
+    $scope.outerCircle = s.circle('50%', '50%', $scope.outer_circle.radius).attr({
+      fill: $scope.outer_circle.fill,
+      stroke: $scope.outer_circle.stroke,
+      visibility: $scope.outer_circle.visible,
+      strokeWidth: $scope.outer_circle.strokeWidth
+    });
+
+
+
+
+    // Center Dot
+    $scope.centerDot = s.circle('50%', '50%', $scope.center_dot.radius).attr({
+      fill: $scope.center_dot.fill,
+      visibility: $scope.center_dot.visible
+    });
+
+
+
+
+    // Cross
+    $scope.cross.top = s.rect('50%', '50%', $scope.cross.bar.thickness, $scope.cross.bar.length).attr({
+      fill: $scope.cross.bar.top.color,
+      visibility: $scope.cross.bar.top.visible,
+      transform: 't' + [-($scope.cross.bar.thickness / 2), -$scope.cross.bar.length - $scope.cross.bar.fromCenter]
+    });
+
+    $scope.cross.bottom = s.rect('50%', '50%', parseInt($scope.cross.bar.thickness), $scope.cross.bar.length).attr({
+      fill: $scope.cross.bar.bottom.color,
+      visibility: $scope.cross.bar.bottom.visible,
+      transform: 't' + [-$scope.cross.bar.thickness / 2, $scope.cross.bar.fromCenter],
+    });
+
+    $scope.cross.right  = s.rect('50%', '50%', $scope.cross.bar.length, $scope.cross.bar.thickness).attr({
+      fill: $scope.cross.bar.right.color,
+      visibility: $scope.cross.bar.right.visible,
+      transform: 't' + [$scope.cross.bar.fromCenter, -$scope.cross.bar.thickness / 2]
+    });
+
+    $scope.cross.left   = s.rect('50%', '50%', $scope.cross.bar.length, $scope.cross.bar.thickness).attr({
+      fill: $scope.cross.bar.left.color,
+      visibility: $scope.cross.bar.left.visible,
+      transform: 't'+[-$scope.cross.bar.length - $scope.cross.bar.fromCenter, -($scope.cross.bar.thickness / 2)]
+    });
+    
+  }
+
+
+  function subtract(num, limit) {
+    num = parseInt(num) - 1;
+    if (num < limit) {
+      num = limit;
     }
+    return num;
+  }
 
-    $timeout(fitScreen, 1000);
+  function add(num, limit) {
+    num = parseInt(num) + 1;
+    if (num > limit) {
+      num = limit
+    }
+    return num;
+  }
 
-  })();
+  $scope.decrease = function (x) {
+    x = subtract(x, 1);
+    $scope.cross.bar.length = x;
+    $scope.setCrossLength();
+  };
+  $scope.increase = function (x) {
+    x = add(x, 100);
+    $scope.cross.bar.length = x;
+    $scope.setCrossLength();
+  };
+
+  $scope.spreadDecrease = function (x) {
+    x = subtract(x, 1);
+    $scope.cross.bar.fromCenter = x;
+    $scope.setCrossDistance($scope.cross.bar.fromCenter);
+  };
+  $scope.spreadIncrease = function (x) {
+    x = add(x, 100);
+    $scope.cross.bar.fromCenter = x;
+    $scope.setCrossDistance($scope.cross.bar.fromCenter);
+  };
+  $scope.thicknessDecrease = function (x) {
+    x = subtract(x, 1);
+    $scope.cross.bar.thickness = x;
+    $scope.setCrossThickness($scope.cross.bar.thickness);
+  };
+  $scope.thicknessIncrease = function (x) {
+    x = add(x, 100);
+    $scope.cross.bar.thickness = x;
+    $scope.setCrossThickness($scope.cross.bar.thickness);
+  };
 
 
-  // if($scope.cross.visible === 'visible') {
-  //   $scope.crossShow = 1;
-  // } else {
-  //   $scope.crossShow = 0;
-  // }
+
+  // Set Cross bar length
+  $scope.setCrossLength = function() {
+    $scope.cross.top.attr({
+      height: $scope.cross.bar.length
+    });
+    $scope.cross.bottom.attr({
+      height: $scope.cross.bar.length
+    });
+    $scope.cross.right.attr({
+      width: $scope.cross.bar.length
+    });
+    $scope.cross.left.attr({
+      width: $scope.cross.bar.length
+    });
+    $scope.setCrossDistance($scope.cross.bar.fromCenter);
+  };
+
+  // Set the crossbar thickness
+  $scope.setCrossThickness = function () {
+    $scope.cross.top.attr({
+      width: $scope.cross.bar.thickness
+    });
+    $scope.cross.right.attr({
+      height: $scope.cross.bar.thickness
+    });
+    $scope.cross.bottom.attr({
+      width: $scope.cross.bar.thickness
+    });
+    $scope.cross.left.attr({
+      height: $scope.cross.bar.thickness
+    });
+    $scope.setCrossDistance($scope.cross.bar.fromCenter);
+  };
+
+  // Set the cross bar spread
+  $scope.setCrossDistance = function(x) {
+    $scope.cross.top.attr({
+      transform: 't' + [-($scope.cross.bar.thickness / 2), -$scope.cross.bar.length - x]
+    });
+    $scope.cross.bottom.attr({
+      transform: 's'+[-1, -1] + 't' + [$scope.cross.bar.thickness / 2, -x]
+    });
+    $scope.cross.right.attr({
+      transform: 's'+[-1, -1] + 't' + [-x, $scope.cross.bar.thickness / 2]
+    });
+    $scope.cross.left.attr({
+      transform: 't'+[-$scope.cross.bar.length - x, -($scope.cross.bar.thickness / 2)]
+    });
+  };
+
 
 
 
@@ -69,38 +232,15 @@ angular.module('app', ['ngAnimate'])
 
 
 
-  // Set the color of the cross
-  $scope.setColor = function (color) {
 
-    $scope.crossColor = color
-
-  };
-
-
-
-
-  // Remove all color from the cross
-  $scope.clearCross = function() {
-    if ($scope.cross.visible === 'hidden') {
-      $scope.cross.visible = 'visible';
-      $scope.crossShow = 1;
+  // Hide Element
+  $scope.hideElement = function(el, btn) {
+    if (el.attr('visibility') === 'hidden') {
+      el.attr({visibility: 'visible'})
+      btn.show = 1;
     } else {
-      $scope.cross.visible = 'hidden';
-      $scope.crossShow = 0;
-    }
-  };
-
-
-
-
-  // remove al color from the center dot
-  $scope.clearDot = function() {
-    if ($scope.cross.dotVisible === 'hidden') {
-      $scope.cross.dotVisible = 'visible';
-      $scope.dotShow = 1;
-    } else {
-      $scope.cross.dotVisible = 'hidden';
-      $scope.dotShow = 0;
+      el.attr({visibility: 'hidden'})
+      btn.show = 0;
     }
   };
 
@@ -135,31 +275,74 @@ angular.module('app', ['ngAnimate'])
       rotated = false;
       $scope.spinit = '';
     }
-  }
+  };
 
 
 
-  // Actively re-center the crosshair
-  // when changing it's size
-  $scope.$watch('width', function() {
-    $scope.marginTop  = -($scope.width / 2);
-    $scope.marginLeft = -($scope.width / 2);
-  });
+
+  // change radius function
+  $scope.changeRadius = function (el, rad) {
+    el.attr({
+      r: rad
+    });
+  };
+
+
+
+  // Change Fill Color
+  $scope.changeFill = function (el, color) {
+    el.attr({
+      fill:color
+    });
+  };
+
+
+
+  // Change Stroke Color
+  $scope.changeStroke = function (el, color) {
+    el.attr({
+      stroke:color
+    });
+  };
+
+
+
+  // Change Stroke Width
+  $scope.changeStrokeWidth = function (el, width) {
+    el.attr({
+      strokeWidth:width
+    });
+  };
 
 
 
   // save
   $scope.save = function() {
-    window.localStorage.rotated      = rotated;
-    window.localStorage.spinning     = spinning;
-    window.localStorage.crossWidth   = $scope.width;
-    window.localStorage.spinit       = $scope.spinit;
-    window.localStorage.dotColor     = $scope.dotColor;
-    window.localStorage.crossColor   = $scope.crossColor;
-    window.localStorage.outerLength  = $scope.cross.outerLength;
-    window.localStorage.dotVisible   = $scope.cross.dotVisible;
-    window.localStorage.crossVisible = $scope.cross.visible;
-    $scope.showMenu = false;
+    $scope.messages = [];
+
+    window.localStorage.outerCircleShow        = $scope.outer_circle.show;
+    window.localStorage.outerCircleColor       = $scope.outer_circle.stroke;
+    window.localStorage.outerCircleStrokeWidth = $scope.outer_circle.strokeWidth;
+    window.localStorage.outerCircleWidth       = $scope.outer_circle.radius;
+
+    window.localStorage.dotShow                = $scope.center_dot.show;
+    window.localStorage.dotColor               = $scope.center_dot.fill;
+    window.localStorage.dotRadius              = $scope.center_dot.radius;
+
+    window.localStorage.topBarShow             = $scope.cross.bar.top.show;
+    window.localStorage.rightBarShow           = $scope.cross.bar.right.show;
+    window.localStorage.bottomBarShow          = $scope.cross.bar.bottom.show;
+    window.localStorage.leftBarShow            = $scope.cross.bar.left.show;
+    window.localStorage.barFill                = $scope.cross.bar.fill;
+    window.localStorage.barLength              = $scope.cross.bar.length;
+    window.localStorage.barThickness           = $scope.cross.bar.thickness;
+    window.localStorage.barTopColor            = $scope.cross.bar.top.color;
+    window.localStorage.barRightColor          = $scope.cross.bar.right.color;
+    window.localStorage.barBottomColor         = $scope.cross.bar.bottom.color;
+    window.localStorage.barLeftColor           = $scope.cross.bar.left.color;
+    window.localStorage.barFromCenter          = $scope.cross.bar.fromCenter;
+
+    $scope.messages.push("Save Complete");
   }
 
 
@@ -167,13 +350,64 @@ angular.module('app', ['ngAnimate'])
   // close menu
   $scope.closeMenu = function() {
     $scope.showMenu = false;
+    $scope.messages = [];
   }
 
 
 
   // Matches the center dot to the crosshair color
   $scope.match = function () {
-  	$scope.dotColor = $scope.crossColor;
+    $scope.changeFill($scope.cross.top, $scope.cross.bar.top.color);
+    $scope.changeFill($scope.cross.right, $scope.cross.bar.top.color);
+    $scope.changeFill($scope.cross.bottom, $scope.cross.bar.top.color);
+    $scope.changeFill($scope.cross.left, $scope.cross.bar.top.color);
+    $scope.changeFill($scope.centerDot, $scope.cross.bar.top.color);
+    $scope.changeStroke($scope.outerCircle, $scope.cross.bar.top.color);
+    $scope.center_dot.fill = $scope.outer_circle.stroke = $scope.cross.bar.bottom.color = $scope.cross.bar.right.color = $scope.cross.bar.left.color = $scope.cross.bar.top.color;
+  };
+
+
+
+
+  // Remove message
+  $scope.removeMessage = function (i) {
+    $scope.messages.splice(i, 1);
   }
+
+
+
+
+  // Startup fitting to screen resolution
+  // re-check every second for changes in resolution
+  var w;
+  var h;
+
+  function fitScreen() {
+
+    var newW = window.screen.width;
+    var newH = window.screen.height;
+
+    if (w != newW) {
+      overwolf.windows.getCurrentWindow(function(result) {
+        if (result.status === 'success') {
+          overwolf.windows.changeSize(result.window.id, newW, newH, function () {});
+          overwolf.windows.changePosition(result.window.id, 0, 0, function () {});
+          w = newW;
+          h = newH;
+
+          buildCrossHair();
+        }
+      });
+    }
+  }
+
+
+
+
+  fitScreen();
+  $("body *").addClass("noselect");
+
+
+
 
 }) // end controller

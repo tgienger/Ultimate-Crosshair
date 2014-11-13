@@ -23,11 +23,21 @@ html {
   position: absolute;
   top: 50%;
   left: 50%;
+  overflow: visible;
   /*border: 1px solid red;*/
   width: 26px;
   height: 26px;
   margin-top: -14px;
   margin-left: -14px;
+}
+.crossSize {
+  width: 100px;
+  height: 50px;
+  border: 1px solid black;
+  margin:auto;
+}
+.list-group {
+  text-align:center;
 }
 .menuButton {
   position:absolute;
@@ -41,10 +51,23 @@ html {
 .menuButton.bigButton {
   width: 40px;
 }
+.menuButtons {
+  width: 100%;
+  background: #303030;
+}
+.active {
+  background: blue;
+}
+.pointer {
+  cursor:pointer;
+}
+.sliders {
+  min-height: 160px;
+}
 .menuContainer {
   padding: 15px;
 	border-radius: 10px;
-	width: 200px;
+	width: 250px;
 	z-index: 1;
   /*-webkit-box-shadow: 0px 3px 5px 3px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 3px 5px 3px rgba(0,0,0,0.75);*/
@@ -86,8 +109,13 @@ html {
 }
 .header {
   text-align:center;
+  font-size: 16px;
 	color: #DB8F1D;
   cursor: pointer;
+}
+.mySwitch {
+  margin-top: 2.5px;
+  margin-left: 5px;
 }
 .headFooter {
   color:silver;
@@ -97,6 +125,18 @@ html {
 
 .fabackground {
 	position:relative;
+}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+input:focus {
+  outline:none;
+  box-shadow:none;
 }
 
 /*Animations*/
