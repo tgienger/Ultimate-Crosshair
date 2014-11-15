@@ -61,6 +61,7 @@ angular.module('app', ['ngAnimate'])
   $scope.cross.bar.thickness      = window.localStorage.barThickness || 5;
   $scope.cross.bar.fromCenter     = window.localStorage.barFromCenter || 5;
 
+  var rotated = parseInt(window.localStorage.crossRotated);
 
 
 
@@ -112,6 +113,14 @@ angular.module('app', ['ngAnimate'])
       visibility: $scope.cross.bar.left.visible,
       transform: 't'+[-$scope.cross.bar.length - $scope.cross.bar.fromCenter, -($scope.cross.bar.thickness / 2)]
     });
+
+
+
+    $scope.cGroup = s.g($scope.cross.top, $scope.cross.bottom, $scope.cross.right, $scope.cross.left);
+    console.log(rotated);
+    if (rotated) {
+      $scope.cGroup.transform('r45');
+    }
     
   }
 
@@ -214,6 +223,7 @@ angular.module('app', ['ngAnimate'])
     $scope.cross.left.attr({
       transform: 't'+[-$scope.cross.bar.length - x, -($scope.cross.bar.thickness / 2)]
     });
+
   };
 
 
@@ -250,7 +260,6 @@ angular.module('app', ['ngAnimate'])
   // start/stop spinning the crosshair
   // and stop rotate
   var spinning = window.localStorage.spinning || false;
-  var rotated  = window.localStorage.rotated || false;
   $scope.spinner = function () {
     rotated = false;
   	if (!spinning) {
@@ -267,14 +276,14 @@ angular.module('app', ['ngAnimate'])
   // rotate crosshair 45 deg
   // and stop spinning
   $scope.rotate = function() {
-    spinning = false;
     if (!rotated) {
-      rotated = true;
-      $scope.spinit = 'fa-rotate-45';
+      $scope.cGroup.transform('r45');
+      rotated = 1;
     } else {
-      rotated = false;
-      $scope.spinit = '';
+      $scope.cGroup.transform('-r45');
+      rotated = 0;
     }
+    console.log(rotated);
   };
 
 
@@ -341,6 +350,8 @@ angular.module('app', ['ngAnimate'])
     window.localStorage.barBottomColor         = $scope.cross.bar.bottom.color;
     window.localStorage.barLeftColor           = $scope.cross.bar.left.color;
     window.localStorage.barFromCenter          = $scope.cross.bar.fromCenter;
+
+    window.localStorage.crossRotated           = rotated;
 
     $scope.messages.push("Save Complete");
   }
