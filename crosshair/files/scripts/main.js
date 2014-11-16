@@ -117,7 +117,6 @@ angular.module('app', ['ngAnimate'])
 
 
     $scope.cGroup = s.g($scope.cross.top, $scope.cross.bottom, $scope.cross.right, $scope.cross.left);
-    console.log(rotated);
     if (rotated) {
       $scope.cGroup.transform('r45');
     }
@@ -261,14 +260,14 @@ angular.module('app', ['ngAnimate'])
   // and stop rotate
   var spinning = window.localStorage.spinning || false;
   $scope.spinner = function () {
-    rotated = false;
-  	if (!spinning) {
-  		spinning = true
-  		$scope.spinit = 'fa fa-spin'
-  	} else {
-  		spinning = false
-  		$scope.spinit = ''
-  	}
+    $scope.cGroup.stop().animate({
+      transform: 'r180'
+    }, 1000,
+    function() {
+      $scope.cGroup.attr({ transform: 'rotate(0)' })
+      $scope.spinner();
+      console.log('complete')
+    })
   }
 
 
@@ -283,7 +282,6 @@ angular.module('app', ['ngAnimate'])
       $scope.cGroup.transform('-r45');
       rotated = 0;
     }
-    console.log(rotated);
   };
 
 
@@ -389,7 +387,6 @@ angular.module('app', ['ngAnimate'])
 
 
   // Startup fitting to screen resolution
-  // re-check every second for changes in resolution
   var w;
   var h;
 
@@ -406,6 +403,7 @@ angular.module('app', ['ngAnimate'])
           w = newW;
           h = newH;
 
+          // Now build the crosshair
           buildCrossHair();
         }
       });
@@ -416,6 +414,7 @@ angular.module('app', ['ngAnimate'])
 
 
   fitScreen();
+  
   $("body *").addClass("noselect");
 
 
