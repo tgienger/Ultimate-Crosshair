@@ -123,7 +123,6 @@ angular.module('app', ['ngAnimate'])
     
   }
 
-
   function subtract(num, limit) {
     num = parseInt(num) - 1;
     if (num < limit) {
@@ -138,6 +137,15 @@ angular.module('app', ['ngAnimate'])
       num = limit
     }
     return num;
+  }
+
+
+  $scope.lowerSpeed = function () {
+    $scope.spinSpeed = subtract($scope.spinSpeed, 50);
+  }
+
+  $scope.increaseSpeed = function () {
+    $scope.spinSpeed = add($scope.spinSpeed, 5000);
   }
 
   $scope.decrease = function (x) {
@@ -258,23 +266,38 @@ angular.module('app', ['ngAnimate'])
 
   // start/stop spinning the crosshair
   // and stop rotate
-  var spinning = window.localStorage.spinning || false;
+  $scope.spinSpeed = parseInt(window.localStorage.spinSpeed) || 1000;
+  var centerX = window.screen.width / 2;
+  var centerY = window.screen.height / 2;
+  var spinning = 1;
+
   $scope.spinner = function () {
-    $scope.cGroup.stop().animate({
-      transform: 'r180'
-    }, 1000,
-    function() {
-      $scope.cGroup.attr({ transform: 'rotate(0)' })
-      $scope.spinner();
-      console.log('complete')
-    })
-  }
+    rotated = 0;
+    spinning = !spinning;
+    (function spin() {
+      var speed = parseInt($scope.spinSpeed);
+      if (spinning) {
+        $scope.cGroup.stop().attr({ transform: 'rotate(0 centerX centerY' });
+      } else {
+        $scope.cGroup.stop().animate({
+          transform: 'r360, centerX, centerY'
+        }, speed,
+        function () {
+          $scope.cGroup.attr({ transform: 'rotate(0 centerX centerY'} );
+          spin();
+        });
+      }
+      
+    })();
+  };
 
 
 
   // rotate crosshair 45 deg
   // and stop spinning
   $scope.rotate = function() {
+    $scope.cGroup.stop();
+    spinning = 1;
     if (!rotated) {
       $scope.cGroup.transform('r45');
       rotated = 1;
@@ -350,6 +373,8 @@ angular.module('app', ['ngAnimate'])
     window.localStorage.barFromCenter          = $scope.cross.bar.fromCenter;
 
     window.localStorage.crossRotated           = rotated;
+    window.localStorage.spinning               = spinning;
+    window.localStorage.spinSpeed              = $scope.spinSpeed;
 
     $scope.messages.push("Save Complete");
   }

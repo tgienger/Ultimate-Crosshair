@@ -141,9 +141,15 @@
 
     	  <!-- Menu Buttons -->
         <div class="btnGroup">
-          <!-- <button class="topcoat-button" ng-click="spinner()">spin</button> -->
+          <button class="topcoat-button" ng-click="spinner(spinSpeed)">spin</button>
           <button class="topcoat-button" ng-click="rotate()">rotate</button>
         </div>
+        <label class="inputLabel">spin speed: <span style="color:yellow">{{spinSpeed}}</span></label>
+            <br>
+            <i class="fa fa-minus  pointer" ng-click="lowerSpeed()"></i>
+            <input style="width: 150px;margin:auto;display:inline-block;" type="range" class="topcoat-range" ng-model="spinSpeed" min="50" max="5000" step="1">
+            <i class="fa fa-plus  pointer" ng-click="increaseSpeed()"></i>
+            <br>
         <br>
         <div class="btnGroup">
           <button class="topcoat-button" ng-click="save()">save</button>
