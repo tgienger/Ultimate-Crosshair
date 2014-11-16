@@ -299,10 +299,10 @@ angular.module('app', ['ngAnimate'])
     $scope.cGroup.stop();
     spinning = 1;
     if (!rotated) {
-      $scope.cGroup.transform('r45');
+      $scope.cGroup.transform('r45, centerX, centerY');
       rotated = 1;
     } else {
-      $scope.cGroup.transform('-r45');
+      $scope.cGroup.transform('r0, centerX, centerY');
       rotated = 0;
     }
   };
