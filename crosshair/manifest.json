@@ -16,8 +16,8 @@
       "MainWindow":{
         "file":"files/index.html",
         "transparent":true,
-        "resizable":true,
-        "show_in_taskbar": true,
+        "resizable":false,
+        "show_in_taskbar": false,
         "size": {
           "width": 1024,
           "height": 768

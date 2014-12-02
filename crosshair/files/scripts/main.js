@@ -64,7 +64,6 @@ angular.module('app', ['ngAnimate'])
   var rotated = parseInt(window.localStorage.crossRotated);
 
 
-
   // Build Crosshair
   function buildCrossHair() {
 
@@ -121,7 +120,7 @@ angular.module('app', ['ngAnimate'])
       $scope.cGroup.transform('r45');
     }
     
-  }
+  } // function buildCrosshair
 
   function subtract(num, limit) {
     num = parseInt(num) - 1;

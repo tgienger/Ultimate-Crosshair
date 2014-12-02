@@ -37,7 +37,7 @@
         <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.top.show" ng-click="hideElement(cross.top, cross.bar.top)" checked>
         <div class="topcoat-switch__toggle"></div>
       </label>
-        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.top.color" ng-change="changeFill(cross.top, cross.bar.top.color)" class="color colorBox pull-right" value="ff3300" autocomplete="off">
+        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.top.color" ng-change="changeFill(cross.top, cross.bar.top.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
       <br>
       <!-- change crosshair color RIGHT -->
       <label for="colorInput" class="colorInputLabel inputLabel">cross right</label>
@@ -45,7 +45,7 @@
         <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.right.show" ng-click="hideElement(cross.right, cross.bar.right)" checked>
         <div class="topcoat-switch__toggle"></div>
       </label>
-        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.right.color" ng-change="changeFill(cross.right, cross.bar.right.color)" class="color colorBox pull-right" value="ff3300" autocomplete="off">
+        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.right.color" ng-change="changeFill(cross.right, cross.bar.right.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
       <br>
       <!-- change crosshair color BOTTOM -->
       <label for="colorInput" class="colorInputLabel inputLabel">cross bottom</label>
@@ -53,7 +53,7 @@
         <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.bottom.show" ng-click="hideElement(cross.bottom, cross.bar.bottom)" checked>
         <div class="topcoat-switch__toggle"></div>
       </label>
-        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.bottom.color" ng-change="changeFill(cross.bottom, cross.bar.bottom.color)" class="color colorBox pull-right" value="ff3300" autocomplete="off">
+        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.bottom.color" ng-change="changeFill(cross.bottom, cross.bar.bottom.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
       <br>
       <!-- change crosshair color LEFT -->
       <label for="colorInput" class="colorInputLabel inputLabel">cross left</label>
@@ -61,7 +61,7 @@
         <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.left.show" ng-click="hideElement(cross.left, cross.bar.left)" checked>
         <div class="topcoat-switch__toggle"></div>
       </label>
-        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.left.color" ng-change="changeFill(cross.left, cross.bar.left.color)" class="color colorBox pull-right" value="ff3300" autocomplete="off">
+        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.left.color" ng-change="changeFill(cross.left, cross.bar.left.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
       <br>
 
       <!-- Center Dot -->
@@ -70,7 +70,7 @@
         <input type="checkbox" class="topcoat-switch__input" ng-checked="center_dot.show" ng-click="hideElement(centerDot, center_dot)" checked>
         <div class="topcoat-switch__toggle"></div>
       </label>
-        <input name="colorInput" ng-show="showMenu" ng-change="changeFill(centerDot, center_dot.fill)"  ng-model="center_dot.fill" class="color colorBox pull-right" value="ff3300" autocomplete="off">
+        <input name="colorInput" ng-show="showMenu" ng-change="changeFill(centerDot, center_dot.fill)"  ng-model="center_dot.fill" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
       <br>
 
       <!-- Outer Circle -->
@@ -79,7 +79,7 @@
         <input type="checkbox" class="topcoat-switch__input" ng-checked="outer_circle.show" ng-click="hideElement(outerCircle, outer_circle)" checked>
         <div class="topcoat-switch__toggle"></div>
       </label>
-      <input name="colorInput" ng-show="showMenu" ng-change="changeStroke(outerCircle, outer_circle.stroke)"  ng-model="outer_circle.stroke" class="color colorBox pull-right" value="ff3300" autocomplete="off">
+      <input name="colorInput" ng-show="showMenu" ng-change="changeStroke(outerCircle, outer_circle.stroke)"  ng-model="outer_circle.stroke" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
 
       <br>
       <br>
