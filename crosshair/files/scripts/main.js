@@ -122,6 +122,10 @@ angular.module('app', ['ngAnimate'])
       $scope.cGroup.transform('r45');
     }
 
+
+
+    $scope.aGroup = s.g($scope.cGroup, $scope.centerDot, $scope.outerCircle);
+
   } // function buildCrosshair
 
   function subtract(num, limit) {
@@ -441,10 +445,11 @@ angular.module('app', ['ngAnimate'])
     });
 
   }
-
+  fitScreen();
   overwolf.games.onGameInfoUpdated.addListener(function(g) {
     if (g.resolutionChanged === true || g.runningChanged === false) {
-      fitScreen();
+      // fitScreen();
+      location.reload();
     }
   });
 
