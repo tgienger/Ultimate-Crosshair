@@ -6,8 +6,10 @@ angular.module('app', ['ngAnimate'])
 
   $scope.showMenu = false;
   $scope.messages = [];
-
-
+  $scope.image = {};
+  $scope.image.width = window.localStorage.urlImageWidth || "25px";
+  $scope.image.src = window.localStorage.urlImageSrc || "https://www.gamersfirst.com/apb/img/page_loading.gif";
+  $scope.image.show = window.localStorage.urlImageShow == 'false' ? false : true;
 
 
   // Initialize Snap.svg
@@ -119,7 +121,7 @@ angular.module('app', ['ngAnimate'])
     if (rotated) {
       $scope.cGroup.transform('r45');
     }
-    
+
   } // function buildCrosshair
 
   function subtract(num, limit) {
@@ -286,7 +288,7 @@ angular.module('app', ['ngAnimate'])
           spin();
         });
       }
-      
+
     })();
   };
 
@@ -375,6 +377,10 @@ angular.module('app', ['ngAnimate'])
     window.localStorage.spinning               = spinning;
     window.localStorage.spinSpeed              = $scope.spinSpeed;
 
+    window.localStorage.urlImageWidth = $scope.image.width;
+    window.localStorage.urlImageSrc = $scope.image.src;
+    window.localStorage.urlImageShow = $scope.image.show;
+
     $scope.messages.push("Save Complete");
   }
 
@@ -415,30 +421,36 @@ angular.module('app', ['ngAnimate'])
   var h;
 
   function fitScreen() {
+    overwolf.games.getRunningGameInfo(function (game) {
+      var gameWidth = game.width;
+      var gameHeight = game.height;
 
-    var newW = window.screen.width;
-    var newH = window.screen.height;
+      if (w != gameWidth) {
+        overwolf.windows.getCurrentWindow(function(result) {
+          if (result.status === 'success') {
+            overwolf.windows.changeSize(result.window.id, gameWidth, gameHeight, function () {});
+            overwolf.windows.changePosition(result.window.id, 0, 0, function () {});
+            w = gameWidth;
+            h = gameHeight;
 
-    if (w != newW) {
-      overwolf.windows.getCurrentWindow(function(result) {
-        if (result.status === 'success') {
-          overwolf.windows.changeSize(result.window.id, newW, newH, function () {});
-          overwolf.windows.changePosition(result.window.id, 0, 0, function () {});
-          w = newW;
-          h = newH;
+            // Now build the crosshair
+            buildCrossHair();
+          }
+        });
+      }
+    });
 
-          // Now build the crosshair
-          buildCrossHair();
-        }
-      });
-    }
   }
 
-
-
-
   fitScreen();
-  
+  overwolf.games.onGameInfoUpdated.addListener(function(g) {
+    if (g.resolutionChanged === true) {
+      fitScreen();
+    }
+  });
+
+
+
   $("body *").addClass("noselect");
 
 

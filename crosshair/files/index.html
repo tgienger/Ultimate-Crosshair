@@ -21,7 +21,7 @@
       <img class="btnImage" src="images/MenuButton.png" alt="" width="100%" />
     </div>
 
-
+    <image ng-show="image.show" width="{{image.width}}" height="{{image.width}}" ng-src="{{image.src}}" class="centerImage"></image>
 
     <!-- Main Menu -->
   	<div ng-show="showMenu" class="menuContainer dark slide">
@@ -30,6 +30,17 @@
         <p>- Tj Gienger&nbsp; -</p>
       </div>
       <br>
+
+      <!-- custom crosshair from url -->
+      <input type="text" ng-model="image.src" class="imageInput">
+      <label class="topcoat-switch pull-right">
+        <input type="checkbox" class="topcoat-switch__input" ng-checked="image.show" ng-click="image.show = !image.show" checked>
+        <div class="topcoat-switch__toggle"></div>
+      </label><br>
+      <div class="sliders">
+        <label class="">diameter: <span style="color:yellow">{{image.width}}</span></label>
+        <input style="width: 150px;margin:auto;" type="range" class="topcoat-range" ng-model="image.width" min="10" max="100" step="1">
+      </div>
 
       <!-- change crosshair color TOP -->
       <label for="colorInput" class="colorInputLabel inputLabel">cross top</label>

@@ -12,6 +12,15 @@ html {
   width: 90%;
   margin:auto;
 }
+.centerImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+}
+.imageInput {
+  width: 100%;
+}
 .fa-rotate-45 {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
