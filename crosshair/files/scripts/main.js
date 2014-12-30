@@ -442,9 +442,8 @@ angular.module('app', ['ngAnimate'])
 
   }
 
-  fitScreen();
   overwolf.games.onGameInfoUpdated.addListener(function(g) {
-    if (g.resolutionChanged === true) {
+    if (g.resolutionChanged === true || g.runningChanged === false) {
       fitScreen();
     }
   });

@@ -18,6 +18,7 @@
         "transparent":true,
         "resizable":false,
         "show_in_taskbar": false,
+        "in_game_only": false,
         "size": {
           "width": 1024,
           "height": 768
@@ -26,6 +27,13 @@
           "Top": 0,
           "Left": 0
         }
+      }
+    },
+    "hotkeys": {
+      "main": {
+        "title": "Ultimate Crosshair",
+        "action-type": "toggle",
+        "default": "CTRL+ALT+C"
       }
     },
     "plugins": [
