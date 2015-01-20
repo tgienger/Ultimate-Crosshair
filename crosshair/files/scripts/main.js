@@ -68,10 +68,11 @@ angular.module('app', ['ngAnimate'])
 
   // Build Crosshair
   function buildCrossHair() {
-
+    var x = screen.width / 2;
+    var y = screen.height / 2;
 
     // Outer Circle
-    $scope.outerCircle = s.circle('50%', '50%', $scope.outer_circle.radius).attr({
+    $scope.outerCircle = s.circle(x, y, $scope.outer_circle.radius).attr({
       fill: $scope.outer_circle.fill,
       stroke: $scope.outer_circle.stroke,
       visibility: $scope.outer_circle.visible,
@@ -82,7 +83,7 @@ angular.module('app', ['ngAnimate'])
 
 
     // Center Dot
-    $scope.centerDot = s.circle('50%', '50%', $scope.center_dot.radius).attr({
+    $scope.centerDot = s.circle(x, y, $scope.center_dot.radius).attr({
       fill: $scope.center_dot.fill,
       visibility: $scope.center_dot.visible
     });
@@ -91,25 +92,25 @@ angular.module('app', ['ngAnimate'])
 
 
     // Cross
-    $scope.cross.top = s.rect('50%', '50%', $scope.cross.bar.thickness, $scope.cross.bar.length).attr({
+    $scope.cross.top = s.rect(x, y, $scope.cross.bar.thickness, $scope.cross.bar.length).attr({
       fill: $scope.cross.bar.top.color,
       visibility: $scope.cross.bar.top.visible,
       transform: 't' + [-($scope.cross.bar.thickness / 2), -$scope.cross.bar.length - $scope.cross.bar.fromCenter]
     });
 
-    $scope.cross.bottom = s.rect('50%', '50%', parseInt($scope.cross.bar.thickness), $scope.cross.bar.length).attr({
+    $scope.cross.bottom = s.rect(x, y, parseInt($scope.cross.bar.thickness), $scope.cross.bar.length).attr({
       fill: $scope.cross.bar.bottom.color,
       visibility: $scope.cross.bar.bottom.visible,
       transform: 't' + [-$scope.cross.bar.thickness / 2, $scope.cross.bar.fromCenter],
     });
 
-    $scope.cross.right  = s.rect('50%', '50%', $scope.cross.bar.length, $scope.cross.bar.thickness).attr({
+    $scope.cross.right  = s.rect(x, y, $scope.cross.bar.length, $scope.cross.bar.thickness).attr({
       fill: $scope.cross.bar.right.color,
       visibility: $scope.cross.bar.right.visible,
       transform: 't' + [$scope.cross.bar.fromCenter, -$scope.cross.bar.thickness / 2]
     });
 
-    $scope.cross.left   = s.rect('50%', '50%', $scope.cross.bar.length, $scope.cross.bar.thickness).attr({
+    $scope.cross.left   = s.rect(x, y, $scope.cross.bar.length, $scope.cross.bar.thickness).attr({
       fill: $scope.cross.bar.left.color,
       visibility: $scope.cross.bar.left.visible,
       transform: 't'+[-$scope.cross.bar.length - $scope.cross.bar.fromCenter, -($scope.cross.bar.thickness / 2)]
@@ -426,8 +427,8 @@ angular.module('app', ['ngAnimate'])
 
   function fitScreen() {
     overwolf.games.getRunningGameInfo(function (game) {
-      var gameWidth = game.width;
-      var gameHeight = game.height;
+      var gameWidth = game ? game.width : 1920;
+      var gameHeight = game ? game.height : 1080;
 
       if (w != gameWidth) {
         overwolf.windows.getCurrentWindow(function(result) {

@@ -18,10 +18,10 @@
         "transparent":true,
         "resizable":false,
         "show_in_taskbar": false,
-        "in_game_only": true,
+        "in_game_only": false,
         "size": {
-          "width": 1024,
-          "height": 768
+          "width": 1920,
+          "height": 1080
         },
         "start_position": {
           "Top": 0,
