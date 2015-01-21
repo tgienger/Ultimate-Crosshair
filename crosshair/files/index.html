@@ -17,11 +17,11 @@
 
 
     <!-- Menu Button - click -->
-    <div ng-click="showMenu = !showMenu" class="menuButton pull-left" ng-class="showMenu ? 'bigButton': ''">
+    <div ng-click="showMenu = !showMenu" id="menu" class="menuButton pull-left" ng-class="showMenu ? 'bigButton': ''">
       <img class="btnImage" src="images/MenuButton.png" alt="" width="100%" />
     </div>
 
-    <image ng-show="image.show" width="{{image.width}}" height="{{image.width}}" ng-src="{{image.src}}" class="centerImage"></image>
+    <image ng-show="image.show" width="{{image.width}}" height="{{image.width}}" ng-src="{{image.src}}" id="crossImage" ></image>
 
     <!-- Main Menu -->
   	<div ng-show="showMenu" class="menuContainer dark slide">
@@ -34,7 +34,7 @@
       <!-- custom crosshair from url -->
       <input type="text" ng-model="image.src" class="imageInput">
       <label class="topcoat-switch pull-right">
-        <input type="checkbox" class="topcoat-switch__input" ng-checked="image.show" ng-click="image.show = !image.show" checked>
+        <input type="checkbox" class="topcoat-switch__input" ng-checked="image.show" ng-click="image.visible()" checked>
         <div class="topcoat-switch__toggle"></div>
       </label><br>
       <div class="sliders">

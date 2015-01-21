@@ -1,23 +1,66 @@
 angular.module('app', ['ngAnimate'])
 .controller('crossController', function ($scope, $window, $timeout) {
-
+'use strict';
 
 
 
   $scope.showMenu = false;
   $scope.messages = [];
-  $scope.image = {};
-  $scope.image.width = window.localStorage.urlImageWidth || "25px";
-  $scope.image.src = window.localStorage.urlImageSrc || "https://www.gamersfirst.com/apb/img/page_loading.gif";
-  $scope.image.show = window.localStorage.urlImageShow == 'false' ? false : true;
+  // $scope.image = {};
+  // $scope.image.width = window.localStorage.urlImageWidth || "25px";
+  // $scope.image.src = window.localStorage.urlImageSrc || "https://www.gamersfirst.com/apb/img/page_loading.gif";
+  // $scope.image.show = window.localStorage.urlImageShow == 'false' ? false : true;
 
+  function Image() {
+    $scope.$watch('image.width', function(imageWidth) {
+      $scope.image.center(imageWidth)
+    })
+    return {
+      width: 25,
+      src: "https://www.gamersfirst.com/apb/img/page_loading.gif",
+      show: false,
+      visible: function() {
+        this.center(this.width);
+        this.show = !this.show;
+      },
+      center: function(d) {
+        var mainImage = angular.element('#crossImage');
+        mainImage.css('position','absolute');
+        mainImage.css('top', ($scope.gameHeight / 2) - (d / 2));
+        mainImage.css('left', ($scope.gameWidth / 2) - (d / 2));
+      },
+      resize: function() {
+      }
+    };
+  }
+
+  $scope.image = new Image();
+
+
+  function Shape() {
+    return {
+      shape: function(surface, shape) {
+        if (shape === 'circle') {
+          return surface.circle();
+        } else {
+          return surface.rect();
+        }
+      },
+      show: 1,
+      fill: 'none',
+      stroke: '#FF00FF',
+      strokeWidth: 2,
+      radius: 13,
+      visible: 'visible'
+    }
+  }
 
   // Initialize Snap.svg
   var s = Snap();
 
 
   // Outer Circle Variables
-  $scope.outer_circle             = {};
+  $scope.outer_circle             = new Shape();
   $scope.outer_circle.show        = parseInt(window.localStorage.outerCircleShow) == 0 ? 0 : 1;
   $scope.outer_circle.fill        = window.localStorage.outerCircleFill || 'none';
   $scope.outer_circle.stroke      = window.localStorage.outerCircleColor || '#ff0001';
@@ -26,7 +69,7 @@ angular.module('app', ['ngAnimate'])
   $scope.outer_circle.visible     = $scope.outer_circle.show === 0 ? 'hidden' : 'visible';
 
   // Center Dot Variables
-  $scope.center_dot             = {};
+  $scope.center_dot             = new Shape();
   $scope.center_dot.show        = parseInt(window.localStorage.dotShow) == 0 ? 0 : 1;
   $scope.center_dot.stroke      = 'none';
   $scope.center_dot.strokeWidth = 0;
@@ -35,7 +78,7 @@ angular.module('app', ['ngAnimate'])
   $scope.center_dot.visible     = $scope.center_dot.show === 0 ? 'hidden' : 'visible';
 
   // Cross Variables
-  $scope.cross                    = {};
+  $scope.cross                    = new Shape();
   $scope.cross.bar                = {};
 
   $scope.cross.bar.top            = {};
@@ -68,8 +111,9 @@ angular.module('app', ['ngAnimate'])
 
   // Build Crosshair
   function buildCrossHair() {
-    var x = screen.width / 2;
-    var y = screen.height / 2;
+
+    var x = $scope.gameWidth / 2;
+    var y = $scope.gameHeight / 2;
 
     // Outer Circle
     $scope.outerCircle = s.circle(x, y, $scope.outer_circle.radius).attr({
@@ -424,19 +468,21 @@ angular.module('app', ['ngAnimate'])
   // Startup fitting to screen resolution
   var w;
   var h;
+  $scope.gameWidth;
+  $scope.gameHeight;
 
   function fitScreen() {
     overwolf.games.getRunningGameInfo(function (game) {
-      var gameWidth = game ? game.width : 1920;
-      var gameHeight = game ? game.height : 1080;
+      $scope.gameWidth = game ? game.width : 1920;
+      $scope.gameHeight = game ? game.height : 1080;
 
-      if (w != gameWidth) {
+      if (w != $scope.gameWidth) {
         overwolf.windows.getCurrentWindow(function(result) {
           if (result.status === 'success') {
-            overwolf.windows.changeSize(result.window.id, gameWidth, gameHeight, function () {});
+            overwolf.windows.changeSize(result.window.id, $scope.gameWidth, $scope.gameHeight, function () {});
             overwolf.windows.changePosition(result.window.id, 0, 0, function () {});
-            w = gameWidth;
-            h = gameHeight;
+            w = $scope.gameWidth;
+            h = $scope.gameHeight;
 
             // Now build the crosshair
             buildCrossHair();
