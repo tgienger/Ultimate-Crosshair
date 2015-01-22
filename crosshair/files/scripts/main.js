@@ -1,4 +1,4 @@
-angular.module('app', ['ngAnimate'])
+angular.module('app', ['ngAnimate','ui.bootstrap'])
 .controller('crossController', function ($scope, $window, $timeout) {
 'use strict';
 
@@ -6,15 +6,19 @@ angular.module('app', ['ngAnimate'])
 
   $scope.showMenu = false;
   $scope.messages = [];
-  // $scope.image = {};
-  // $scope.image.width = window.localStorage.urlImageWidth || "25px";
-  // $scope.image.src = window.localStorage.urlImageSrc || "https://www.gamersfirst.com/apb/img/page_loading.gif";
-  // $scope.image.show = window.localStorage.urlImageShow == 'false' ? false : true;
+  var menuElement = angular.element('#MainMenu');
+  // menuElement.addClass('slid');
+  $scope.openMenu = function() {
+    if ($scope.showMenu) {
+      menuElement.removeClass('slid');
+      $scope.showMenu = false;
+    } else {
+      menuElement.addClass('slid');
+      $scope.showMenu = true;
+    }
+  }
 
   function Image() {
-    $scope.$watch('image.width', function(imageWidth) {
-      $scope.image.center(imageWidth)
-    })
     return {
       width: 25,
       src: "https://www.gamersfirst.com/apb/img/page_loading.gif",
@@ -35,6 +39,10 @@ angular.module('app', ['ngAnimate'])
   }
 
   $scope.image = new Image();
+
+  $scope.$watch('image.width', function(imageWidth) {
+    $scope.image.center(imageWidth)
+  });
 
 
   function Shape() {

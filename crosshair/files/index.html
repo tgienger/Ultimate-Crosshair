@@ -4,7 +4,10 @@
 <script charset="utf-8" src="scripts/angular-animate.min.js"></script>
 <script type="text/javascript" src="jscolor/jscolor.js"></script>
 <script charset="utf-8" src="scripts/main.js"></script>
+<script charset="utf-8" src="scripts/draggable/draggable.directive.js"></script>
 <script src="scripts/snap.svg-min.js"></script>
+<script src="scripts/ui-bootstrap.js"></script>
+<script src="../node_modules/jquery-mousewheel/jquery.mousewheel.js"></script>
 <!-- <script type="text/javascript" src="angular-slider.min.js"></script> -->
 
 <link rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
@@ -16,175 +19,178 @@
   <div ng-controller="crossController">
 
 
-    <!-- Menu Button - click -->
-    <div ng-click="showMenu = !showMenu" id="menu" class="menuButton pull-left" ng-class="showMenu ? 'bigButton': ''">
-      <img class="btnImage" src="images/MenuButton.png" alt="" width="100%" />
-    </div>
+
 
     <image ng-show="image.show" width="{{image.width}}" height="{{image.width}}" ng-src="{{image.src}}" id="crossImage" ></image>
 
     <!-- Main Menu -->
-  	<div ng-show="showMenu" class="menuContainer dark slide">
-  		<div class="header" ng-click="showMenu = !showMenu">Ultimate Crosshair</div>
-      <div class="headFooter">
-        <p>- Tj Gienger&nbsp; -</p>
-      </div>
-      <br>
+  	<div  class="menuContainer dark slider" id="MainMenu">
+      <div class="innerContainer">
+        <!-- Menu Button - click -->
+        <!-- <div ng-click="openMenu()" id="menu" class="menuButton pull-left" ng-class="showMenu ? 'bigButton': ''">
+          <img class="btnImage" src="images/MenuButton.png" alt="" width="100%" />
+        </div> -->
+        <div id="tab" ng-click="openMenu()" draggable>UC-Menu</div>
+    		<div class="header" ng-click="showMenu = !showMenu">Ultimate Crosshair</div>
+        <div class="headFooter">
+          <p>- Tj Gienger&nbsp; -</p>
+        </div>
+        <br>
 
-      <!-- custom crosshair from url -->
-      <input type="text" ng-model="image.src" class="imageInput">
-      <label class="topcoat-switch pull-right">
-        <input type="checkbox" class="topcoat-switch__input" ng-checked="image.show" ng-click="image.visible()" checked>
-        <div class="topcoat-switch__toggle"></div>
-      </label><br>
-      <div class="sliders">
-        <label class="">diameter: <span style="color:yellow">{{image.width}}</span></label>
-        <input style="width: 150px;margin:auto;" type="range" class="topcoat-range" ng-model="image.width" min="10" max="100" step="1">
-      </div>
+        <!-- custom crosshair from url -->
+        <input type="text" ng-model="image.src" class="imageInput">
+        <label class="topcoat-switch pull-right">
+          <input type="checkbox" class="topcoat-switch__input" ng-checked="image.show" ng-click="image.visible()" checked>
+          <div class="topcoat-switch__toggle"></div>
+        </label><br>
+        <div class="sliders">
+          <label class="">diameter: <span style="color:yellow">{{image.width}}</span></label>
+          <input style="width: 150px;margin:auto;" type="range" class="topcoat-range" ng-model="image.width" min="10" max="100" step="1">
+        </div>
 
-      <!-- change crosshair color TOP -->
-      <label for="colorInput" class="colorInputLabel inputLabel">cross top</label>
-      <label class="topcoat-switch pull-right">
-        <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.top.show" ng-click="hideElement(cross.top, cross.bar.top)" checked>
-        <div class="topcoat-switch__toggle"></div>
-      </label>
-        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.top.color" ng-change="changeFill(cross.top, cross.bar.top.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
-      <br>
-      <!-- change crosshair color RIGHT -->
-      <label for="colorInput" class="colorInputLabel inputLabel">cross right</label>
-      <label class="topcoat-switch pull-right">
-        <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.right.show" ng-click="hideElement(cross.right, cross.bar.right)" checked>
-        <div class="topcoat-switch__toggle"></div>
-      </label>
-        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.right.color" ng-change="changeFill(cross.right, cross.bar.right.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
-      <br>
-      <!-- change crosshair color BOTTOM -->
-      <label for="colorInput" class="colorInputLabel inputLabel">cross bottom</label>
-      <label class="topcoat-switch pull-right">
-        <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.bottom.show" ng-click="hideElement(cross.bottom, cross.bar.bottom)" checked>
-        <div class="topcoat-switch__toggle"></div>
-      </label>
-        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.bottom.color" ng-change="changeFill(cross.bottom, cross.bar.bottom.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
-      <br>
-      <!-- change crosshair color LEFT -->
-      <label for="colorInput" class="colorInputLabel inputLabel">cross left</label>
-      <label class="topcoat-switch pull-right">
-        <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.left.show" ng-click="hideElement(cross.left, cross.bar.left)" checked>
-        <div class="topcoat-switch__toggle"></div>
-      </label>
-        <input name="colorInput" ng-show="showMenu"  ng-model="cross.bar.left.color" ng-change="changeFill(cross.left, cross.bar.left.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
-      <br>
+        <!-- change crosshair color TOP -->
+        <label for="colorInput" class="colorInputLabel inputLabel">cross top</label>
+        <label class="topcoat-switch pull-right">
+          <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.top.show" ng-click="hideElement(cross.top, cross.bar.top)" checked>
+          <div class="topcoat-switch__toggle"></div>
+        </label>
+          <input name="colorInput"   ng-model="cross.bar.top.color" ng-change="changeFill(cross.top, cross.bar.top.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
+        <br>
+        <!-- change crosshair color RIGHT -->
+        <label for="colorInput" class="colorInputLabel inputLabel">cross right</label>
+        <label class="topcoat-switch pull-right">
+          <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.right.show" ng-click="hideElement(cross.right, cross.bar.right)" checked>
+          <div class="topcoat-switch__toggle"></div>
+        </label>
+          <input name="colorInput"   ng-model="cross.bar.right.color" ng-change="changeFill(cross.right, cross.bar.right.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
+        <br>
+        <!-- change crosshair color BOTTOM -->
+        <label for="colorInput" class="colorInputLabel inputLabel">cross bottom</label>
+        <label class="topcoat-switch pull-right">
+          <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.bottom.show" ng-click="hideElement(cross.bottom, cross.bar.bottom)" checked>
+          <div class="topcoat-switch__toggle"></div>
+        </label>
+          <input name="colorInput"   ng-model="cross.bar.bottom.color" ng-change="changeFill(cross.bottom, cross.bar.bottom.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
+        <br>
+        <!-- change crosshair color LEFT -->
+        <label for="colorInput" class="colorInputLabel inputLabel">cross left</label>
+        <label class="topcoat-switch pull-right">
+          <input type="checkbox" class="topcoat-switch__input" ng-checked="cross.bar.left.show" ng-click="hideElement(cross.left, cross.bar.left)" checked>
+          <div class="topcoat-switch__toggle"></div>
+        </label>
+          <input name="colorInput"   ng-model="cross.bar.left.color" ng-change="changeFill(cross.left, cross.bar.left.color)" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
+        <br>
 
-      <!-- Center Dot -->
-      <label for="colorInput2" class="colorInputLabel inputLabel">center dot</label>
-      <label class="topcoat-switch pull-right">
-        <input type="checkbox" class="topcoat-switch__input" ng-checked="center_dot.show" ng-click="hideElement(centerDot, center_dot)" checked>
-        <div class="topcoat-switch__toggle"></div>
-      </label>
-        <input name="colorInput" ng-show="showMenu" ng-change="changeFill(centerDot, center_dot.fill)"  ng-model="center_dot.fill" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
-      <br>
+        <!-- Center Dot -->
+        <label for="colorInput2" class="colorInputLabel inputLabel">center dot</label>
+        <label class="topcoat-switch pull-right">
+          <input type="checkbox" class="topcoat-switch__input" ng-checked="center_dot.show" ng-click="hideElement(centerDot, center_dot)" checked>
+          <div class="topcoat-switch__toggle"></div>
+        </label>
+          <input name="colorInput"  ng-change="changeFill(centerDot, center_dot.fill)"  ng-model="center_dot.fill" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
+        <br>
 
-      <!-- Outer Circle -->
-      <label for="colorInput3" class="colorInputLabel inputLabel">outer circle</label>
-      <label class="topcoat-switch pull-right">
-        <input type="checkbox" class="topcoat-switch__input" ng-checked="outer_circle.show" ng-click="hideElement(outerCircle, outer_circle)" checked>
-        <div class="topcoat-switch__toggle"></div>
-      </label>
-      <input name="colorInput" ng-show="showMenu" ng-change="changeStroke(outerCircle, outer_circle.stroke)"  ng-model="outer_circle.stroke" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
+        <!-- Outer Circle -->
+        <label for="colorInput3" class="colorInputLabel inputLabel">outer circle</label>
+        <label class="topcoat-switch pull-right">
+          <input type="checkbox" class="topcoat-switch__input" ng-checked="outer_circle.show" ng-click="hideElement(outerCircle, outer_circle)" checked>
+          <div class="topcoat-switch__toggle"></div>
+        </label>
+        <input name="colorInput"  ng-change="changeStroke(outerCircle, outer_circle.stroke)"  ng-model="outer_circle.stroke" class="color {pickerMode:'HSV'} colorBox pull-right" value="ff3300" autocomplete="off">
 
-      <br>
-      <br>
-  	  <button ng-click="match()" class="topcoat-button pull-right">Match All</button>
-      <br>
-      <br>
-      <div class="menuButtons">
-        <button class="topcoat-button" ng-click="crossMenu = true;dotMenu = false;circleMenu = false;">Cross</button>
-        <button class="topcoat-button" ng-click="circleMenu = true; dotMenu = false;crossMenu = false;">Circle</button>
-        <button class="topcoat-button" ng-click="dotMenu = true;circleMenu = false;crossMenu = false;">Dot</button>
-      </div>
+        <br>
+        <br>
+    	  <button ng-click="match()" class="topcoat-button pull-right">Match All</button>
+        <br>
+        <br>
+        <div class="menuButtons">
+          <button class="topcoat-button" ng-click="crossMenu = true;dotMenu = false;circleMenu = false;">Cross</button>
+          <button class="topcoat-button" ng-click="circleMenu = true; dotMenu = false;crossMenu = false;">Circle</button>
+          <button class="topcoat-button" ng-click="dotMenu = true;circleMenu = false;crossMenu = false;">Dot</button>
+        </div>
 
-        <!-- Sliders -->
-        <div class="sliders" ng-init="crossMenu = true">
-          <div ng-show="dotMenu">
-            <label class="inputLabel crossBarLabel">dot radius: <span style="color:yellow">{{center_dot.radius}}</span></label>
-            <input style="width: 150px;margin:auto;" type="range" class="topcoat-range" ng-model="center_dot.radius" ng-change="changeRadius(centerDot, center_dot.radius)" min="1" max="10" step=".5">
+          <!-- Sliders -->
+          <div class="sliders" ng-init="crossMenu = true">
+            <div ng-show="dotMenu">
+              <label class="inputLabel crossBarLabel">dot radius: <span style="color:yellow">{{center_dot.radius}}</span></label>
+              <input style="width: 150px;margin:auto;" type="range" class="topcoat-range" ng-model="center_dot.radius" ng-change="changeRadius(centerDot, center_dot.radius)" min="1" max="10" step=".5">
+            </div>
+            <br>
+            <div ng-show="circleMenu">
+              <label class="inputLabel">radius: <span style="color:yellow">{{outer_circle.radius}}</span></label>
+              <input style="width: 150px;margin:auto;" type="range" class="topcoat-range" ng-model="outer_circle.radius" ng-change="changeRadius(outerCircle, outer_circle.radius)" min="12" max="50" step="1">
+
+              <label class="inputLabel">thickness: <span style="color:yellow">{{outer_circle.strokeWidth}}</span></label>
+              <input style="width: 150px;margin:auto;" type="range" class="topcoat-range" ng-model="outer_circle.strokeWidth" ng-change="changeStrokeWidth(outerCircle, outer_circle.strokeWidth)" min="1" max="6" step=".5">
+            </div>
+
+
+            <!-- cross size selector -->
+            <div ng-show="crossMenu">
+              <label class="inputLabel">length: <span style="color:yellow">{{cross.bar.length}}</span></label>
+              <br>
+              <i class="fa fa-minus  pointer" ng-click="decrease(cross.bar.length)"></i>
+              <input style="width: 150px;margin:auto;display:inline-block;" type="range" class="topcoat-range" ng-model="cross.bar.length" ng-change="setCrossLength()" min="1" max="100" step="1">
+              <i class="fa fa-plus  pointer" ng-click="increase(cross.bar.length)"></i>
+              <br>
+
+              <!-- cross spread selector -->
+
+              <label class="inputLabel">spread: <span style="color:yellow">{{cross.bar.fromCenter}}</span></label>
+              <br>
+              <i class="fa fa-minus  pointer" ng-click="spreadDecrease(cross.bar.fromCenter)"></i>
+              <input style="width: 150px;margin:auto;display:inline-block;" type="range" class="topcoat-range" ng-model="cross.bar.fromCenter" ng-change="setCrossDistance(cross.bar.fromCenter)" min="1" max="100" step="1">
+              <i class="fa fa-plus  pointer" ng-click="spreadIncrease(cross.bar.fromCenter)"></i>
+              <br>
+
+              <!-- cross thickness selector -->
+
+              <label class="inputLabel">Thickness: <span style="color:yellow">{{cross.bar.thickness}}</span></label>
+              <br>
+              <i class="fa fa-minus  pointer" ng-click="thicknessDecrease(cross.bar.thickness)"></i>
+              <input style="width: 150px;margin:auto;display:inline-block;" type="range" class="topcoat-range" ng-model="cross.bar.thickness" ng-change="setCrossThickness(cross.bar.thickness)" min="1" max="100" step="1">
+              <i class="fa fa-plus  pointer" ng-click="thicknessIncrease(cross.bar.thickness)"></i>
+              <br>
+            </div>
+          </div>
+
+
+
+      	  <!-- Menu Buttons -->
+          <div class="btnGroup">
+            <button class="topcoat-button" ng-click="spinner(spinSpeed)">spin</button>
+            <button class="topcoat-button" ng-click="rotate()">rotate</button>
+          </div>
+          <label class="inputLabel">spin speed: <span style="color:yellow">{{spinSpeed}}</span></label>
+              <br>
+              <i class="fa fa-minus  pointer" ng-click="lowerSpeed()"></i>
+              <input style="width: 150px;margin:auto;display:inline-block;" type="range" class="topcoat-range" ng-model="spinSpeed" min="50" max="5000" step="1">
+              <i class="fa fa-plus  pointer" ng-click="increaseSpeed()"></i>
+              <br>
+          <br>
+          <div class="btnGroup">
+            <button class="topcoat-button" ng-click="save()">save</button>
+            <button class="topcoat-button" ng-click="close()">quit</button>
           </div>
           <br>
-          <div ng-show="circleMenu">
-            <label class="inputLabel">radius: <span style="color:yellow">{{outer_circle.radius}}</span></label>
-            <input style="width: 150px;margin:auto;" type="range" class="topcoat-range" ng-model="outer_circle.radius" ng-change="changeRadius(outerCircle, outer_circle.radius)" min="12" max="50" step="1">
 
-            <label class="inputLabel">thickness: <span style="color:yellow">{{outer_circle.strokeWidth}}</span></label>
-            <input style="width: 150px;margin:auto;" type="range" class="topcoat-range" ng-model="outer_circle.strokeWidth" ng-change="changeStrokeWidth(outerCircle, outer_circle.strokeWidth)" min="1" max="6" step=".5">
-          </div>
+          <ul ng-repeat="message in messages" class="list-group">
+            <li class="list-group-item">{{message}} <i ng-click="removeMessage($index)" class="fa fa-close pull-right pointer"></i></li>
+          </ul>
 
 
-          <!-- cross size selector -->
-          <div ng-show="crossMenu">
-            <label class="inputLabel">length: <span style="color:yellow">{{cross.bar.length}}</span></label>
-            <br>
-            <i class="fa fa-minus  pointer" ng-click="decrease(cross.bar.length)"></i>
-            <input style="width: 150px;margin:auto;display:inline-block;" type="range" class="topcoat-range" ng-model="cross.bar.length" ng-change="setCrossLength()" min="1" max="100" step="1">
-            <i class="fa fa-plus  pointer" ng-click="increase(cross.bar.length)"></i>
-            <br>
+        <!-- </div> -->
 
-            <!-- cross spread selector -->
 
-            <label class="inputLabel">spread: <span style="color:yellow">{{cross.bar.fromCenter}}</span></label>
-            <br>
-            <i class="fa fa-minus  pointer" ng-click="spreadDecrease(cross.bar.fromCenter)"></i>
-            <input style="width: 150px;margin:auto;display:inline-block;" type="range" class="topcoat-range" ng-model="cross.bar.fromCenter" ng-change="setCrossDistance(cross.bar.fromCenter)" min="1" max="100" step="1">
-            <i class="fa fa-plus  pointer" ng-click="spreadIncrease(cross.bar.fromCenter)"></i>
-            <br>
-
-            <!-- cross thickness selector -->
-
-            <label class="inputLabel">Thickness: <span style="color:yellow">{{cross.bar.thickness}}</span></label>
-            <br>
-            <i class="fa fa-minus  pointer" ng-click="thicknessDecrease(cross.bar.thickness)"></i>
-            <input style="width: 150px;margin:auto;display:inline-block;" type="range" class="topcoat-range" ng-model="cross.bar.thickness" ng-change="setCrossThickness(cross.bar.thickness)" min="1" max="100" step="1">
-            <i class="fa fa-plus  pointer" ng-click="thicknessIncrease(cross.bar.thickness)"></i>
-            <br>
-          </div>
+        <!-- Paypal Donation Button -->
+        <div style="text-align:center;">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="ETS4V8YKC9K92">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+          </form>
         </div>
-
-
-
-    	  <!-- Menu Buttons -->
-        <div class="btnGroup">
-          <button class="topcoat-button" ng-click="spinner(spinSpeed)">spin</button>
-          <button class="topcoat-button" ng-click="rotate()">rotate</button>
-        </div>
-        <label class="inputLabel">spin speed: <span style="color:yellow">{{spinSpeed}}</span></label>
-            <br>
-            <i class="fa fa-minus  pointer" ng-click="lowerSpeed()"></i>
-            <input style="width: 150px;margin:auto;display:inline-block;" type="range" class="topcoat-range" ng-model="spinSpeed" min="50" max="5000" step="1">
-            <i class="fa fa-plus  pointer" ng-click="increaseSpeed()"></i>
-            <br>
-        <br>
-        <div class="btnGroup">
-          <button class="topcoat-button" ng-click="save()">save</button>
-          <button class="topcoat-button" ng-click="closeMenu()">close menu</button>
-          <button class="topcoat-button" ng-click="close()">quit</button>
-        </div>
-        <br>
-
-        <ul ng-repeat="message in messages" class="list-group">
-          <li class="list-group-item">{{message}} <i ng-click="removeMessage($index)" class="fa fa-close pull-right pointer"></i></li>
-        </ul>
-
-
-      <!-- </div> -->
-
-
-      <!-- Paypal Donation Button -->
-      <div style="text-align:center;">
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_s-xclick">
-          <input type="hidden" name="hosted_button_id" value="ETS4V8YKC9K92">
-          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-        </form>
       </div>
   </div> <!-- menu -->
 
