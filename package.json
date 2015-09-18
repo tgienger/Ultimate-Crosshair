@@ -1,0 +1,8 @@
+{
+  "name": "ultimage_crosshair",
+  "version": "0.9.3",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-inject": "^2.2.0"
+  }
+}
