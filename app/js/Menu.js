@@ -1,7 +1,11 @@
 var Menu = React.createClass({displayName: "Menu",
 
-    handleClick: function() {
-        console.log("CLICKED");
+    //componentDidMount: function() {
+        
+    //},
+
+    handleSpin: function() {
+        this.props.handleSpin(this.tween);
     },
 
     changeDot: function() {
@@ -36,17 +40,23 @@ var Menu = React.createClass({displayName: "Menu",
         var value = React.findDOMNode(this.refs.strokeWidth).value;
         this.props.changeStrokeWidth(value);
     },
+    
+    handleOpacityChange: function() {
+        var value = React.findDOMNode(this.refs.opacity).value;
+        this.props.changeOpacity(value);
+    },
 
     render: function() {
         return (
             React.createElement("div", {id: "menu", className: "menu"}, 
                 React.createElement("ul", null, 
-                    React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.handleClick}, "Menu Item")), 
+                    React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.handleSpin}, "Spin")), 
                     React.createElement("li", null, React.createElement("a", {href: "#"}, "Menu Item")), 
                     React.createElement("li", null, React.createElement("a", {href: "#"}, "Menu Item")), 
                     React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.openSliders}, "Size Slider")), 
                     React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.changeDot}, "Center Dot"))
                 ), 
+                React.createElement("div", {id: "fake-input", ref: "fakeInput"}), 
                 React.createElement("div", {className: "sliders"}, 
                     React.createElement("label", {for: "cross-size"}, "CrossHair Size"), 
                     React.createElement("input", {
@@ -78,15 +88,15 @@ var Menu = React.createClass({displayName: "Menu",
                     React.createElement("input", {
                         type: "range", 
                         id: "cross-length", 
-                        min: "0", 
-                        max: "50", 
+                        min: "-50", 
+                        max: "0", 
                         step: "1", 
                         value: this.props.crossLength, 
                         onInput: this.handleLengthChange, 
                         onChange: this.handleLengthChange, 
                         ref: "crossLength"}), 
 
-                    React.createElement("label", {for: "cross-stroke"}, "Stroke Width"), 
+                    React.createElement("label", {for: "cross-stroke"}, "Thickness"), 
                     React.createElement("input", {
                         type: "range", 
                         id: "dot-diameter", 
@@ -108,7 +118,19 @@ var Menu = React.createClass({displayName: "Menu",
                         value: this.props.dotDiameter, 
                         onInput: this.handleDiameterChange, 
                         onChange: this.handleDiameterChange, 
-                        ref: "dotDiameter"})
+                        ref: "dotDiameter"}), 
+                        
+                    React.createElement("label", {for: "opacity"}, "Opacity"), 
+                    React.createElement("input", {
+                        type: "range", 
+                        id: "opacity", 
+                        min: "0", 
+                        max: "1", 
+                        step: ".01", 
+                        value: this.props.opacity, 
+                        onInput: this.handleOpacityChange, 
+                        onChange: this.handleOpacityChange, 
+                        ref: "opacity"})
                 )
             )
         )

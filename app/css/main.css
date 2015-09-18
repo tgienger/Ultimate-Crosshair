@@ -39,6 +39,9 @@ body {
     justify-content: flex-start;
     flex-direction: column;
 }
+.menu #cross-length {
+    /*transform: rotateY(180deg);*/
+}
 
 
 /* Crosshair */

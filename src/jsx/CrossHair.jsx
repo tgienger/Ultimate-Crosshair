@@ -2,7 +2,7 @@ var CrossHair = React.createClass({
     render: function() {
         return (
             <div id="crosshair-bounding-box">
-                <SVGComponent {...this.props}>
+                <SVGComponent id="crosshair" {...this.props}>
                     <Cross
                         crossSpread={this.props.crossSpread}
                         crossLength={this.props.crossLength}

@@ -8,27 +8,6 @@ var Centerdot = React.createClass({
             color: 0
         });
     },
-    //
-    // changeShape: function() {
-    //     var n = this.state.shape + 1;
-    //     this.setState({
-    //         shape: n < 3 ? n : 0
-    //     });
-    // },
-    //
-    // changeSize: function() {
-    //     var n = this.state.size + 1;
-    //     this.setState({
-    //         size: n < 4 ? n : 0
-    //     });
-    // },
-    //
-    // changeColor: function() {
-    //     var n = this.state.color + 1;
-    //     this.setState({
-    //         color: n < 4 ? n : 0
-    //     });
-    // },
 
     render: function() {
         var color = ['red', 'green', 'blue', 'orange'][this.state.color];

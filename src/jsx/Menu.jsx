@@ -1,7 +1,11 @@
 var Menu = React.createClass({
 
-    handleClick: function() {
-        console.log("CLICKED");
+    //componentDidMount: function() {
+        
+    //},
+
+    handleSpin: function() {
+        this.props.handleSpin(this.tween);
     },
 
     changeDot: function() {
@@ -36,17 +40,23 @@ var Menu = React.createClass({
         var value = React.findDOMNode(this.refs.strokeWidth).value;
         this.props.changeStrokeWidth(value);
     },
+    
+    handleOpacityChange: function() {
+        var value = React.findDOMNode(this.refs.opacity).value;
+        this.props.changeOpacity(value);
+    },
 
     render: function() {
         return (
             <div id="menu" className="menu">
                 <ul>
-                    <li><a href="#" onClick={this.handleClick}>Menu Item</a></li>
+                    <li><a href="#" onClick={this.handleSpin}>Spin</a></li>
                     <li><a href="#">Menu Item</a></li>
                     <li><a href="#">Menu Item</a></li>
                     <li><a href="#" onClick={this.openSliders}>Size Slider</a></li>
                     <li><a href="#" onClick={this.changeDot}>Center Dot</a></li>
                 </ul>
+                <div id="fake-input" ref="fakeInput"></div>
                 <div className="sliders">
                     <label for="cross-size">CrossHair Size</label>
                     <input
@@ -78,15 +88,15 @@ var Menu = React.createClass({
                     <input
                         type="range"
                         id="cross-length"
-                        min="0"
-                        max="50"
+                        min="-50"
+                        max="0"
                         step="1"
                         value={this.props.crossLength}
                         onInput={this.handleLengthChange}
                         onChange={this.handleLengthChange}
                         ref="crossLength" />
 
-                    <label for="cross-stroke">Stroke Width</label>
+                    <label for="cross-stroke">Thickness</label>
                     <input
                         type="range"
                         id="dot-diameter"
@@ -109,6 +119,18 @@ var Menu = React.createClass({
                         onInput={this.handleDiameterChange}
                         onChange={this.handleDiameterChange}
                         ref="dotDiameter" />
+                        
+                    <label for="opacity">Opacity</label>
+                    <input
+                        type="range"
+                        id="opacity"
+                        min="0"
+                        max="1"
+                        step=".01"
+                        value={this.props.opacity}
+                        onInput={this.handleOpacityChange}
+                        onChange={this.handleOpacityChange}
+                        ref="opacity" />
                 </div>
             </div>
         )

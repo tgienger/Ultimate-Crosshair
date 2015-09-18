@@ -3,6 +3,7 @@
     var App = React.createClass({displayName: "App",
 
         getInitialState: function() {
+            this.spinning = false;
             var size = 100;
             return ({
                 centerDot: 0,
@@ -11,6 +12,7 @@
                 crossLength: 0,
                 dotDiameter: 10,
                 strokeWidth: 1,
+                opacity: 1,
                 color: 0
             });
         },
@@ -51,6 +53,22 @@
                 strokeWidth: size
             });
         },
+        
+        handleOpacity: function(val) {
+            this.setState({
+                opacity: val
+            });
+        },
+        
+        handleSpin: function(tween) {
+            //tween.restart();
+            if (this.spinning) {
+                tween.kill();
+            } else {
+                this.spinning = true;
+                var tween = TweenMax.to('#crosshair', 1, {rotation: 360, repeat: -1, ease:Linear.easeNone});
+            }
+        },
 
         render: function() {
             return (
@@ -62,12 +80,16 @@
                         changeSize: this.handleSizeChange, 
                         changeDotDiam: this.handleDotDiam, 
                         changeStrokeWidth: this.handleStrokeWidth, 
+                        changeOpacity: this.handleOpacity, 
+                        handleSpin: this.handleSpin, 
 
                         crossSize: this.state.crossSize, 
                         crossSpread: this.state.crossSpread, 
                         crossLength: this.state.crossLength, 
                         dotDiameter: this.state.dotDiameter, 
-                        strokeWidth: this.state.strokeWidth}), 
+                        strokeWidth: this.state.strokeWidth, 
+                        opacity: this.state.opacity}), 
+                        
                     React.createElement(CrossHair, {
                         centerDot: this.state.centerDot, 
                         height: this.state.crossSize, 
@@ -76,6 +98,7 @@
                         crossLength: this.state.crossLength, 
                         dotDiameter: this.state.dotDiameter, 
                         strokeWidth: this.state.strokeWidth, 
+                        opacity: this.state.opacity, 
                         viewBox: "0 0 100 100"})
                 )
             );
@@ -84,6 +107,6 @@
 
     React.render(
         React.createElement(App, null)
-    , document.getElementById('crosshair') );
+    , document.getElementById('main-app') );
 
 }());

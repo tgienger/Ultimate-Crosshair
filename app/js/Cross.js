@@ -33,40 +33,46 @@ var Cross = React.createClass({displayName: "Cross",
         var y = 50 - (size / 2);
         var x1=25,y1=25,x2=75,y2=75;
         var strokeWidth = parseInt(this.props.strokeWidth);
+        var opacity = parseInt(this.props.opacity);
 
         leftBar =
             React.createElement(Line, {
-                x1: 0 + length, // outside - Length
+                x1: 0 - length, // outside - Length
                 y1: "50%", // outside
                 x2: 50 - spread, // center - Spread
                 y2: "50%", // center
                 strokeWidth: strokeWidth, 
-                stroke: color});
+                stroke: color, 
+                strokeOpacity: opacity});
         topBar =
             React.createElement(Line, {
                 x1: "50%", // outside
-                y1: 0 + length, // outside - Length
+                y1: 0 - length, // outside - Length
                 x2: "50%", // center
                 y2: 50 - spread, // center - Spread
                 strokeWidth: strokeWidth, 
-                stroke: color});
+                stroke: color, 
+                strokeOpacity: opacity});
+                
         rightBar =
             React.createElement(Line, {
-                x1: 100 - length, // outside - Length
+                x1: 100 + length, // outside - Length
                 y1: "50%", // outside
                 x2: 50 + spread, // center - Spread
                 y2: "50%", // center
                 strokeWidth: strokeWidth, 
-                stroke: color});
+                stroke: color, 
+                strokeOpacity: opacity});
 
         bottomBar =
             React.createElement(Line, {
                 x1: "50%", // center
                 y1: 50 + spread, // center - Spread
                 x2: 50, // outside
-                y2: 100 - length, // outside - Length
+                y2: 100 + length, // outside - Length
                 strokeWidth: strokeWidth, 
-                stroke: color});
+                stroke: color, 
+                strokeOpacity: opacity});
 
         return(
             React.createElement("g", null, 
