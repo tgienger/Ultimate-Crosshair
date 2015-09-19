@@ -1,0 +1,36 @@
+/* */ 
+module.exports = explore;
+explore.usage = "npm explore <pkg> [ -- <cmd>]";
+explore.completion = require("./utils/completion/installed-shallow");
+var npm = require("./npm"),
+    spawn = require("./utils/spawn"),
+    path = require("path"),
+    fs = require("graceful-fs");
+function explore(args, cb) {
+  if (args.length < 1 || !args[0])
+    return cb(explore.usage);
+  var p = args.shift();
+  args = args.join(" ").trim();
+  if (args)
+    args = ["-c", args];
+  else
+    args = [];
+  var cwd = path.resolve(npm.dir, p);
+  var sh = npm.config.get("shell");
+  fs.stat(cwd, function(er, s) {
+    if (er || !s.isDirectory())
+      return cb(new Error("It doesn't look like " + p + " is installed."));
+    if (!args.length)
+      console.log("\nExploring " + cwd + "\n" + "Type 'exit' or ^D when finished\n");
+    npm.spinner.stop();
+    var shell = spawn(sh, args, {
+      cwd: cwd,
+      stdio: "inherit"
+    });
+    shell.on("close", function(er) {
+      if (!args.length)
+        return cb();
+      cb(er);
+    });
+  });
+}

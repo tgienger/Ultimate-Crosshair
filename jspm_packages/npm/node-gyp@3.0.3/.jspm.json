@@ -1,0 +1,112 @@
+{
+  "name": "node-gyp",
+  "description": "Node.js native addon build tool",
+  "license": "MIT",
+  "keywords": [
+    "native",
+    "addon",
+    "module",
+    "c",
+    "c++",
+    "bindings",
+    "gyp"
+  ],
+  "version": "3.0.3",
+  "installVersion": 9,
+  "author": {
+    "name": "Nathan Rajlich",
+    "email": "nathan@tootallnate.net",
+    "url": "http://tootallnate.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nodejs/node-gyp.git"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "node-gyp": "./bin/node-gyp.js"
+  },
+  "main": "./lib/node-gyp.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "devDependencies": {
+    "tape": "~4.2.0"
+  },
+  "scripts": {
+    "test": "tape test/test-*"
+  },
+  "gitHead": "d6b03851d366c7fa78e7d2f57c61bb074ea45ea3",
+  "bugs": {
+    "url": "https://github.com/nodejs/node-gyp/issues"
+  },
+  "homepage": "https://github.com/nodejs/node-gyp",
+  "_id": "node-gyp@3.0.3",
+  "_shasum": "9b004219f4fa9efbfd78c5fc674aa12e58fb8694",
+  "_from": ".",
+  "_npmVersion": "2.14.2",
+  "_nodeVersion": "4.0.0",
+  "_npmUser": {
+    "name": "rvagg",
+    "email": "rod@vagg.org"
+  },
+  "maintainers": [
+    {
+      "name": "TooTallNate",
+      "email": "nathan@tootallnate.net"
+    },
+    {
+      "name": "fishrock123",
+      "email": "fishrock123@rocketmail.com"
+    },
+    {
+      "name": "isaacs",
+      "email": "isaacs@npmjs.com"
+    },
+    {
+      "name": "rvagg",
+      "email": "rod@vagg.org"
+    },
+    {
+      "name": "tootallnate",
+      "email": "nathan@tootallnate.net"
+    }
+  ],
+  "dist": {
+    "shasum": "9b004219f4fa9efbfd78c5fc674aa12e58fb8694",
+    "tarball": "http://registry.npmjs.org/node-gyp/-/node-gyp-3.0.3.tgz"
+  },
+  "format": "cjs",
+  "ignore": [
+    "node_modules"
+  ],
+  "registry": "npm",
+  "dependencies": {
+    "fstream": "fstream@^1.0.0",
+    "glob": "glob@^4.0.0",
+    "graceful-fs": "graceful-fs@^4.1.2",
+    "minimatch": "minimatch@^1.0.0",
+    "mkdirp": "mkdirp@^0.5.0",
+    "nopt": "nopt@^3.0.0",
+    "npmlog": "npmlog@^1.0.0",
+    "osenv": "osenv@0",
+    "path-array": "path-array@^1.0.0",
+    "request": "request@^2.0.0",
+    "rimraf": "rimraf@^2.0.0",
+    "semver": "semver@^5.0.0",
+    "tar": "tar@^1.0.0",
+    "which": "which@^1.0.0",
+    "fs": "github:jspm/nodelibs-fs@^0.1.0",
+    "os": "github:jspm/nodelibs-os@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0",
+    "path": "github:jspm/nodelibs-path@^0.1.0",
+    "child_process": "github:jspm/nodelibs-child_process@^0.1.0",
+    "util": "github:jspm/nodelibs-util@^0.1.0",
+    "crypto": "github:jspm/nodelibs-crypto@^0.1.0",
+    "zlib": "github:jspm/nodelibs-zlib@^0.1.0",
+    "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
+    "events": "github:jspm/nodelibs-events@^0.1.1",
+    "systemjs-json": "github:systemjs/plugin-json@^0.1.0",
+    "url": "github:jspm/nodelibs-url@^0.1.0"
+  }
+}

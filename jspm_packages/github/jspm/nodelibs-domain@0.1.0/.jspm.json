@@ -1,0 +1,10 @@
+{
+  "registry": "npm",
+  "format": "cjs",
+  "ignore": [
+    "node_modules"
+  ],
+  "dependencies": {
+    "domain-browser": "domain-browser@^1.1.3"
+  }
+}

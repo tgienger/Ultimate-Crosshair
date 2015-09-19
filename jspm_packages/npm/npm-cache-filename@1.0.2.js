@@ -1,0 +1,1 @@
+module.exports = require("npm:npm-cache-filename@1.0.2/index");

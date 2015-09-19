@@ -1,0 +1,1 @@
+module.exports = require("npm:concat-stream@1.5.0/index");

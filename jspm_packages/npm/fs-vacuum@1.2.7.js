@@ -1,0 +1,1 @@
+module.exports = require("npm:fs-vacuum@1.2.7/vacuum");

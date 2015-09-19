@@ -1,0 +1,1 @@
+module.exports = require("npm:readdir-scoped-modules@1.0.2/readdir");

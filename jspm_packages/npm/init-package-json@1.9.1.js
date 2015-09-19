@@ -1,0 +1,1 @@
+module.exports = require("npm:init-package-json@1.9.1/init-package-json");

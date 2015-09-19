@@ -1,0 +1,84 @@
+{
+  "name": "readable-stream",
+  "version": "2.0.2",
+  "description": "Streams3, a user-land copy of the stream library from iojs v2.x",
+  "main": "readable.js",
+  "devDependencies": {
+    "tap": "~0.2.6",
+    "tape": "~4.0.0",
+    "zuul": "~3.0.0"
+  },
+  "scripts": {
+    "test": "tap test/parallel/*.js",
+    "browser": "zuul --browser-name $BROWSER_NAME --browser-version $BROWSER_VERSION -- test/browser.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nodejs/readable-stream.git"
+  },
+  "keywords": [
+    "readable",
+    "stream",
+    "pipe"
+  ],
+  "browser": {
+    "util": false
+  },
+  "license": "MIT",
+  "gitHead": "1a70134a71196eeabb5e27bc7580faaa68d30513",
+  "bugs": {
+    "url": "https://github.com/nodejs/readable-stream/issues"
+  },
+  "homepage": "https://github.com/nodejs/readable-stream#readme",
+  "_id": "readable-stream@2.0.2",
+  "_shasum": "bec81beae8cf455168bc2e5b2b31f5bcfaed9b1b",
+  "_from": ".",
+  "_npmVersion": "2.11.1",
+  "_nodeVersion": "2.3.0",
+  "_npmUser": {
+    "name": "cwmma",
+    "email": "calvin.metcalf@gmail.com"
+  },
+  "dist": {
+    "shasum": "bec81beae8cf455168bc2e5b2b31f5bcfaed9b1b",
+    "tarball": "http://registry.npmjs.org/readable-stream/-/readable-stream-2.0.2.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "isaacs",
+      "email": "isaacs@npmjs.com"
+    },
+    {
+      "name": "tootallnate",
+      "email": "nathan@tootallnate.net"
+    },
+    {
+      "name": "rvagg",
+      "email": "rod@vagg.org"
+    },
+    {
+      "name": "cwmma",
+      "email": "calvin.metcalf@gmail.com"
+    }
+  ],
+  "format": "cjs",
+  "ignore": [
+    "node_modules"
+  ],
+  "map": {
+    "util": "@empty"
+  },
+  "registry": "npm",
+  "dependencies": {
+    "core-util-is": "core-util-is@~1.0.0",
+    "inherits": "inherits@~2.0.1",
+    "isarray": "isarray@0.0.1",
+    "process-nextick-args": "process-nextick-args@~1.0.0",
+    "string_decoder": "string_decoder@~0.10.0",
+    "util-deprecate": "util-deprecate@~1.0.1",
+    "process": "github:jspm/nodelibs-process@^0.1.0",
+    "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
+    "events": "github:jspm/nodelibs-events@^0.1.1",
+    "util": "github:jspm/nodelibs-util@^0.1.0"
+  }
+}

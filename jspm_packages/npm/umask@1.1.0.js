@@ -1,0 +1,1 @@
+module.exports = require("npm:umask@1.1.0/index");

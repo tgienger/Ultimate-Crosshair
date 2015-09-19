@@ -1,0 +1,1 @@
+module.exports = require("npm:uid-number@0.0.6/uid-number");

@@ -1,0 +1,1 @@
+module.exports = require("npm:glob@4.5.3/glob");

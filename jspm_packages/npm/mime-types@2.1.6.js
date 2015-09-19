@@ -1,0 +1,1 @@
+module.exports = require("npm:mime-types@2.1.6/index");

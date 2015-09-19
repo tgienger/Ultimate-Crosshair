@@ -1,0 +1,1 @@
+module.exports = require("npm:write-file-atomic@1.1.3/index");

@@ -1,0 +1,1 @@
+module.exports = require("npm:normalize-git-url@3.0.1/normalize-git-url");

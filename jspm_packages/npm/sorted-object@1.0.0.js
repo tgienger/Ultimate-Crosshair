@@ -1,0 +1,1 @@
+module.exports = require("npm:sorted-object@1.0.0/lib/sorted-object");

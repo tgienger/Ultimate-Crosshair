@@ -1,8 +1,17 @@
 {
   "name": "ultimage_crosshair",
   "version": "0.9.3",
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-inject": "^2.2.0"
+  "jspm": {
+    "directories": {},
+    "dependencies": {
+      "css": "github:systemjs/plugin-css@^0.1.17",
+      "react": "npm:react@^0.13.3",
+      "react-color": "npm:react-color@^1.0.6"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.22",
+      "babel-runtime": "npm:babel-runtime@^5.8.20",
+      "core-js": "npm:core-js@^1.1.0"
+    }
   }
 }

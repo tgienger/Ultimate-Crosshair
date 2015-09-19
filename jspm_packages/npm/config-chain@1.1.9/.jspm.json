@@ -1,0 +1,70 @@
+{
+  "name": "config-chain",
+  "version": "1.1.9",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.githubusercontent.com/dominictarr/config-chain/master/LICENCE"
+    }
+  ],
+  "description": "HANDLE CONFIGURATION ONCE AND FOR ALL",
+  "homepage": "http://github.com/dominictarr/config-chain",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dominictarr/config-chain.git"
+  },
+  "devDependencies": {
+    "tap": "0.3.0"
+  },
+  "author": {
+    "name": "Dominic Tarr",
+    "email": "dominic.tarr@gmail.com",
+    "url": "http://dominictarr.com"
+  },
+  "scripts": {
+    "test": "tap test/"
+  },
+  "gitHead": "832609897082a0a887c59dadb105f4db6de1ab4c",
+  "bugs": {
+    "url": "https://github.com/dominictarr/config-chain/issues"
+  },
+  "_id": "config-chain@1.1.9",
+  "_shasum": "39ac7d4dca84faad926124c54cff25a53aa8bf6e",
+  "_from": ".",
+  "_npmVersion": "2.11.0",
+  "_nodeVersion": "0.12.4",
+  "_npmUser": {
+    "name": "dominictarr",
+    "email": "dominic.tarr@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "dominictarr",
+      "email": "dominic.tarr@gmail.com"
+    },
+    {
+      "name": "isaacs",
+      "email": "i@izs.me"
+    }
+  ],
+  "dist": {
+    "shasum": "39ac7d4dca84faad926124c54cff25a53aa8bf6e",
+    "tarball": "http://registry.npmjs.org/config-chain/-/config-chain-1.1.9.tgz"
+  },
+  "format": "cjs",
+  "ignore": [
+    "node_modules"
+  ],
+  "registry": "npm",
+  "dependencies": {
+    "proto-list": "proto-list@~1.2.1",
+    "ini": "ini@^1.0.0",
+    "path": "github:jspm/nodelibs-path@^0.1.0",
+    "fs": "github:jspm/nodelibs-fs@^0.1.0",
+    "events": "github:jspm/nodelibs-events@^0.1.1",
+    "url": "github:jspm/nodelibs-url@^0.1.0",
+    "http": "github:jspm/nodelibs-http@^1.7.0",
+    "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  }
+}

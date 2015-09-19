@@ -1,0 +1,1 @@
+module.exports = require("npm:ini@1.3.4/ini");

@@ -1,0 +1,1 @@
+module.exports = require("npm:validate-npm-package-name@2.2.2/index");

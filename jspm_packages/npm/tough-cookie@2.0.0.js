@@ -1,0 +1,1 @@
+module.exports = require("npm:tough-cookie@2.0.0/lib/cookie");

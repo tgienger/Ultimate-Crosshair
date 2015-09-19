@@ -1,0 +1,1 @@
+module.exports = require("npm:read@1.0.7/lib/read");

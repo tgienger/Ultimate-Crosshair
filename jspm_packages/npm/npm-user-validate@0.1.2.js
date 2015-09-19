@@ -1,0 +1,1 @@
+module.exports = require("npm:npm-user-validate@0.1.2/npm-user-validate");

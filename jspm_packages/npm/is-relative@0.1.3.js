@@ -1,0 +1,1 @@
+module.exports = require("npm:is-relative@0.1.3/index");

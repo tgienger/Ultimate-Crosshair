@@ -1,0 +1,1 @@
+module.exports = require("npm:jju@1.2.1/index");

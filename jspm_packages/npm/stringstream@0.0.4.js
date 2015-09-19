@@ -1,0 +1,1 @@
+module.exports = require("npm:stringstream@0.0.4/stringstream");

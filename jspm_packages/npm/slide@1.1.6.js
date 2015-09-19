@@ -1,0 +1,1 @@
+module.exports = require("npm:slide@1.1.6/lib/slide");

@@ -1,0 +1,1 @@
+module.exports = require("npm:github-url-from-git@1.4.0/index");

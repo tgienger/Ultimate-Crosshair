@@ -1,0 +1,1 @@
+module.exports = require("npm:builtins@0.0.7/builtins.json!systemjs-json");

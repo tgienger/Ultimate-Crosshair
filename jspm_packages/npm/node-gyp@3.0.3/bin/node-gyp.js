@@ -1,0 +1,96 @@
+/* */ 
+(function(process) {
+  process.title = 'node-gyp';
+  var gyp = require("../lib/node-gyp");
+  var log = require("npmlog");
+  var prog = gyp();
+  var completed = false;
+  prog.parseArgv(process.argv);
+  if (prog.todo.length === 0) {
+    if (~process.argv.indexOf('-v') || ~process.argv.indexOf('--version')) {
+      console.log('v%s', prog.version);
+    } else {
+      console.log('%s', prog.usage());
+    }
+    return process.exit(0);
+  }
+  log.info('it worked if it ends with', 'ok');
+  log.verbose('cli', process.argv);
+  log.info('using', 'node-gyp@%s', prog.version);
+  log.info('using', 'node@%s | %s | %s', process.versions.node, process.platform, process.arch);
+  var dir = prog.opts.directory;
+  if (dir) {
+    var fs = require("fs");
+    try {
+      var stat = fs.statSync(dir);
+      if (stat.isDirectory()) {
+        log.info('chdir', dir);
+        process.chdir(dir);
+      } else {
+        log.warn('chdir', dir + ' is not a directory');
+      }
+    } catch (e) {
+      if (e.code === 'ENOENT') {
+        log.warn('chdir', dir + ' is not a directory');
+      } else {
+        log.warn('chdir', 'error during chdir() "%s"', e.message);
+      }
+    }
+  }
+  function run() {
+    var command = prog.todo.shift();
+    if (!command) {
+      completed = true;
+      log.info('ok');
+      return;
+    }
+    prog.commands[command.name](command.args, function(err) {
+      if (err) {
+        log.error(command.name + ' error');
+        log.error('stack', err.stack);
+        errorMessage();
+        log.error('not ok');
+        return process.exit(1);
+      }
+      if (command.name == 'list') {
+        var versions = arguments[1];
+        if (versions.length > 0) {
+          versions.forEach(function(version) {
+            console.log(version);
+          });
+        } else {
+          console.log('No node development files installed. Use `node-gyp install` to install a version.');
+        }
+      } else if (arguments.length >= 2) {
+        console.log.apply(console, [].slice.call(arguments, 1));
+      }
+      process.nextTick(run);
+    });
+  }
+  process.on('exit', function(code) {
+    if (!completed && !code) {
+      log.error('Completion callback never invoked!');
+      issueMessage();
+      process.exit(6);
+    }
+  });
+  process.on('uncaughtException', function(err) {
+    log.error('UNCAUGHT EXCEPTION');
+    log.error('stack', err.stack);
+    issueMessage();
+    process.exit(7);
+  });
+  function errorMessage() {
+    var os = require("os");
+    log.error('System', os.type() + ' ' + os.release());
+    log.error('command', process.argv.map(JSON.stringify).join(' '));
+    log.error('cwd', process.cwd());
+    log.error('node -v', process.version);
+    log.error('node-gyp -v', 'v' + prog.package.version);
+  }
+  function issueMessage() {
+    errorMessage();
+    log.error('', ['This is a bug in `node-gyp`.', 'Try to update node-gyp and file an Issue if it does not help:', '    <https://github.com/nodejs/node-gyp/issues>'].join('\n'));
+  }
+  run();
+})(require("process"));

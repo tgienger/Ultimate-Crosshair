@@ -1,0 +1,1 @@
+module.exports = require("npm:npm-registry-client@7.0.7/index");

@@ -1,0 +1,1 @@
+module.exports = require("npm:spdx@0.4.1/source/spdx");

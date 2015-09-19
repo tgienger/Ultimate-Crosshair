@@ -1,0 +1,1 @@
+module.exports = require("npm:builtin-modules@1.1.0/index");

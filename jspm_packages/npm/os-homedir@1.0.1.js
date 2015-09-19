@@ -1,0 +1,1 @@
+module.exports = require("npm:os-homedir@1.0.1/index");

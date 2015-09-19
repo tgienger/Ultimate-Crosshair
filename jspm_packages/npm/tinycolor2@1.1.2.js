@@ -1,0 +1,1 @@
+module.exports = require("npm:tinycolor2@1.1.2/tinycolor");

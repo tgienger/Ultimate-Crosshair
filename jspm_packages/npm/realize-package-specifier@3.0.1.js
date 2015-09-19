@@ -1,0 +1,1 @@
+module.exports = require("npm:realize-package-specifier@3.0.1/index");

@@ -1,0 +1,1 @@
+module.exports = require("npm:validate-npm-package-license@3.0.1/index");

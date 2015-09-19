@@ -1,0 +1,70 @@
+{
+  "author": {
+    "name": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/"
+  },
+  "name": "tar",
+  "description": "tar for node",
+  "version": "1.0.3",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/isaacs/node-tar.git"
+  },
+  "main": "tar.js",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "devDependencies": {
+    "graceful-fs": "^3.0.2",
+    "rimraf": "1.x",
+    "tap": "0.x",
+    "mkdirp": "^0.5.0"
+  },
+  "license": "BSD",
+  "gitHead": "f4151128c585da236c6b1e278b762ecaedc20c15",
+  "bugs": {
+    "url": "https://github.com/isaacs/node-tar/issues"
+  },
+  "homepage": "https://github.com/isaacs/node-tar",
+  "_id": "tar@1.0.3",
+  "_shasum": "15bcdab244fa4add44e4244a0176edb8aa9a2b44",
+  "_from": ".",
+  "_npmVersion": "2.1.10",
+  "_nodeVersion": "0.10.33",
+  "_npmUser": {
+    "name": "othiym23",
+    "email": "ogd@aoaioxxysz.net"
+  },
+  "maintainers": [
+    {
+      "name": "isaacs",
+      "email": "i@izs.me"
+    },
+    {
+      "name": "othiym23",
+      "email": "ogd@aoaioxxysz.net"
+    }
+  ],
+  "dist": {
+    "shasum": "15bcdab244fa4add44e4244a0176edb8aa9a2b44",
+    "tarball": "http://registry.npmjs.org/tar/-/tar-1.0.3.tgz"
+  },
+  "format": "cjs",
+  "ignore": [
+    "node_modules"
+  ],
+  "registry": "npm",
+  "dependencies": {
+    "block-stream": "block-stream@*",
+    "fstream": "fstream@^1.0.2",
+    "inherits": "inherits@^2.0.0",
+    "fs": "github:jspm/nodelibs-fs@^0.1.0",
+    "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
+    "stream": "github:jspm/nodelibs-stream@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0",
+    "assert": "github:jspm/nodelibs-assert@^0.1.0",
+    "path": "github:jspm/nodelibs-path@^0.1.0",
+    "systemjs-json": "github:systemjs/plugin-json@^0.1.0"
+  }
+}

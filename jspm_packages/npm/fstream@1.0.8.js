@@ -1,0 +1,1 @@
+module.exports = require("npm:fstream@1.0.8/fstream");

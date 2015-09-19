@@ -1,0 +1,1 @@
+module.exports = require("npm:retry@0.8.0/index");

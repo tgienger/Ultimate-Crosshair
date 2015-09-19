@@ -1,0 +1,1 @@
+module.exports = require("npm:are-we-there-yet@1.0.4/index");

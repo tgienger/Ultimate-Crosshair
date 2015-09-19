@@ -1,0 +1,1 @@
+module.exports = require("npm:wcwidth@1.0.0/index");

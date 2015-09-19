@@ -1,0 +1,45 @@
+{
+  "name": "spdx-license-ids",
+  "version": "1.0.2",
+  "description": "A list of SPDX license identifiers",
+  "repository": "shinnn/spdx-license-ids",
+  "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
+  "scripts": {
+    "build": "node --harmony_arrow_functions build.js",
+    "lint": "eslint --config node_modules/@shinnn/eslintrc/rc.json --ignore-path .gitignore .",
+    "pretest": "${npm_package_scripts_build} && ${npm_package_scripts_lint}",
+    "test": "node --harmony_arrow_functions test.js",
+    "coverage": "node --harmony_arrow_functions node_modules/.bin/istanbul cover test.js",
+    "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
+  },
+  "license": "Unlicense",
+  "main": "spdx-license-ids.json",
+  "files": [
+    "spdx-license-ids.json"
+  ],
+  "keywords": [
+    "spdx",
+    "license",
+    "licenses",
+    "id",
+    "identifier",
+    "identifiers",
+    "json",
+    "array",
+    "oss",
+    "browser",
+    "client-side"
+  ],
+  "devDependencies": {
+    "@shinnn/eslintrc": "^1.0.0",
+    "each-async": "^1.1.1",
+    "eslint": "^0.24.0",
+    "got": "^3.3.0",
+    "istanbul": "^0.3.17",
+    "istanbul-coveralls": "^1.0.3",
+    "require-bower-files": "^2.0.0",
+    "rimraf": "^2.4.1",
+    "stringify-object": "^2.2.0",
+    "tape": "^4.0.0"
+  }
+}

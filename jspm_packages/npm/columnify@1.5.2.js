@@ -1,0 +1,1 @@
+module.exports = require("npm:columnify@1.5.2/columnify");

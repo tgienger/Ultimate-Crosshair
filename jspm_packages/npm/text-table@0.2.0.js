@@ -1,0 +1,1 @@
+module.exports = require("npm:text-table@0.2.0/index");

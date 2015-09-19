@@ -1,0 +1,1 @@
+module.exports = require("npm:debuglog@1.0.1/debuglog");

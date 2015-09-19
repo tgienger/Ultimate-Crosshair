@@ -1,0 +1,1 @@
+module.exports = require("npm:read-installed@4.0.3/read-installed");

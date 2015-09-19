@@ -1,0 +1,1 @@
+module.exports = require("npm:asn1@0.1.11/lib/index");

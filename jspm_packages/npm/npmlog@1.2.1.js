@@ -1,0 +1,1 @@
+module.exports = require("npm:npmlog@1.2.1/log");
