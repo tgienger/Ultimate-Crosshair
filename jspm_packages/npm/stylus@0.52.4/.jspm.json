@@ -1,0 +1,88 @@
+{
+  "name": "stylus",
+  "description": "Robust, expressive, and feature-rich CSS superset",
+  "version": "0.52.4",
+  "author": {
+    "name": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca"
+  },
+  "keywords": [
+    "css",
+    "parser",
+    "style",
+    "stylesheets",
+    "jade",
+    "language"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stylus/stylus"
+  },
+  "main": "./lib/browserify.js",
+  "browserify": "./lib/browserify.js",
+  "engines": {
+    "node": "*"
+  },
+  "bin": {
+    "stylus": "./bin/stylus"
+  },
+  "scripts": {
+    "prepublish": "npm prune",
+    "test": "mocha test/ test/middleware/ --require should --bail --reporter dot",
+    "test-cov": "mocha test/ test/middleware/ --require should --bail --reporter html-cov > coverage.html"
+  },
+  "devDependencies": {
+    "should": "2.x",
+    "mocha": "*",
+    "jscoverage": "0.3.8"
+  },
+  "bugs": {
+    "url": "https://github.com/stylus/stylus/issues"
+  },
+  "homepage": "https://github.com/stylus/stylus",
+  "license": "MIT",
+  "_id": "stylus@0.52.4",
+  "_shasum": "6551b5f0bfdcf29ee7f0fe0a59b7eb6ff26d2539",
+  "_from": ".",
+  "_npmVersion": "1.4.9",
+  "_npmUser": {
+    "name": "kizu",
+    "email": "kizmarh@ya.ru"
+  },
+  "maintainers": [
+    {
+      "name": "tjholowaychuk",
+      "email": "tj@vision-media.ca"
+    },
+    {
+      "name": "kizu",
+      "email": "kizmarh@ya.ru"
+    }
+  ],
+  "dist": {
+    "shasum": "6551b5f0bfdcf29ee7f0fe0a59b7eb6ff26d2539",
+    "tarball": "http://registry.npmjs.org/stylus/-/stylus-0.52.4.tgz"
+  },
+  "format": "cjs",
+  "ignore": [
+    "node_modules"
+  ],
+  "registry": "npm",
+  "dependencies": {
+    "css-parse": "css-parse@~1.7.0",
+    "mkdirp": "mkdirp@~0.5.0",
+    "debug": "debug@*",
+    "sax": "sax@~0.5.0",
+    "glob": "glob@~3.2.0",
+    "source-map": "source-map@~0.1.0",
+    "crypto": "github:jspm/nodelibs-crypto@^0.1.0",
+    "fs": "github:jspm/nodelibs-fs@^0.1.0",
+    "path": "github:jspm/nodelibs-path@^0.1.0",
+    "systemjs-json": "github:systemjs/plugin-json@^0.1.0",
+    "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
+    "url": "github:jspm/nodelibs-url@^0.1.0",
+    "events": "github:jspm/nodelibs-events@^0.1.1",
+    "util": "github:jspm/nodelibs-util@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  }
+}

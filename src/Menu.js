@@ -106,13 +106,13 @@ export default class Menu extends React.Component {
     }
 
     handleCrossColor = (color) => {
-        const newColor = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
+        let newColor = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
         this.props.handleChange('crossColor', newColor);
     }
 
     handleToggles = (state) => {
-        const val = !this.state[state];
-        const newState = {};
+        let val = !this.state[state];
+        let newState = {};
         newState[state] = val;
         this.setState(newState);
     }
@@ -174,8 +174,7 @@ export default class Menu extends React.Component {
                     crossLength={this.props.crossLength}
                     dotDiameter={this.props.dotDiameter}
                     strokeWidth={this.props.strokeWidth}
-                    opacity={this.props.opacity}
-                    showSliders={this.state.showSliders} />
+                    opacity={this.props.opacity} />
 
 
             </div>

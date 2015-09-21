@@ -26,6 +26,7 @@ System.config({
     "react-color": "npm:react-color@1.0.6",
     "react-gsap-enhancer": "npm:react-gsap-enhancer@0.1.6",
     "scss": "github:screendriver/plugin-sass@0.0.5",
+    "stylus": "npm:stylus@0.52.4",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -499,6 +500,16 @@ System.config({
     "npm:generate-object-property@1.2.0": {
       "is-property": "npm:is-property@1.0.2"
     },
+    "npm:glob@3.2.11": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "events": "github:jspm/nodelibs-events@0.1.1",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "inherits": "npm:inherits@2.0.1",
+      "minimatch": "npm:minimatch@0.3.0",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+    },
     "npm:glob@4.5.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "events": "github:jspm/nodelibs-events@0.1.1",
@@ -704,6 +715,12 @@ System.config({
     "npm:mime-types@2.1.6": {
       "mime-db": "npm:mime-db@1.18.0",
       "path": "github:jspm/nodelibs-path@0.1.0"
+    },
+    "npm:minimatch@0.3.0": {
+      "lru-cache": "npm:lru-cache@2.7.0",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "sigmund": "npm:sigmund@1.0.1"
     },
     "npm:minimatch@1.0.0": {
       "lru-cache": "npm:lru-cache@2.7.0",
@@ -1157,6 +1174,16 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
+    "npm:sax@0.5.8": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "http": "github:jspm/nodelibs-http@1.7.1",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "stream": "github:jspm/nodelibs-stream@0.1.0",
+      "string_decoder": "github:jspm/nodelibs-string_decoder@0.1.0",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
     "npm:semver@5.0.3": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
@@ -1225,6 +1252,23 @@ System.config({
     },
     "npm:strip-ansi@3.0.0": {
       "ansi-regex": "npm:ansi-regex@2.0.0"
+    },
+    "npm:stylus@0.52.4": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "crypto": "github:jspm/nodelibs-crypto@0.1.0",
+      "css-parse": "npm:css-parse@1.7.0",
+      "debug": "npm:debug@2.2.0",
+      "events": "github:jspm/nodelibs-events@0.1.1",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "glob": "npm:glob@3.2.11",
+      "mkdirp": "npm:mkdirp@0.5.1",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1",
+      "sax": "npm:sax@0.5.8",
+      "source-map": "npm:source-map@0.1.31",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0",
+      "url": "github:jspm/nodelibs-url@0.1.0",
+      "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:supports-color@2.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.1"

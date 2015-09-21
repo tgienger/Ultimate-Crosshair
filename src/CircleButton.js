@@ -6,6 +6,10 @@ export default class CircleButton extends React.Component {
         super(props)
     }
 
+    handleClick = () => {
+        this.props.handleClick()
+    }
+
     render() {
         const buttonStyles = this.props.btnStyles;
 
@@ -13,7 +17,7 @@ export default class CircleButton extends React.Component {
             <div className="container__body" style={buttonStyles}>
                 <div className="btn__container">
                     <div className="btn-wrapper">
-                        <a href="#" className="btn">
+                        <a href="#" className="btn" onClick={this.handleClick}>
                             <small className="icon icon-paintbrush icon--grey"></small>
                         </a>
                     </div>

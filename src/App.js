@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from './Menu';
 import CrossHair from './CrossHair';
 import MenuToggle from './MenuToggle';
-import poo from 'greensock';
+import 'greensock';
 // import draggable from 'greensock';
 import GSAP from 'react-gsap-enhancer';
 import CircleMenu from './CircleMenu'
@@ -120,6 +120,12 @@ export default class App extends React.Component {
                     showSliders={this.state.showSliders} />
 
                 <CircleMenu
+                    /* Event Handlers */
+                    toggleSliders={this.toggleSliders}
+
+                    /* Props */
+                    showSliders={this.state.showSliders}
+
                     key="menu" />
 
                 <CrossHair

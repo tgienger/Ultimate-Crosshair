@@ -1,0 +1,66 @@
+{
+  "author": {
+    "name": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/"
+  },
+  "name": "glob",
+  "description": "a little globber",
+  "version": "3.2.11",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/isaacs/node-glob.git"
+  },
+  "main": "glob.js",
+  "engines": {
+    "node": "*"
+  },
+  "devDependencies": {
+    "tap": "~0.4.0",
+    "mkdirp": "0",
+    "rimraf": "1"
+  },
+  "scripts": {
+    "test": "tap test/*.js",
+    "test-regen": "TEST_REGEN=1 node test/00-setup.js"
+  },
+  "license": "BSD",
+  "gitHead": "73f57e99510582b2024b762305970ebcf9b70aa2",
+  "bugs": {
+    "url": "https://github.com/isaacs/node-glob/issues"
+  },
+  "homepage": "https://github.com/isaacs/node-glob",
+  "_id": "glob@3.2.11",
+  "_shasum": "4a973f635b9190f715d10987d5c00fd2815ebe3d",
+  "_from": ".",
+  "_npmVersion": "1.4.10",
+  "_npmUser": {
+    "name": "isaacs",
+    "email": "i@izs.me"
+  },
+  "maintainers": [
+    {
+      "name": "isaacs",
+      "email": "i@izs.me"
+    }
+  ],
+  "dist": {
+    "shasum": "4a973f635b9190f715d10987d5c00fd2815ebe3d",
+    "tarball": "http://registry.npmjs.org/glob/-/glob-3.2.11.tgz"
+  },
+  "format": "cjs",
+  "ignore": [
+    "node_modules"
+  ],
+  "registry": "npm",
+  "dependencies": {
+    "inherits": "inherits@^2.0.0",
+    "minimatch": "minimatch@~0.3.0",
+    "fs": "github:jspm/nodelibs-fs@^0.1.0",
+    "events": "github:jspm/nodelibs-events@^0.1.1",
+    "path": "github:jspm/nodelibs-path@^0.1.0",
+    "assert": "github:jspm/nodelibs-assert@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0",
+    "systemjs-json": "github:systemjs/plugin-json@^0.1.0"
+  }
+}

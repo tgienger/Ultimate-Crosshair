@@ -1,0 +1,1 @@
+module.exports = require("npm:stylus@0.52.4/lib/browserify");
