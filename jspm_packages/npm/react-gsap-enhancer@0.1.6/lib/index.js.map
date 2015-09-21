@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.js"],"names":[],"mappings":";;;;;;;;4BAAiC,iBAAiB;;;;4BACZ,gBAAgB;;QAAnC,YAAY","file":"index.js","sourcesContent":["export {default as default} from './gsap-enhancer'\nexport {default as createTarget} from './createTarget'\n"]}

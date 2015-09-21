@@ -1,7 +1,34 @@
 import React from 'react';
 import Menu from './Menu';
 import CrossHair from './CrossHair';
+import MenuToggle from './MenuToggle';
+import poo from 'greensock';
+// import draggable from 'greensock';
+import GSAP from 'react-gsap-enhancer';
+import CircleMenu from './CircleMenu'
 
+function createAnim({target}) {
+    const menu = target.find('menu')
+    return new TimelineMax()
+        .set(menu, {
+            scale: 1
+        })
+        .pause()
+        .add('open')
+        .to(menu, .5, {
+            x: 50,
+            ease: Linear.easeNone,
+        }, '-=0.7')
+        .to(menu, .5, {
+            scale: 0,
+            x: 0,
+            ease: Power1.easeOut,
+            // rotationZ:"360deg",
+        })
+        .add('collapse');
+}
+
+@GSAP()
 export default class App extends React.Component {
     constructor() {
         super();
@@ -14,32 +41,70 @@ export default class App extends React.Component {
             dotDiameter: 10,
             strokeWidth: 1,
             spinning: false,
+            showMenu: false,
+            showSliders: false,
+            showColorPicker: false,
             opacity: 1,
             color: 0
         }
-        this.handleState = this.handleState.bind(this);
-        this.handleDot = this.handleDot.bind(this);
     }
 
-    handleDot() {
+    componentDidMount() {
+        this.anim = this.addAnimation(createAnim)
+            .seek('open')
+    }
+
+    handleDot = () => {
         var n = this.state.centerDot + 1;
         this.setState({
             centerDot: n < 3 ? n : 0
         });
     }
 
-    handleState(state, value) {
+    handleState = (state, value) => {
         var newState = {};
         newState[state] = value;
         this.setState(newState);
     }
 
+    toggleColorPicker = () => {
+        this.setState({showColorPicker: !this.state.showColorPicker})
+    }
+
+    toggleSliders = () => {
+        this.setState({showSliders: !this.state.showSliders})
+    }
+
+    handleClick = () => {
+        this.setState({showMenu: !this.state.showMenu})
+        if (this.state.showMenu) {
+            this.anim.tweenTo('collapse')
+        } else {
+            this.anim.tweenTo('open')
+        }
+    }
+
+    handleColorClose = () => {
+        this.setState({
+            showColorPicker: false
+        });
+    }
+
     render() {
         return (
-            <div className="container">
+            <div id={'container1'} className={""}>
+                <MenuToggle
+                    handleClick={this.handleClick}
+                    top="0"
+                    left="0" />
+
                 <Menu
+
                     /* Event Handlers */
-                    changeDot={this.handleDot}
+                    handleDot={this.handleDot}
+                    toggleSliders={this.toggleSliders}
+                    handleColorClose={this.handleColorClose}
+                    toggleColorPicker={this.toggleColorPicker}
                     handleChange={this.handleState}
 
                     /* Props */
@@ -50,7 +115,12 @@ export default class App extends React.Component {
                     strokeWidth={this.state.strokeWidth}
                     opacity={this.state.opacity}
                     spinning={this.state.spinning}
-                    crossColor={this.state.crossColor} />
+                    crossColor={this.state.crossColor}
+                    sliderVisible={this.state.sliderVisible}
+                    showSliders={this.state.showSliders} />
+
+                <CircleMenu
+                    key="menu" />
 
                 <CrossHair
                     centerDot={this.state.centerDot}
@@ -68,83 +138,3 @@ export default class App extends React.Component {
         );
     }
 }
-
-
-// <CrossHair
-//     centerDot={this.state.centerDot}
-//     height={this.state.crossSize}
-//     width={this.state.crossSize}
-//     crossSpread={this.state.crossSpread}
-//     crossLength={this.state.crossLength}
-//     dotDiameter={this.state.dotDiameter}
-//     strokeWidth={this.state.strokeWidth}
-//     opacity={this.state.opacity}
-//     spinning={this.state.spinning}
-//     viewBox="0 0 100 100" />
-
-
-    // var App = React.createClass({
-    //
-    //
-    //     handleDotChange: function() {
-    //         var n = this.state.centerDot + 1;
-    //         this.setState({
-    //             centerDot: n < 3 ? n : 0
-    //         });
-    //     },
-    //
-    //     handleSizeChange: function(size) {
-    //         this.setState({
-    //             crossSize: size
-    //         });
-    //     },
-    //
-    //     handleSpreadChange: function(size) {
-    //         this.setState({
-    //             crossSpread: size
-    //         });
-    //     },
-    //
-    //     handleLengthChange: function(size) {
-    //         this.setState({
-    //             crossLength: size
-    //         });
-    //     },
-    //
-    //     handleDotDiam: function(size) {
-    //         this.setState({
-    //             dotDiameter: size
-    //         });
-    //     },
-    //
-    //     handleStrokeWidth: function(size) {
-    //         this.setState({
-    //             strokeWidth: size
-    //         });
-    //     },
-    //
-    //     handleOpacity: function(val) {
-    //         this.setState({
-    //             opacity: val
-    //         });
-    //     },
-    //
-    //     handleSpin: function(tween) {
-    //         //tween.restart();
-    //         if (this.state.spinning) {
-    //             this.setState({
-    //                 spinning: false
-    //             })
-    //         } else {
-    //             this.setState({
-    //                 spinning: true
-    //             })
-    //             // var tween = TweenMax.to('#crosshair', 1, {rotation: 360, repeat: -1, ease:Linear.easeNone});
-    //         }
-    //     },
-    //
-    //     render: function() {
-
-    //     }
-    // });
-    //

@@ -1,0 +1,13 @@
+<!doctype html>
+  <script src="../es6-module-loader/dist/es6-module-loader.js"></script>
+  <script src="../systemjs/dist/system.js"></script>
+  <script>
+    System.import('image-test.png!image').then(function(img) {
+      console.log(img);
+    })
+    .catch(function(e) {
+      setTimeout(function() {
+        throw e;
+      })
+    })
+  </script>

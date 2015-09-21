@@ -1,0 +1,1 @@
+module.exports = require("npm:gsap@1.18.0/src/uncompressed/TweenMax");

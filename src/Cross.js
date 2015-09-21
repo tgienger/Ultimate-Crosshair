@@ -11,23 +11,9 @@ export default class Cross extends React.Component {
         };
     }
 
-    changeShape() {
-        var n = this.state.shape + 1;
-        this.setState({
-            shape: n < 3 ? n : 0
-        })
-    }
-
-    changeColor() {
-        var n = this.state.color + 1;
-        this.setState({
-            color: n < 4 ? n : 0
-        });
-    }
-
     render() {
         var color = this.props.crossColor;
-        
+
         var size = (this.state.size * 20) + 20;
         var spread = parseInt(this.props.crossSpread);
         var length = parseInt(this.props.crossLength);

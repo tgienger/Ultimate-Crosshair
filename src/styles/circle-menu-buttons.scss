@@ -1,0 +1,78 @@
+
+$bg: white;
+$text-color: darken($bg,30%);
+
+// size of button
+$btnHeight: 50px;
+$btnWidth: $btnHeight;
+
+$btnPadding: percentage(10px / 120px);
+$innerButton: 98%;
+
+$iconSize: 1.125em;
+$iconMarginTop: 24%;
+$iconMarginTopClicked: calc(24% + 2px);
+
+@mixin nb-gradient($bg){
+  $top: scale-color($bg, $lightness: 20%);
+  $middle-1: scale-color($bg, $lightness: 40%);
+  $middle-2: scale-color($bg, $lightness: -5%);
+  $bottom: scale-color($bg, $lightness: -15%);
+  background-image: linear-gradient(
+    $top, $middle-1 0%, $middle-2 0%, $bottom );
+}
+
+
+.btn__container {
+    height: $btnHeight;
+    width: $btnWidth;
+}
+.btn-wrapper{
+  width: 100%;
+  height: 100%;
+  padding: $btnPadding;
+  // margin-left: 10px;
+  float: left;
+  box-sizing: border-box;
+  @include nb-gradient($bg);
+  border-radius: 100%;
+  box-shadow: inset 0px 2px 1px darken($bg, 30%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-wrapper__footer{
+  width: 100%;
+  margin-top: 1.4em;
+  text-align: center;
+  color: $text-color;
+  font-size: 1.1em;
+}
+.btn{
+  display: block;
+  width: $innerButton;
+  height: $innerButton;
+  text-align: center;
+  border-radius: 100%;
+  box-shadow:
+    0 4px 4px rgba(0,0,0,0.085),
+    0 0 3px rgba(0,0,0,0.2),
+    inset 0 2px 2px rgba(255,255,255,1),
+    inset 0 -2px 2px rgba(0,0,0,0.1);
+  &:active{
+    box-shadow: inset 0px 0px 1px rgba(0,0,0,.3);
+    .icon{
+      margin-top: $iconMarginTopClicked;
+      text-shadow: 1px 1px 1px rgba(255, 255, 255, .4);
+    }
+  }
+}
+.icon{
+  display: block;
+  font-size: $iconSize;
+  margin-top: $iconMarginTop;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+}
+.icon--grey{
+  color: darken($bg, 20%);
+}

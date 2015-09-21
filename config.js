@@ -7,7 +7,8 @@ System.config({
     "optional": [
       "runtime",
       "optimisation.modules.system"
-    ]
+    ],
+    "stage": 0
   },
   paths: {
     "github:*": "jspm_packages/github/*",
@@ -19,8 +20,12 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.24",
     "core-js": "npm:core-js@1.1.4",
     "css": "github:systemjs/plugin-css@0.1.17",
+    "greensock": "github:greensock/GreenSock-JS@1.18.0",
+    "image": "github:systemjs/plugin-image@0.1.0",
     "react": "npm:react@0.13.3",
     "react-color": "npm:react-color@1.0.6",
+    "react-gsap-enhancer": "npm:react-gsap-enhancer@0.1.6",
+    "scss": "github:screendriver/plugin-sass@0.0.5",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -98,6 +103,12 @@ System.config({
     },
     "github:jspm/nodelibs-zlib@0.1.0": {
       "browserify-zlib": "npm:browserify-zlib@0.1.4"
+    },
+    "github:screendriver/plugin-sass@0.0.5": {
+      "fetch": "npm:whatwg-fetch@0.9.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "sass.js": "npm:sass.js@0.9.2",
+      "url": "github:jspm/nodelibs-url@0.1.0"
     },
     "npm:abbrev@1.0.7": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
@@ -1019,6 +1030,9 @@ System.config({
       "reactcss": "npm:reactcss@0.3.2",
       "tinycolor2": "npm:tinycolor2@1.1.2"
     },
+    "npm:react-gsap-enhancer@0.1.6": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
     "npm:react@0.13.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "envify": "npm:envify@3.4.0",
@@ -1134,6 +1148,13 @@ System.config({
     },
     "npm:ripemd160@1.0.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:sass.js@0.9.2": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "crypto": "github:jspm/nodelibs-crypto@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:semver@5.0.3": {

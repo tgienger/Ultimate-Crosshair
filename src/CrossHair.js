@@ -4,16 +4,10 @@ import Cross from './Cross';
 import Centerdot from './Centerdot';
 
 export default class CrossHair extends React.Component {
-    tween: {}
-
-    componentDidMount() {
-
-    }
-
     render() {
 
         return (
-            <div id="crosshair-bounding-box">
+            <div id={"crosshair-bounding-box"} className={'container1'}>
                 <SVGComponent ref="crosshair" id="crosshair" {...this.props}>
                     <Cross
                         crossSpread={this.props.crossSpread}
@@ -21,7 +15,9 @@ export default class CrossHair extends React.Component {
                         strokeWidth={this.props.strokeWidth}
                         crossColor={this.props.crossColor} />
 
-                    <Centerdot {...this.props}/>
+                    <Centerdot
+                        dotDiameter={this.props.dotDiameter}
+                        centerDot={this.props.centerDot} />
                 </SVGComponent>
             </div>
         );

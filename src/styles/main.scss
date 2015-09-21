@@ -1,0 +1,103 @@
+@import 'reset';
+
+@font-face {
+    font-family: 'sansation_light';
+    src: url('fonts/sansation-light-webfont.eot');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'sansation_regular';
+    src: url('fonts/sansation-regular-webfont.eot');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$font: sansation_light;
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+html {
+  font-family: $font;
+}
+* {
+    text-decoration: none;
+}
+
+/* Menu */
+.menu {
+}
+.menu ul {
+    list-style-type: none;
+    /*padding-left: 0;
+    padding:0;
+    margin: 0;*/
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.menu ul li {
+    /*padding:0;
+    margin: 0;*/
+    background: rgb(89, 89, 89);
+    text-align: center;
+    color: white;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+}
+.menu ul li:hover {
+    background: rgb(75, 75, 75);
+}
+.menu ul li a {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+}
+.menu .sliders div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+/*#menu-toggle {
+    z-index: 300;
+    position: absolute;
+    width: 100px;
+    top:0;
+    left:0;
+}*/
+
+
+/* Crosshair */
+.container1 {
+    z-index: -1;
+}
+.container2 {
+    // z-index: 90;
+}
+.container1, .container2 {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top:0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -4,10 +4,9 @@ export default class Slider extends React.Component {
 
     constructor() {
         super();
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(e) {
+    handleChange = (e) => {
         this.props.updateSlider(e.target.value);
     }
 
@@ -16,6 +15,7 @@ export default class Slider extends React.Component {
             <div>
                 <label for={this.props.id}>{this.props.labelName}</label>
                 <input
+                    className="slider-children"
                     type="range"
                     id={this.props.id}
                     min={this.props.min}
