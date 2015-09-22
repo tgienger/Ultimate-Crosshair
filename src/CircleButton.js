@@ -18,7 +18,7 @@ export default class CircleButton extends React.Component {
                 <div className="btn__container">
                     <div className="btn-wrapper">
                         <a href="#" className="btn" onClick={this.handleClick}>
-                            <small className="icon icon-paintbrush icon--grey"></small>
+                            <small className={this.props.icons}></small>
                         </a>
                     </div>
                 </div>

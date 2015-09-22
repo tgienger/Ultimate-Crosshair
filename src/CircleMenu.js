@@ -4,30 +4,52 @@ import CircleButton from './CircleButton'
 import backgroundImg from './images/button_background.svg!image'
 import ColorPicker from 'react-color'
 import Sliders from './Sliders'
+import 'greensock';
 import GSAP from 'react-gsap-enhancer'
 
 
-function enterAnim({target}) {
-    const menu = target.findAll('.animatedMenu')
-    return new TimelineMax()
-        .set(menu, {
-            scale: 1
+function sliderAnim({target}) {
+    const sliders = target.find('sliderContainer')
+
+    const tl = new TimelineMax()
+        tl.set(sliders, {
+            scale: 1,
+            x: 0,
+            ease: Power1.easeOut,
+        })
+        .pause()
+        tl.add('open')
+        .to(sliders, .2, {
+            scale: 0,
+            x: -325,
+            ease: Power1.easeOut,
+        })
+        tl.add('collapse')
+
+    return tl
+}
+
+function pickerAnim({target}) {
+    const picker = target.find('colorPicker')
+
+    const tl = new TimelineMax()
+        .set(picker, {
+            scale: 1,
+            x: 0,
+            ease: Power1.easeOut
         })
         .pause()
         .add('open')
-        .to(menu, .5, {
-            x: 50,
-            ease: Linear.easeNone,
-        }, '-=0.7')
-        .to(menu, .5, {
+        .to(picker, .2, {
             scale: 0,
-            x: 0,
-            ease: Power1.easeOut,
-            // rotationZ:"360deg",
+            x: -275,
+            y: -50,
+            ease: Power1.easeOut
         })
-        .add('collapse');
-}
+        .add('collapse')
 
+    return tl
+}
 
 @GSAP()
 export default class CircleMenu extends React.Component {
@@ -38,32 +60,43 @@ export default class CircleMenu extends React.Component {
             backgroundStyles: {
                 display: 'none'
             },
-            showColorPicker: 'none',
-            showSliders: 'none'
+            showColorPicker: false,
+            showSliders: false
         }
     }
 
     componentDidMount() {
-        this.anim = this.addAnimation(enterAnim)
-            .seek('open')
+        this.sliderAnim = this.addAnimation(sliderAnim).seek('collapse')
+        this.pickerAnim = this.addAnimation(pickerAnim).seek('collapse')
     }
 
     toggleColorPickers = () => {
-        this.setState({showSliders: 'none'})
-        if (this.state.showColorPicker === 'none') {
-            this.setState({showColorPicker: 'flex'})
+
+        this.setState({showSliders: false, showColorPicker: !this.state.showColorPicker})
+        this.sliderAnim.tweenTo('collapse');
+
+        if (!this.state.showColorPicker) {
+            this.pickerAnim.tweenTo('open')
         } else {
-            this.setState({showColorPicker: 'none'})
+            this.pickerAnim.tweenTo('collapse')
         }
     }
 
     toggleSliders = () => {
-        this.setState({showColorPicker: 'none'})
-        if (this.state.showSliders === 'none') {
-            this.setState({showSliders: 'block'})
+        this.setState({showSliders: !this.state.showSliders, showColorPicker: false})
+        this.pickerAnim.tweenTo('collapse')
+        if (!this.state.showSliders) {
+
+            this.sliderAnim.tweenTo('open')
         } else {
-            this.setState({showSliders: 'none'})
+            this.sliderAnim.tweenTo('collapse')
         }
+        // this.setState({showColorPicker: 'none'})
+        // if (this.state.showSliders === 'none') {
+        //     this.setState({showSliders: 'block'})
+        // } else {
+        //     this.setState({showSliders: 'none'})
+        // }
     }
 
     handleToggles = (state) => {
@@ -73,11 +106,29 @@ export default class CircleMenu extends React.Component {
         this.setState(newState)
     }
 
-    render() {
 
+    handleChange = (state, val) => {
+        this.props.handleChange(state, val);
+    }
+
+
+    handleCrossColor = (color) => {
+        let newColor = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
+        this.props.handleChange('crossColor', newColor);
+    }
+
+
+    render() {
+        // Container Holding entire menu
+        // used for absolute positioning at center of screen
         const containerStyles = {
-            position: 'relative'
+            position: 'relative',
+            top: 0,
+            left:0,
+
         }
+
+        // Styles for the button background svg
         const bgStyles = {
             // zIndex: 90,
             position: 'absolute',
@@ -85,96 +136,117 @@ export default class CircleMenu extends React.Component {
             left: '-150px',
             transform:'rotate(180deg)'
         }
+
+        // positioning of top button
         const btn1Styles = {
             zIndex: 9999,
             position: 'absolute',
             top: '-90px',
             left: '-103px'
         }
+        const btn1Icons = 'icon icon-paint icon--grey'
+
+        // positioning of middle button
         const btn2Styles = {
             zIndex: 9999,
             position: 'absolute',
             top: '-24px',
             left: '-147px'
         }
+        const btn2Icons = 'icon icon-settings icon--grey'
+
+        // positioning of bottom button
         const btn3Styles = {
             zIndex: 9999,
             position: 'absolute',
             top: '40px',
             left: '-103px'
         }
+
+        // container holding slider menu
         const sliderContainer = {
             position: 'absolute',
-            left: '100px',
-            top: '-90px',
-            display: this.state.showSliders
+            background: 'rgba(255,255,255,0.7)',
+            color: 'black',
+            fontWeight: 'bold',
+            border: '1px solid rgb(190, 190, 190)',
+            borderRadius: '3px',
+            width: '215px',
+            display: 'block',
+            padding: '5px',
+            left: '116px',
+            top: '-130px',
         }
-        const crossContainer = {
+        const crosshairContainer = {
             position: 'absolute',
-            left: '100px',
-            top: '-270px',
-            display: this.state.showColorPicker,
-            alignItems: 'center',
-            justifyContent: 'center'
+            width: '215px',
+            top: '-140px',
+            left: '116px'
         }
-        const dotContainer = {
-            position: 'absolute',
-            left: '100px',
-            top: '20px',
-            display: this.state.showColorPicker,
-            alignItems: 'center',
-            justifyContent: 'center'
+        const pickerCSSpos = {
+            // position: 'relative',
+            // left: '-19px',
+        }
+        const container_p = {
+            textAlign: 'center',
+            padding: '5px',
+            fontWeight:'bold',
+            background: 'white',
+            color: 'black',
+            fontWeight: 'bold',
+            borderBottom: '1px solid rgb(190, 190, 190)',
+            borderLeft: '1px solid rgb(190, 190, 190)',
+            borderRight: '1px solid rgb(190, 190, 190)',
+            marginLeft: '-1px',
+            // marginBottom: '10px',
+            width: '215px',
         }
         return (
             <div className={'container2'}>
 
                 <div style={containerStyles}>
 
-                    {/* Buttons */}
-                    {/* Toggle Color Pickers */}
-                    <CircleButton
-                        handleClick={this.toggleColorPickers}
-                        handleToggles={this.handleToggles}
-                        btnStyles={btn1Styles} />
+                    <div key="graphicalMenu">
+                        {/* Buttons */}
+                        {/* Toggle Color Pickers */}
+                        <CircleButton
+                            handleClick={this.toggleColorPickers}
+                            icons={btn1Icons}
+                            btnStyles={btn1Styles} />
 
-                    {/* Toggle Sliders */}
-                    <CircleButton
-                        handleClick={this.toggleSliders}
-                        btnStyles={btn2Styles} />
-                    <CircleButton
-                        btnStyles={btn3Styles} />
-                    <img style={bgStyles} width="100px" src={backgroundImg.src} />
+                        {/* Toggle Sliders */}
+                        <CircleButton
+                            handleClick={this.toggleSliders}
+                            icons={btn2Icons}
+                            btnStyles={btn2Styles} />
+
+                        {/* !!! Unused Button !!! */}
+                        <CircleButton
+                            handleClick={this.props.handleDot}
+                            btnStyles={btn3Styles} />
+
+                        {/* Button background image */}
+                        <img style={bgStyles} width="100px" src={backgroundImg.src} />
+                    </div>
+
 
 
                     {/* Color Pickers */}
-                    <div className="animatedMenu">
-                        <div style={crossContainer} className="cross--color-picker-container">
+                    <div key="colorPicker" style={crosshairContainer} className="animatedMenu">
+                        <div className="cross--color-picker-container">
                             <ColorPicker
                                 type="chrome"
-                                position="right"
+                                positionCSS={pickerCSSpos}
                                 color={this.props.crossColor}
-                                display={this.state.showColorPicker}
-                                onChange={this.handleCrossColor}
-                                onClose={this.handleColorClose} />
-                            <span className="picker-title">Cross Color</span>
-                        </div>
-
-                        <div style={dotContainer} className="dot--color-picker-container">
-                            <ColorPicker
-                                type="chrome"
-                                position="right"
-                                color={this.props.dotColor}
-                                display={this.state.showColorPicker}
-                                onChange={this.handleDotColor}
-                                onClose={this.handleColorClose} />
-                            <span className="picker-title">Dot Color</span>
+                                onChange={this.handleCrossColor} />
+                            <p style={container_p} className="picker-title">Cross Color</p>
                         </div>
                     </div>
 
 
                     {/* Crosshair Sliders */}
-                    <div className="animatedMenu">
-                        <div style={sliderContainer}>
+                    <div key="sliderContainer" style={sliderContainer} className="animatedMenu">
+                        <div>
                             <Sliders key="sliders"
 
                                 /* Event Handlers */

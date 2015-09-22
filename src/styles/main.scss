@@ -25,13 +25,22 @@ html, body {
     padding: 0;
     width: 100vw;
     height: 100vh;
+    max-width: 100vh;
+    max-height: 100vh;
     overflow: hidden;
+    // background: rgb(117, 117, 117);
 }
 html {
   font-family: $font;
 }
 * {
     text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* Menu */
@@ -68,10 +77,15 @@ html {
     color: inherit;
 }
 .sliders div {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    // display: flex;
+    // align-items: center;
+    // justify-content: flex-start;
+    // flex-direction: column;
+}
+.slider-children {
+    width: 100%;
 }
 /*#menu-toggle {
     z-index: 300;

@@ -1,34 +1,8 @@
 import React from 'react';
-import Menu from './Menu';
 import CrossHair from './CrossHair';
 import MenuToggle from './MenuToggle';
-import 'greensock';
-// import draggable from 'greensock';
-import GSAP from 'react-gsap-enhancer';
 import CircleMenu from './CircleMenu'
 
-function createAnim({target}) {
-    const menu = target.find('menu')
-    return new TimelineMax()
-        .set(menu, {
-            scale: 1
-        })
-        .pause()
-        .add('open')
-        .to(menu, .5, {
-            x: 50,
-            ease: Linear.easeNone,
-        }, '-=0.7')
-        .to(menu, .5, {
-            scale: 0,
-            x: 0,
-            ease: Power1.easeOut,
-            // rotationZ:"360deg",
-        })
-        .add('collapse');
-}
-
-@GSAP()
 export default class App extends React.Component {
     constructor() {
         super();
@@ -49,10 +23,6 @@ export default class App extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.anim = this.addAnimation(createAnim)
-            .seek('open')
-    }
 
     handleDot = () => {
         var n = this.state.centerDot + 1;
@@ -93,18 +63,10 @@ export default class App extends React.Component {
     render() {
         return (
             <div id={'container1'} className={""}>
-                <MenuToggle
-                    handleClick={this.handleClick}
-                    top="0"
-                    left="0" />
 
-                <Menu
-
+                <CircleMenu
                     /* Event Handlers */
-                    handleDot={this.handleDot}
                     toggleSliders={this.toggleSliders}
-                    handleColorClose={this.handleColorClose}
-                    toggleColorPicker={this.toggleColorPicker}
                     handleChange={this.handleState}
 
                     /* Props */
@@ -114,17 +76,8 @@ export default class App extends React.Component {
                     dotDiameter={this.state.dotDiameter}
                     strokeWidth={this.state.strokeWidth}
                     opacity={this.state.opacity}
-                    spinning={this.state.spinning}
                     crossColor={this.state.crossColor}
-                    sliderVisible={this.state.sliderVisible}
-                    showSliders={this.state.showSliders} />
-
-                <CircleMenu
-                    /* Event Handlers */
-                    toggleSliders={this.toggleSliders}
-
-                    /* Props */
-                    showSliders={this.state.showSliders}
+                    handleDot={this.handleDot}
 
                     key="menu" />
 
