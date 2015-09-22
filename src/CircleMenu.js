@@ -1,7 +1,7 @@
 import React from 'react'
 import SVGComponent from './SVGComponent'
 import CircleButton from './CircleButton'
-import backgroundImg from './images/button_background.svg!image'
+// import backgroundImg from './images/button_background.svg!image'
 import ColorPicker from 'react-color'
 import Sliders from './Sliders'
 import 'greensock';
@@ -63,6 +63,7 @@ export default class CircleMenu extends React.Component {
             showColorPicker: false,
             showSliders: false
         }
+        this.backgroundImg = {src: './src/images/button_background.svg'}
     }
 
     componentDidMount() {
@@ -226,7 +227,7 @@ export default class CircleMenu extends React.Component {
                             btnStyles={btn3Styles} />
 
                         {/* Button background image */}
-                        <img style={bgStyles} width="100px" src={backgroundImg.src} />
+                        <img style={bgStyles} width="100px" src={this.backgroundImg.src} />
                     </div>
 
 

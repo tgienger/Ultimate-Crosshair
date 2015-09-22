@@ -5,6 +5,7 @@
     "directories": {},
     "dependencies": {
       "azazdeaz/react-gsap-enhancer": "github:azazdeaz/react-gsap-enhancer@^0.1.6",
+      "clean-css": "npm:clean-css@^3.4.4",
       "css": "github:systemjs/plugin-css@^0.1.17",
       "greensock": "github:greensock/GreenSock-JS@^1.18.0",
       "gsap": "npm:gsap@^1.18.0",
