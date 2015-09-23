@@ -1,3 +1,14 @@
+/* global Power1 */
+/* global TimelineMax */
+
+
+/**
+ * TODO: Create menu for dot selection:
+ *       Make selectable images, plus an input for an
+ *       external image (http://)
+ */
+
+
 import React from 'react'
 import SVGComponent from './SVGComponent'
 import CircleButton from './CircleButton'
@@ -154,7 +165,7 @@ export default class CircleMenu extends React.Component {
             top: '-24px',
             left: '-147px'
         }
-        const btn2Icons = 'icon icon-settings icon--grey'
+        const btn2Icons = 'icon icon-sliders icon--grey'
 
         // positioning of bottom button
         const btn3Styles = {
@@ -163,6 +174,7 @@ export default class CircleMenu extends React.Component {
             top: '40px',
             left: '-103px'
         }
+        const btn3Icons = 'icon icon-gear icon--grey'
 
         // container holding slider menu
         const sliderContainer = {
@@ -194,7 +206,6 @@ export default class CircleMenu extends React.Component {
             fontWeight:'bold',
             background: 'white',
             color: 'black',
-            fontWeight: 'bold',
             borderBottom: '1px solid rgb(190, 190, 190)',
             borderLeft: '1px solid rgb(190, 190, 190)',
             borderRight: '1px solid rgb(190, 190, 190)',
@@ -224,6 +235,7 @@ export default class CircleMenu extends React.Component {
                         {/* !!! Unused Button !!! */}
                         <CircleButton
                             handleClick={this.props.handleDot}
+                            icons={btn3Icons}
                             btnStyles={btn3Styles} />
 
                         {/* Button background image */}
