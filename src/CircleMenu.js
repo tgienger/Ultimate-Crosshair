@@ -16,7 +16,8 @@ import CircleButton from './CircleButton'
 import ColorPicker from 'react-color'
 import Sliders from './Sliders'
 import 'greensock';
-import GSAP from 'react-gsap-enhancer'
+import GSAP from 'react-gsap-enhancer';
+import CircleButtonGroup from './CircleButtonGroup';
 
 
 function sliderAnim({target}) {
@@ -74,7 +75,6 @@ export default class CircleMenu extends React.Component {
             showColorPicker: false,
             showSliders: false
         }
-        this.backgroundImg = {src: './src/images/button_background.svg'}
     }
 
     componentDidMount() {
@@ -89,7 +89,8 @@ export default class CircleMenu extends React.Component {
 
         if (!this.state.showColorPicker) {
             this.pickerAnim.tweenTo('open')
-        } else {
+        }
+        else {
             this.pickerAnim.tweenTo('collapse')
         }
     }
@@ -100,15 +101,10 @@ export default class CircleMenu extends React.Component {
         if (!this.state.showSliders) {
 
             this.sliderAnim.tweenTo('open')
-        } else {
+        }
+        else {
             this.sliderAnim.tweenTo('collapse')
         }
-        // this.setState({showColorPicker: 'none'})
-        // if (this.state.showSliders === 'none') {
-        //     this.setState({showSliders: 'block'})
-        // } else {
-        //     this.setState({showSliders: 'none'})
-        // }
     }
 
     handleToggles = (state) => {
@@ -140,55 +136,12 @@ export default class CircleMenu extends React.Component {
 
         }
 
-        // Styles for the button background svg
-        const bgStyles = {
-            // zIndex: 90,
-            position: 'absolute',
-            top: '-93px',
-            left: '-150px',
-            transform:'rotate(180deg)'
-        }
-
-        // positioning of top button
-        const btn1Styles = {
-            zIndex: 9999,
-            position: 'absolute',
-            top: '-90px',
-            left: '-103px'
-        }
-        const btn1Icons = 'icon icon-paint icon--grey'
-
-        // positioning of middle button
-        const btn2Styles = {
-            zIndex: 9999,
-            position: 'absolute',
-            top: '-24px',
-            left: '-147px'
-        }
-        const btn2Icons = 'icon icon-sliders icon--grey'
-
-        // positioning of bottom button
-        const btn3Styles = {
-            zIndex: 9999,
-            position: 'absolute',
-            top: '40px',
-            left: '-103px'
-        }
-        const btn3Icons = 'icon icon-gear icon--grey'
-
         // container holding slider menu
         const sliderContainer = {
             position: 'absolute',
-            background: 'rgba(255,255,255,0.7)',
-            color: 'black',
-            fontWeight: 'bold',
-            border: '1px solid rgb(190, 190, 190)',
-            borderRadius: '3px',
             width: '215px',
-            display: 'block',
-            padding: '5px',
             left: '116px',
-            top: '-130px',
+            top: '-170px',
         }
         const crosshairContainer = {
             position: 'absolute',
@@ -213,67 +166,59 @@ export default class CircleMenu extends React.Component {
             // marginBottom: '10px',
             width: '215px',
         }
+
+        // He're we'll decide if these menus are to be shown or not
+        // if not, we wont bother rendering them.
+        let sliderMenu;
+        if (this.state.showSliders) {
+            sliderMenu = (<Sliders key="sliders"
+
+                /* Event Handlers */
+                handleChange={this.handleChange}
+
+                /* Props */
+                crossSize={this.props.crossSize}
+                crossSpread={this.props.crossSpread}
+                crossLength={this.props.crossLength}
+                dotDiameter={this.props.dotDiameter}
+                strokeWidth={this.props.strokeWidth}
+                opacity={this.props.opacity}
+                showSliders={this.state.showSliders} />);
+        }
+
+        let colorPicker;
+        if (this.state.showColorPicker) {
+            colorPicker = (
+            <div className="cross--color-picker-container">
+                <ColorPicker
+                    type="chrome"
+                    positionCSS={pickerCSSpos}
+                    color={this.props.crossColor}
+                    onChange={this.handleCrossColor} />
+                <p style={container_p} className="picker-title">Cross Color</p>
+            </div>);
+        }
+
         return (
             <div className={'container2'}>
 
                 <div style={containerStyles}>
 
-                    <div key="graphicalMenu">
-                        {/* Buttons */}
-                        {/* Toggle Color Pickers */}
-                        <CircleButton
-                            handleClick={this.toggleColorPickers}
-                            icons={btn1Icons}
-                            btnStyles={btn1Styles} />
-
-                        {/* Toggle Sliders */}
-                        <CircleButton
-                            handleClick={this.toggleSliders}
-                            icons={btn2Icons}
-                            btnStyles={btn2Styles} />
-
-                        {/* !!! Unused Button !!! */}
-                        <CircleButton
-                            handleClick={this.props.handleDot}
-                            icons={btn3Icons}
-                            btnStyles={btn3Styles} />
-
-                        {/* Button background image */}
-                        <img style={bgStyles} width="100px" src={this.backgroundImg.src} />
-                    </div>
-
+                    <CircleButtonGroup
+                        toggleColorPickers={this.toggleColorPickers}
+                        toggleSliders={this.toggleSliders}
+                        handleDot={this.props.handleDot} />
 
 
                     {/* Color Pickers */}
                     <div key="colorPicker" style={crosshairContainer} className="animatedMenu">
-                        <div className="cross--color-picker-container">
-                            <ColorPicker
-                                type="chrome"
-                                positionCSS={pickerCSSpos}
-                                color={this.props.crossColor}
-                                onChange={this.handleCrossColor} />
-                            <p style={container_p} className="picker-title">Cross Color</p>
-                        </div>
+                        {colorPicker}
                     </div>
 
 
                     {/* Crosshair Sliders */}
                     <div key="sliderContainer" style={sliderContainer} className="animatedMenu">
-                        <div>
-                            <Sliders key="sliders"
-
-                                /* Event Handlers */
-                                handleChange={this.handleChange}
-
-                                /* Props */
-                                crossSize={this.props.crossSize}
-                                crossSpread={this.props.crossSpread}
-                                crossLength={this.props.crossLength}
-                                dotDiameter={this.props.dotDiameter}
-                                strokeWidth={this.props.strokeWidth}
-                                opacity={this.props.opacity}
-                                showSliders={this.state.showSliders} />
-                        </div>
+                        {sliderMenu}
                     </div>
 
                 </div>
