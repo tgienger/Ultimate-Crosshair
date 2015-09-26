@@ -1,6 +1,5 @@
 import React from 'react';
 import CrossHair from './CrossHair';
-import MenuToggle from './MenuToggle';
 import CircleMenu from './CircleMenu'
 
 export default class App extends React.Component {

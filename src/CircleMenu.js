@@ -1,14 +1,6 @@
 /* global Power1 */
 /* global TimelineMax */
 
-
-/**
- * TODO: Create menu for dot selection:
- *       Make selectable images, plus an input for an
- *       external image (http://)
- */
-
-
 import React from 'react'
 import SVGComponent from './SVGComponent'
 import CircleButton from './CircleButton'
@@ -18,100 +10,99 @@ import Sliders from './Sliders'
 import 'greensock';
 import GSAP from 'react-gsap-enhancer';
 import CircleButtonGroup from './CircleButtonGroup';
+import DotMenu from './DotMenu';
 
 
-function sliderAnim({target}) {
-    const sliders = target.find('sliderContainer')
+function menuAnim({target, options}) {
+    const menu = target.find(options.key)
 
+    // const tl = new TimelineMax()
+    //     tl.set(menu, {
+    //         scale: 1,
+    //         x: 0,
+    //         ease: Power1.easeOut,
+    //     })
+    //     .pause()
+    //     tl.add('open')
+    //     .to(menu, .2, {
+    //         scale: 0,
+    //         x: options.x,
+    //         y: options.y,
+    //         ease: Power1.easeOut,
+    //     })
+    //     tl.add('collapse')
     const tl = new TimelineMax()
-        tl.set(sliders, {
-            scale: 1,
-            x: 0,
-            ease: Power1.easeOut,
-        })
-        .pause()
-        tl.add('open')
-        .to(sliders, .2, {
-            scale: 0,
-            x: -325,
-            ease: Power1.easeOut,
-        })
-        tl.add('collapse')
-
-    return tl
-}
-
-function pickerAnim({target}) {
-    const picker = target.find('colorPicker')
-
-    const tl = new TimelineMax()
-        .set(picker, {
-            scale: 1,
-            x: 0,
-            ease: Power1.easeOut
-        })
-        .pause()
-        .add('open')
-        .to(picker, .2, {
-            scale: 0,
-            x: -275,
-            y: -50,
-            ease: Power1.easeOut
-        })
-        .add('collapse')
+    tl.set(menu, {
+        scale: 0,
+        x: options.x,
+        y: options.y
+    })
+    .to(menu, .3, {
+        scale: 1,
+        x: 0,
+        y: 0,
+        ease: Power1.easeOut
+    })
 
     return tl
 }
 
 @GSAP()
 export default class CircleMenu extends React.Component {
+
+    state = {
+        backgroundStyles: {
+            display: 'none'
+        },
+        showColorPicker: false,
+        showSliders: false,
+        showDotMenu: false
+    }
+
+    dotMenu = {
+        key: 'dotMenu',
+        x: -275,
+        y: 20
+    }
+
+    colorPicker = {
+        key: 'colorPicker',
+        x: -275,
+        y: -50
+    }
+
+    sliderContainer = {
+        key: 'sliderContainer',
+        x: -325,
+        y: 0
+    }
+
     constructor(props) {
         super(props)
-
-        this.state = {
-            backgroundStyles: {
-                display: 'none'
-            },
-            showColorPicker: false,
-            showSliders: false
-        }
     }
 
-    componentDidMount() {
-        this.sliderAnim = this.addAnimation(sliderAnim).seek('collapse')
-        this.pickerAnim = this.addAnimation(pickerAnim).seek('collapse')
-    }
 
     toggleColorPickers = () => {
-
-        this.setState({showSliders: false, showColorPicker: !this.state.showColorPicker})
-        this.sliderAnim.tweenTo('collapse');
-
+        this.setState({showSliders: false, showColorPicker: !this.state.showColorPicker, showDotMenu: false})
         if (!this.state.showColorPicker) {
-            this.pickerAnim.tweenTo('open')
-        }
-        else {
-            this.pickerAnim.tweenTo('collapse')
+            this.addAnimation(menuAnim, this.colorPicker)
         }
     }
 
     toggleSliders = () => {
-        this.setState({showSliders: !this.state.showSliders, showColorPicker: false})
-        this.pickerAnim.tweenTo('collapse')
+        this.setState({showSliders: !this.state.showSliders, showColorPicker: false, showDotMenu: false})
         if (!this.state.showSliders) {
-
-            this.sliderAnim.tweenTo('open')
-        }
-        else {
-            this.sliderAnim.tweenTo('collapse')
+            this.addAnimation(menuAnim, this.sliderContainer)
         }
     }
 
-    handleToggles = (state) => {
-        let val = !this.state[state]
-        let newState = {}
-        newState[state] = val
-        this.setState(newState)
+
+    toggleDotMenu = () => {
+        this.setState({showSliders: false, showColorPicker: false, showDotMenu: !this.state.showDotMenu})
+        if (!this.state.showDotMenu) {
+            this.addAnimation(menuAnim, this.dotMenu)
+        }
+
     }
 
 
@@ -134,25 +125,30 @@ export default class CircleMenu extends React.Component {
             top: 0,
             left:0,
 
-        }
-
+        };
         // container holding slider menu
         const sliderContainer = {
             position: 'absolute',
             width: '215px',
             left: '116px',
             top: '-170px',
-        }
+        };
         const crosshairContainer = {
             position: 'absolute',
             width: '215px',
             top: '-140px',
             left: '116px'
-        }
+        };
+        const dotContainer = {
+            position: 'absolute',
+            width: '215px',
+            left: '116px',
+            top: '0px'
+        };
         const pickerCSSpos = {
             // position: 'relative',
             // left: '-19px',
-        }
+        };
         const container_p = {
             textAlign: 'center',
             padding: '5px',
@@ -165,7 +161,7 @@ export default class CircleMenu extends React.Component {
             marginLeft: '-1px',
             // marginBottom: '10px',
             width: '215px',
-        }
+        };
 
         // He're we'll decide if these menus are to be shown or not
         // if not, we wont bother rendering them.
@@ -199,15 +195,29 @@ export default class CircleMenu extends React.Component {
             </div>);
         }
 
+        let centerDot;
+        if (this.state.showDotMenu) {
+            centerDot = (
+                <DotMenu />
+            );
+        }
+
         return (
             <div className={'container2'}>
 
                 <div style={containerStyles}>
 
+                    {/* Menu Buttons */}
                     <CircleButtonGroup
                         toggleColorPickers={this.toggleColorPickers}
                         toggleSliders={this.toggleSliders}
-                        handleDot={this.props.handleDot} />
+                        handleDot={this.toggleDotMenu} />
+
+
+                    {/* Center Dot Selection Menu */}
+                    <div key="dotMenu" style={dotContainer} >
+                        {centerDot}
+                    </div>
 
 
                     {/* Color Pickers */}

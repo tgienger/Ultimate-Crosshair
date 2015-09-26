@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class CenterDotMenu extends React.Component {
+export default class DotMenu extends React.Component {
 
     static propTypes = {};
 
@@ -32,7 +32,19 @@ export default class CenterDotMenu extends React.Component {
         }
         return (
             <div style={styles}>
-
+                {/* Display different options for the center dot */}
+                <div>
+                    <button>Dot</button>
+                </div>
+                <div>
+                    <button>Square</button>
+                </div>
+                <div>
+                    <button>Oval</button>
+                </div>
+                <div>
+                    <button>Triangle</button>
+                </div>
             </div>
         );
     }
