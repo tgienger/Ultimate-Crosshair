@@ -28,7 +28,8 @@ export default class CircleButtonGroup extends React.Component {
             position: 'absolute',
             top: '-93px',
             left: '-150px',
-            transform:'rotate(180deg)'
+            transform:'rotate(180deg)',
+            width: '100px'
         }
 
         // positioning of top button
@@ -47,7 +48,7 @@ export default class CircleButtonGroup extends React.Component {
             top: '-24px',
             left: '-147px'
         }
-        const btn2Icons = 'icon icon-sliders icon--grey'
+        const btn2Icons = 'icon icon-sliders icon--grey';
 
         // positioning of bottom button
         const btn3Styles = {
@@ -55,8 +56,10 @@ export default class CircleButtonGroup extends React.Component {
             position: 'absolute',
             top: '40px',
             left: '-103px'
-        }
-        const btn3Icons = 'icon icon-gear icon--grey'
+        };
+
+        const btn3Icons = 'icon icon-gear icon--grey';
+
 
         return (
             <div key="graphicalMenu">
@@ -80,7 +83,7 @@ export default class CircleButtonGroup extends React.Component {
                     btnStyles={btn3Styles} />
 
                 {/* Button background image */}
-                <img style={bgStyles} width="100px" src={this.backgroundImg.src} />
+                <img style={bgStyles} src={this.backgroundImg.src} />
             </div>
         );
     }

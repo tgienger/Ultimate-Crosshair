@@ -15,9 +15,9 @@ export default class Centerdot extends React.Component {
     }
 
     render() {
-        var color = ['red', 'green', 'blue', 'orange'][this.state.color];
-        var size = parseInt(this.props.dotDiameter);
-        var shape;
+        let color = this.props.dotColor;
+        let size = parseInt(this.props.dotDiameter);
+        let shape;
         switch (this.props.centerDot) {
 
             case 0:
@@ -49,6 +49,15 @@ export default class Centerdot extends React.Component {
                         cy="50%"
                         rx={size / 2}
                         ry={size / 2 * 0.75}
+                        fill={color} />;
+                break;
+            case 3:
+                let a = 50 - size / 2;
+                let b = 50 + size;
+                let c = 50 + size / 2;
+                shape =
+                    <polygon
+                        points={c + ", " + b + " 50, " + "50" + " " + a + ", " + b}
                         fill={color} />;
                 break;
         }

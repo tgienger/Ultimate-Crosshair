@@ -47,7 +47,7 @@ export default class Sliders extends React.Component {
                 <Slider
                     id="dot-diameter"
                     className="slider-child"
-                    labelName="Dot Diameter"
+                    labelName="Dot Size"
                     min="0"
                     max="20"
                     step="1"

@@ -17,6 +17,7 @@ export default class CrossHair extends React.Component {
 
                     <Centerdot
                         dotDiameter={this.props.dotDiameter}
+                        dotColor={this.props.dotColor}
                         centerDot={this.props.centerDot} />
                 </SVGComponent>
             </div>

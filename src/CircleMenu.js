@@ -16,21 +16,6 @@ import DotMenu from './DotMenu';
 function menuAnim({target, options}) {
     const menu = target.find(options.key)
 
-    // const tl = new TimelineMax()
-    //     tl.set(menu, {
-    //         scale: 1,
-    //         x: 0,
-    //         ease: Power1.easeOut,
-    //     })
-    //     .pause()
-    //     tl.add('open')
-    //     .to(menu, .2, {
-    //         scale: 0,
-    //         x: options.x,
-    //         y: options.y,
-    //         ease: Power1.easeOut,
-    //     })
-    //     tl.add('collapse')
     const tl = new TimelineMax()
     tl.set(menu, {
         scale: 0,
@@ -56,7 +41,9 @@ export default class CircleMenu extends React.Component {
         },
         showColorPicker: false,
         showSliders: false,
-        showDotMenu: false
+        showDotMenu: false,
+        currentColorSelection: 'Cross Color',
+        currentColor: this.props.crossColor
     }
 
     dotMenu = {
@@ -111,11 +98,50 @@ export default class CircleMenu extends React.Component {
     }
 
 
-    handleCrossColor = (color) => {
+    handleColorChange = (color) => {
         let newColor = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
-        this.props.handleChange('crossColor', newColor);
+        this.setState({currentColor: newColor});
+        let changed;
+
+        if (this.state.currentColorSelection === 'Cross Color') {
+            changed = 'crossColor';
+        } else {
+            changed = 'dotColor';
+        }
+
+        this.props.handleChange(changed, newColor);
     }
 
+    // Toggles color selection between the cross and dot
+    toggleColorSelection = () => {
+        let newSelection; // which are we working on now, cross or dot
+        let currentColor; // which color is currently selected for the current options (dot or cross).
+
+        if (this.state.currentColorSelection === 'Cross Color') {
+            newSelection = 'Dot Color';
+            currentColor = this.props.dotColor;
+        } else {
+            newSelection = 'Cross Color';
+            currentColor = this.props.crossColor;
+        }
+        this.setState({currentColor: currentColor, currentColorSelection: newSelection});
+    }
+
+    setDot = () => {
+        this.props.handleDot(0);
+    }
+
+    setSquare = () => {
+        this.props.handleDot(1);
+    }
+
+    setOval = () => {
+        this.props.handleDot(2);
+    }
+
+    setTriangle = () => {
+        this.props.handleDot(3);
+    }
 
     render() {
         // Container Holding entire menu
@@ -143,7 +169,7 @@ export default class CircleMenu extends React.Component {
             position: 'absolute',
             width: '215px',
             left: '116px',
-            top: '0px'
+            top: '-95px'
         };
         const pickerCSSpos = {
             // position: 'relative',
@@ -189,16 +215,20 @@ export default class CircleMenu extends React.Component {
                 <ColorPicker
                     type="chrome"
                     positionCSS={pickerCSSpos}
-                    color={this.props.crossColor}
-                    onChange={this.handleCrossColor} />
-                <p style={container_p} className="picker-title">Cross Color</p>
+                    color={this.state.currentColor}
+                    onChange={this.handleColorChange} />
+                <p style={container_p} onClick={this.toggleColorSelection} className="picker-title"><a href="#">&laquo; {this.state.currentColorSelection} &raquo;</a></p>
             </div>);
         }
 
         let centerDot;
         if (this.state.showDotMenu) {
             centerDot = (
-                <DotMenu />
+                <DotMenu
+                    dot={this.setDot}
+                    square={this.setSquare}
+                    oval={this.setOval}
+                    triangle={this.setTriangle} />
             );
         }
 

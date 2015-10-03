@@ -5,12 +5,14 @@ import CircleMenu from './CircleMenu'
 export default class App extends React.Component {
     constructor() {
         super();
-        this.state = {
+        this.state = JSON.parse(localStorage.state) || {
             centerDot: 0,
             crossSize: 100,
             crossSpread: 0,
             crossLength: 0,
             crossColor: "rgba(0, 255, 0, 1)",
+            dotColor: 'rgba(0, 255, 0, 1)',
+            currentColor: 'rgba(0,255,0,1)',
             dotDiameter: 10,
             strokeWidth: 1,
             spinning: false,
@@ -23,10 +25,15 @@ export default class App extends React.Component {
     }
 
 
-    handleDot = () => {
-        var n = this.state.centerDot + 1;
+
+    componentDidUpdate(prevProps, prevState) {
+        localStorage.state = JSON.stringify(this.state);
+    }
+
+
+    handleDot = (n) => {
         this.setState({
-            centerDot: n < 3 ? n : 0
+            centerDot: n
         });
     }
 
@@ -76,6 +83,8 @@ export default class App extends React.Component {
                     strokeWidth={this.state.strokeWidth}
                     opacity={this.state.opacity}
                     crossColor={this.state.crossColor}
+                    dotColor={this.state.dotColor}
+                    currentColor={this.state.currentColor}
                     handleDot={this.handleDot}
 
                     key="menu" />
@@ -91,6 +100,7 @@ export default class App extends React.Component {
                     opacity={this.state.opacity}
                     spinning={this.state.spinning}
                     crossColor={this.state.crossColor}
+                    dotColor={this.state.dotColor}
                     viewBox="0 0 100 100" />
             </div>
         );
