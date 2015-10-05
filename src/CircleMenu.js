@@ -99,8 +99,8 @@ export default class CircleMenu extends React.Component {
 
 
     handleColorChange = (color) => {
-        // let newColor = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
-        let newColor = color.rgb;
+        let newColor = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
+        
         this.setState({currentColor: newColor});
         let changed;
 
@@ -211,8 +211,6 @@ export default class CircleMenu extends React.Component {
         }
 
 
-        const currentColor = `rgba(${this.state.currentColor.r}, ${this.state.currentColor.g}, ${this.state.currentColor.b}, ${this.state.currentColor.a})`;
-
         let colorPicker;
         if (this.state.showColorPicker) {
             colorPicker = (
@@ -220,7 +218,7 @@ export default class CircleMenu extends React.Component {
                 <ColorPicker
                     type="chrome"
                     positionCSS={pickerCSSpos}
-                    color={currentColor}
+                    color={this.state.currentColor}
                     onChange={this.handleColorChange} />
                 <p style={container_p} onClick={this.toggleColorSelection} className="picker-title"><a href="#">&laquo; {this.state.currentColorSelection} &raquo;</a></p>
             </div>);
