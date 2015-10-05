@@ -43,7 +43,7 @@ export default class CircleMenu extends React.Component {
         showSliders: false,
         showDotMenu: false,
         currentColorSelection: 'Cross Color',
-        currentColor: this.props.crossColor
+        currentColor: `rgba(${this.props.crossColor.r}, ${this.props.crossColor.g}, ${this.props.crossColor.b}, ${this.props.crossColor.a})`
     }
 
     dotMenu = {
@@ -109,7 +109,7 @@ export default class CircleMenu extends React.Component {
             changed = 'dotColor';
         }
 
-        this.props.handleChange(changed, newColor);
+        this.props.handleChange(changed, color.rgb);
     }
 
     // Toggles color selection between the cross and dot

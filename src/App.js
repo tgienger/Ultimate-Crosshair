@@ -5,22 +5,26 @@ import CircleMenu from './CircleMenu'
 export default class App extends React.Component {
     constructor() {
         super();
-        this.state = JSON.parse(localStorage.state) || {
-            centerDot: 0,
-            crossSize: 100,
-            crossSpread: 0,
-            crossLength: 0,
-            crossColor: "rgba(0, 255, 0, 1)",
-            dotColor: 'rgba(0, 255, 0, 1)',
-            currentColor: 'rgba(0,255,0,1)',
-            dotDiameter: 10,
-            strokeWidth: 1,
-            spinning: false,
-            showMenu: false,
-            showSliders: false,
-            showColorPicker: false,
-            opacity: 1,
-            color: 0
+        if (localStorage.state) {
+            this.state = JSON.parse(localStorage.state);
+        } else {
+            this.state = {
+                centerDot: 0,
+                crossSize: 100,
+                crossSpread: 0,
+                crossLength: 0,
+                crossColor: {r: 0, g: 255, b: 0, a: 1},
+                dotColor: {r: 0, g: 255, b: 0, a: 1},
+                currentColor: {r: 0, g: 255, b: 0, a: 1},
+                dotDiameter: 10,
+                strokeWidth: 1,
+                spinning: false,
+                showMenu: false,
+                showSliders: false,
+                showColorPicker: false,
+                opacity: 1,
+                color: 0
+            }
         }
     }
 
@@ -67,6 +71,26 @@ export default class App extends React.Component {
     }
 
     render() {
+        
+        let crossHair;
+        if (this.state.opacity > 0) {
+            crossHair = (
+                <CrossHair
+                    centerDot={this.state.centerDot}
+                    height={this.state.crossSize}
+                    width={this.state.crossSize}
+                    crossSpread={this.state.crossSpread}
+                    crossLength={this.state.crossLength}
+                    dotDiameter={this.state.dotDiameter}
+                    strokeWidth={this.state.strokeWidth}
+                    opacity={this.state.opacity}
+                    spinning={this.state.spinning}
+                    crossColor={this.state.crossColor}
+                    dotColor={this.state.dotColor}
+                    viewBox="0 0 100 100" />
+            );
+        }
+        
         return (
             <div id={'container1'}>
 
@@ -89,19 +113,8 @@ export default class App extends React.Component {
 
                     key="menu" />
 
-                <CrossHair
-                    centerDot={this.state.centerDot}
-                    height={this.state.crossSize}
-                    width={this.state.crossSize}
-                    crossSpread={this.state.crossSpread}
-                    crossLength={this.state.crossLength}
-                    dotDiameter={this.state.dotDiameter}
-                    strokeWidth={this.state.strokeWidth}
-                    opacity={this.state.opacity}
-                    spinning={this.state.spinning}
-                    crossColor={this.state.crossColor}
-                    dotColor={this.state.dotColor}
-                    viewBox="0 0 100 100" />
+                {crossHair}
+                
             </div>
         );
     }
