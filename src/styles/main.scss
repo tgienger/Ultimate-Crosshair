@@ -29,6 +29,10 @@ html, body {
     max-height: 100vh;
     overflow: hidden;
     // background: rgb(117, 117, 117);
+    background-image: url('src/images/APB-Reloaded-screenshots-14.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 }
 html {
   font-family: $font;
@@ -98,7 +102,7 @@ html {
 
 /* Crosshair */
 .container1 {
-    z-index: -1;
+    z-index: 2;
 }
 .container2 {
     // z-index: 90;

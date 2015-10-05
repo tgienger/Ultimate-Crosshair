@@ -114,7 +114,6 @@ export default class App extends React.Component {
                     key="menu" />
 
                 {crossHair}
-                
             </div>
         );
     }

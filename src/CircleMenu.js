@@ -99,7 +99,8 @@ export default class CircleMenu extends React.Component {
 
 
     handleColorChange = (color) => {
-        let newColor = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
+        // let newColor = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
+        let newColor = color.rgb;
         this.setState({currentColor: newColor});
         let changed;
 
@@ -148,6 +149,7 @@ export default class CircleMenu extends React.Component {
         // used for absolute positioning at center of screen
         const containerStyles = {
             position: 'relative',
+            zIndex: 3,
             top: 0,
             left:0,
 
@@ -208,6 +210,9 @@ export default class CircleMenu extends React.Component {
                 showSliders={this.state.showSliders} />);
         }
 
+
+        const currentColor = `rgba(${this.state.currentColor.r}, ${this.state.currentColor.g}, ${this.state.currentColor.b}, ${this.state.currentColor.a})`;
+
         let colorPicker;
         if (this.state.showColorPicker) {
             colorPicker = (
@@ -215,7 +220,7 @@ export default class CircleMenu extends React.Component {
                 <ColorPicker
                     type="chrome"
                     positionCSS={pickerCSSpos}
-                    color={this.state.currentColor}
+                    color={currentColor}
                     onChange={this.handleColorChange} />
                 <p style={container_p} onClick={this.toggleColorSelection} className="picker-title"><a href="#">&laquo; {this.state.currentColorSelection} &raquo;</a></p>
             </div>);
