@@ -1,11 +1,11 @@
 import React from 'react';
-import CrossHair from './CrossHair';
+// import CrossHair from './CrossHair';
 import CircleMenu from './CircleMenu'
 
 export default class App extends React.Component {
     constructor() {
         super();
-        if (localStorage.state) {
+        if (window.localStorage.state) {
             this.state = JSON.parse(localStorage.state);
         } else {
             this.state = {
@@ -29,9 +29,8 @@ export default class App extends React.Component {
     }
 
 
-
     componentDidUpdate(prevProps, prevState) {
-        localStorage.state = JSON.stringify(this.state);
+        window.localStorage.state = JSON.stringify(this.state);
     }
 
 
@@ -72,49 +71,26 @@ export default class App extends React.Component {
 
     render() {
         
-        let crossHair;
-        if (this.state.opacity > 0) {
-            crossHair = (
-                <CrossHair
-                    centerDot={this.state.centerDot}
-                    height={this.state.crossSize}
-                    width={this.state.crossSize}
-                    crossSpread={this.state.crossSpread}
-                    crossLength={this.state.crossLength}
-                    dotDiameter={this.state.dotDiameter}
-                    strokeWidth={this.state.strokeWidth}
-                    opacity={this.state.opacity}
-                    spinning={this.state.spinning}
-                    crossColor={this.state.crossColor}
-                    dotColor={this.state.dotColor}
-                    viewBox="0 0 100 100" />
-            );
-        }
-        
         return (
-            <div id={'container1'}>
+            <CircleMenu
+                /* Event Handlers */
+                toggleSliders={this.toggleSliders}
+                handleChange={this.handleState}
 
-                <CircleMenu
-                    /* Event Handlers */
-                    toggleSliders={this.toggleSliders}
-                    handleChange={this.handleState}
+                /* Props */
+                crossSize={this.state.crossSize}
+                crossSpread={this.state.crossSpread}
+                crossLength={this.state.crossLength}
+                dotDiameter={this.state.dotDiameter}
+                strokeWidth={this.state.strokeWidth}
+                opacity={this.state.opacity}
+                crossColor={this.state.crossColor}
+                dotColor={this.state.dotColor}
+                currentColor={this.state.currentColor}
+                handleDot={this.handleDot}
 
-                    /* Props */
-                    crossSize={this.state.crossSize}
-                    crossSpread={this.state.crossSpread}
-                    crossLength={this.state.crossLength}
-                    dotDiameter={this.state.dotDiameter}
-                    strokeWidth={this.state.strokeWidth}
-                    opacity={this.state.opacity}
-                    crossColor={this.state.crossColor}
-                    dotColor={this.state.dotColor}
-                    currentColor={this.state.currentColor}
-                    handleDot={this.handleDot}
+                key="menu" />
 
-                    key="menu" />
-
-                {crossHair}
-            </div>
         );
     }
 }

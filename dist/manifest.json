@@ -11,18 +11,23 @@
     "description":"Crosshair Overlay"
   },
   "data": {
-    "start_window":"MainWindow",
+    "start_window":"MenuWindow",
     "windows":{
-      "MainWindow":{
+      "MenuWindow":{
         "file":"index.html",
         "transparent":true,
         "resizable":false,
         "show_in_taskbar": true,
         "in_game_only": false,
-        "size": {
-          "width": 500,
-          "height": 300
-        }
+        "size": {"width": 500, "height": 300}
+      },
+      "CrossWindow": {
+        "file": "cross.html",
+        "transparent": true,
+        "resizable":false,
+        "show_in_taskbar":false,
+        "in_game_only": false,
+        "size": {"width": 200, "height": 200}
       }
     },
     "hotkeys": {
