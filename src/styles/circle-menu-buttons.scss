@@ -6,11 +6,18 @@ $text-color: darken($bg,30%);
 $btnHeight: 50px;
 $btnWidth: $btnHeight;
 
+$smBtnHeight: 20px;
+$smBtnWidth: $smBtnHeight;
+
 $btnPadding: percentage(10px / 120px);
 $innerButton: 98%;
 
 $iconSize: 1.125em;
+$smIconSize: .75em;
+
 $iconMarginTop: 24%;
+$smIconMarginTop: -25px;
+
 $iconMarginTopClicked: calc(24% + 2px);
 
 @mixin nb-gradient($bg){
@@ -26,6 +33,10 @@ $iconMarginTopClicked: calc(24% + 2px);
 .btn__container {
     height: $btnHeight;
     width: $btnWidth;
+}
+.sm-btn__container {
+  height: $smBtnHeight;
+  width: $smBtnWidth;
 }
 .btn-wrapper{
   width: 100%;
@@ -54,7 +65,7 @@ $iconMarginTopClicked: calc(24% + 2px);
   height: $innerButton;
   text-align: center;
   border-radius: 100%;
-  margin-top: 3px;
+  // margin-top: 3px;
   box-shadow:
     0 4px 4px rgba(0,0,0,0.085),
     0 0 3px rgba(0,0,0,0.2),
@@ -67,6 +78,13 @@ $iconMarginTopClicked: calc(24% + 2px);
       text-shadow: 1px 1px 1px rgba(255, 255, 255, .4);
     }
   }
+}
+.sm-icon {
+  color: darken($bg, 40%);
+  // display: block;
+  font-size: $smIconSize;
+  margin-top: $smIconMarginTop;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
 }
 .icon{
   display: block;

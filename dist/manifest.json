@@ -17,14 +17,15 @@
         "file":"index.html",
         "transparent":true,
         "resizable":false,
+        "size": {"width": 1000, "height": 500},
         "show_in_taskbar": true,
-        "in_game_only": false,
-        "size": {"width": 500, "height": 300}
+        "in_game_only": false
       },
       "CrossWindow": {
         "file": "cross.html",
         "transparent": true,
         "resizable":false,
+        "clickthrough": true,
         "show_in_taskbar":false,
         "in_game_only": false,
         "size": {"width": 200, "height": 200}

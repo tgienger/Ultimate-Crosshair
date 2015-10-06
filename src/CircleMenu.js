@@ -100,7 +100,7 @@ export default class CircleMenu extends React.Component {
 
     handleColorChange = (color) => {
         let newColor = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
-        
+
         this.setState({currentColor: newColor});
         let changed;
 
@@ -158,19 +158,19 @@ export default class CircleMenu extends React.Component {
         const sliderContainer = {
             position: 'absolute',
             width: '215px',
-            left: '116px',
+            left: '135px',
             top: '-170px',
         };
         const crosshairContainer = {
             position: 'absolute',
             width: '215px',
             top: '-140px',
-            left: '116px'
+            left: '135px'
         };
         const dotContainer = {
             position: 'absolute',
             width: '215px',
-            left: '116px',
+            left: '135px',
             top: '-95px'
         };
         const pickerCSSpos = {
@@ -184,6 +184,7 @@ export default class CircleMenu extends React.Component {
             background: 'white',
             color: 'black',
             borderBottom: '1px solid rgb(190, 190, 190)',
+            borderTop: '1px solid rgb(190,190,190)',
             borderLeft: '1px solid rgb(190, 190, 190)',
             borderRight: '1px solid rgb(190, 190, 190)',
             marginLeft: '-1px',
@@ -220,7 +221,7 @@ export default class CircleMenu extends React.Component {
                     positionCSS={pickerCSSpos}
                     color={this.state.currentColor}
                     onChange={this.handleColorChange} />
-                <p style={container_p} onClick={this.toggleColorSelection} className="picker-title"><a href="#">&laquo; {this.state.currentColorSelection} &raquo;</a></p>
+                <p style={container_p} onClick={this.toggleColorSelection} className="picker-title"><a href="#"><i className="fa fa-angle-left"></i> {this.state.currentColorSelection} <i className="fa fa-angle-right"></i></a></p>
             </div>);
         }
 

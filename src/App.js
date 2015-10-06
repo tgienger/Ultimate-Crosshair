@@ -29,6 +29,32 @@ export default class App extends React.Component {
     }
 
 
+    componentDidMount() {
+        if (overwolf) {
+            overwolf.windows.obtainDeclaredWindow("CrossWindow", result => {
+                    if (result.status == "success"){
+                        overwolf.windows.restore(result.window.id, r => {
+                                let win = window.screen;
+                                let left = win.width / 2 - 100;
+                                let top = win.height / 2 - 100;
+                                overwolf.windows.changePosition(result.window.id, left, top, () => {});
+                            }
+                        );
+                    }
+                }
+            );
+            overwolf.windows.obtainDeclaredWindow("MenuWindow", result => {
+                if (result.status == "success") {
+                    let win = window.screen;
+                    let left = win.width / 2 - 500;
+                    let top = win.height / 2 - 250;
+                    overwolf.windows.changePosition(result.window.id, left, top, () => {});
+                }
+            })
+        }
+    }
+
+
     componentDidUpdate(prevProps, prevState) {
         window.localStorage.state = JSON.stringify(this.state);
     }
@@ -70,7 +96,7 @@ export default class App extends React.Component {
     }
 
     render() {
-        
+
         return (
             <CircleMenu
                 /* Event Handlers */

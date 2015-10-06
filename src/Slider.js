@@ -19,8 +19,8 @@ export default class Slider extends React.Component {
 
     render() {
         const styles = {
-            background: 'rgba(255,255,255,0.7)',
-            color: 'black',
+            background: 'rgba(0,0,0,0.7)',
+            color: 'white',
             fontWeight: 'bold',
             border: '1px solid rgb(190, 190, 190)',
             borderRadius: '3px',
