@@ -1,14 +1,14 @@
 {
-  "manifest_version":"1",
+  "manifest_version":1,
   "type":"WebApp",
   "meta":{
-    "name":"Ultimate Crosshair",
+    "name":"Ultimate",
     "version":"0.1.0",
     "minimum-overwolf-version": "0.77.4.0",
     "author":"Tj Gienger",
     "icon":"src/images/IconMouseOver.png",
     "icon_gray":"src/images/IconMouseNormal.png",
-    "description":"Crosshair Overlay"
+    "description":"Overlay"
   },
   "data": {
     "start_window":"MenuWindow",
