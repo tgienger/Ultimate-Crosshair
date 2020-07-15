@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "install": "^0.1.8",
-    "lodash": "^3.10.1",
+    "lodash": "^4.17.19",
     "material-colors": "^1.0.0",
     "merge": "^1.2.0",
     "npm": "^2.13.4",
